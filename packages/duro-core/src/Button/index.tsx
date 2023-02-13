@@ -1,11 +1,22 @@
 // import components from libraries
-import { Button } from 'theme-ui'
+import type { FC } from 'react'
+import { Button as UIButton } from 'theme-ui'
 // import theme config
 import buttons from './index.theme'
 
-/*
-component code here
-*/
+export interface ButtonProps {
+  /**
+   * One of a few variants
+   */
+  variant?: 'primary' | 'secondary'
+  children: string
+}
+
+const Button: FC<ButtonProps> = ({
+  variant = 'primary',
+  children,
+  ...props
+}) => <UIButton {...props}>{children}</UIButton>
 
 // exports component and component theme
 export { Button, buttons }
