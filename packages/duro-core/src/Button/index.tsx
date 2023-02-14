@@ -16,7 +16,11 @@ const Button: FC<ButtonProps> = ({
   variant = 'primary',
   children,
   ...props
-}) => <UIButton {...props}>{children}</UIButton>
+}) => (
+  <UIButton variant={variant} {...props}>
+    {children}
+  </UIButton>
+)
 
 // exports component and component theme
 export { Button, buttons }

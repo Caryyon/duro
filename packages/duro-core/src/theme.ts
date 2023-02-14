@@ -5,11 +5,13 @@ const colors = {
   text: '#333333',
   background: '#E5E5E5',
   primary: '#EB5757',
+  secondary: '#a55eea',
   modes: {
     dark: {
       text: '#E5E5E5',
       background: '#333333',
       primary: '#EB5757',
+      secondary: '#4b7bec',
     },
   },
 }
