@@ -38,7 +38,7 @@
     "./styles": "./dist/duro.css"
   },
   "scripts": {
-    "generate-css": "node --import tsx scripts/generate-css.ts",
+    "generate-css": "pnpm exec tsx scripts/generate-css.ts",
     "build": "pnpm generate-css && tsup src/index.tsx --format esm,cjs --dts --external react",
     "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
