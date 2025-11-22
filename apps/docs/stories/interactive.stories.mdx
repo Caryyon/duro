@@ -1,0 +1,349 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import {
+  Tabs, TabsList, TabsTrigger, TabsContent,
+  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+  Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription,
+  ButtonGroup, Button,
+  Card, CardHeader, CardTitle, CardContent,
+  Stack, Cluster, Box, Label, Input, Textarea
+} from '@duro/core'
+
+export const ButtonGroupTemplate = (args) => (
+  <ButtonGroup orientation={args.orientation} attached={args.attached}>
+    <Button>{args.button1Text}</Button>
+    <Button>{args.button2Text}</Button>
+    <Button>{args.button3Text}</Button>
+  </ButtonGroup>
+)
+
+export const AccordionTemplate = (args) => (
+  <Accordion type={args.type}>
+    <AccordionItem value="item1">
+      <AccordionTrigger>{args.item1Title}</AccordionTrigger>
+      <AccordionContent>{args.item1Content}</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item2">
+      <AccordionTrigger>{args.item2Title}</AccordionTrigger>
+      <AccordionContent>{args.item2Content}</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item3">
+      <AccordionTrigger>{args.item3Title}</AccordionTrigger>
+      <AccordionContent>{args.item3Content}</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+)
+
+<Meta title="Components/Interactive" />
+
+# Interactive Components
+
+## ButtonGroup Playground
+
+<Canvas>
+  <Story
+    name="ButtonGroup Playground"
+    args={{
+      orientation: 'horizontal',
+      attached: false,
+      button1Text: 'First',
+      button2Text: 'Second',
+      button3Text: 'Third',
+    }}
+    argTypes={{
+      orientation: {
+        control: { type: 'select' },
+        options: ['horizontal', 'vertical'],
+        description: 'Button group orientation',
+      },
+      attached: {
+        control: 'boolean',
+        description: 'Buttons attached with no gap',
+      },
+      button1Text: {
+        control: 'text',
+        description: 'First button text',
+      },
+      button2Text: {
+        control: 'text',
+        description: 'Second button text',
+      },
+      button3Text: {
+        control: 'text',
+        description: 'Third button text',
+      },
+    }}
+  >
+    {ButtonGroupTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Accordion Playground
+
+<Canvas>
+  <Story
+    name="Accordion Playground"
+    args={{
+      type: 'single',
+      item1Title: 'What is Duro?',
+      item1Content: 'Duro is a durable design system built on CSS custom properties, container queries, and modern React patterns.',
+      item2Title: 'How does it work?',
+      item2Content: 'Duro uses CSS custom properties for theming, container queries for responsive layouts, and zero-runtime CSS-in-JS.',
+      item3Title: 'Is it accessible?',
+      item3Content: 'Yes! All Duro components are built with accessibility in mind, including proper ARIA attributes and keyboard navigation.',
+    }}
+    argTypes={{
+      type: {
+        control: { type: 'select' },
+        options: ['single', 'multiple'],
+        description: 'Single or multiple items open',
+      },
+      item1Title: {
+        control: 'text',
+        description: 'First item title',
+      },
+      item1Content: {
+        control: 'text',
+        description: 'First item content',
+      },
+      item2Title: {
+        control: 'text',
+        description: 'Second item title',
+      },
+      item2Content: {
+        control: 'text',
+        description: 'Second item content',
+      },
+      item3Title: {
+        control: 'text',
+        description: 'Third item title',
+      },
+      item3Content: {
+        control: 'text',
+        description: 'Third item content',
+      },
+    }}
+  >
+    {AccordionTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Tabs
+
+<Canvas>
+  <Story name="Tabs">
+    <Tabs defaultValue="tab1">
+      <TabsList>
+        <TabsTrigger value="tab1">Account</TabsTrigger>
+        <TabsTrigger value="tab2">Password</TabsTrigger>
+        <TabsTrigger value="tab3">Notifications</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab1">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account Settings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Manage your account settings and preferences here.</p>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="tab2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Password Settings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Change your password and security settings here.</p>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="tab3">
+        <Card>
+          <CardHeader>
+            <CardTitle>Notification Settings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Manage your notification preferences here.</p>
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  </Story>
+</Canvas>
+
+## Accordion
+
+<Canvas>
+  <Story name="Accordion Single">
+    <Accordion type="single" defaultValue="item1">
+      <AccordionItem value="item1">
+        <AccordionTrigger>What is Duro?</AccordionTrigger>
+        <AccordionContent>
+          Duro is a durable design system built on CSS custom properties,
+          container queries, and modern React patterns. It's designed to
+          withstand changing frontend lifecycles.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item2">
+        <AccordionTrigger>How does it work?</AccordionTrigger>
+        <AccordionContent>
+          Duro uses CSS custom properties for theming, container queries for
+          responsive layouts, and zero-runtime CSS-in-JS for optimal performance.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item3">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes! All Duro components are built with accessibility in mind,
+          including proper ARIA attributes and keyboard navigation support.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Accordion Multiple">
+    <Accordion type="multiple" defaultValue={["item1", "item2"]}>
+      <AccordionItem value="item1">
+        <AccordionTrigger>Feature 1</AccordionTrigger>
+        <AccordionContent>
+          Details about feature 1. Multiple items can be open at once.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item2">
+        <AccordionTrigger>Feature 2</AccordionTrigger>
+        <AccordionContent>
+          Details about feature 2. All items can be expanded simultaneously.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item3">
+        <AccordionTrigger>Feature 3</AccordionTrigger>
+        <AccordionContent>
+          Details about feature 3. This allows for better content comparison.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </Story>
+</Canvas>
+
+## Dialog
+
+<Canvas>
+  <Story name="Dialog">
+    <Dialog>
+      <DialogTrigger>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Confirm Action</DialogTitle>
+          <DialogDescription>
+            Are you sure you want to proceed? This action cannot be undone.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="secondary">Cancel</Button>
+          <Button variant="primary">Confirm</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Dialog with Form">
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary">Create New Project</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Create Project</DialogTitle>
+          <DialogDescription>
+            Enter the details for your new project below.
+          </DialogDescription>
+        </DialogHeader>
+        <Stack style={{ margin: '1rem 0' }}>
+          <Box>
+            <Label>Project Name</Label>
+            <Input placeholder="My Awesome Project" fullWidth />
+          </Box>
+          <Box>
+            <Label>Description</Label>
+            <Textarea placeholder="Describe your project..." rows={4} fullWidth />
+          </Box>
+        </Stack>
+        <DialogFooter>
+          <Button variant="secondary">Cancel</Button>
+          <Button variant="primary">Create</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  </Story>
+</Canvas>
+
+## ButtonGroup
+
+<Canvas>
+  <Story name="ButtonGroup Horizontal">
+    <Stack variant="loose">
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Default (with gap)</p>
+        <ButtonGroup>
+          <Button>First</Button>
+          <Button>Second</Button>
+          <Button>Third</Button>
+        </ButtonGroup>
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Attached (no gap)</p>
+        <ButtonGroup attached>
+          <Button>First</Button>
+          <Button>Second</Button>
+          <Button>Third</Button>
+        </ButtonGroup>
+      </Box>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="ButtonGroup Vertical">
+    <Cluster variant="spaceBetween">
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Vertical (with gap)</p>
+        <ButtonGroup orientation="vertical">
+          <Button>Option 1</Button>
+          <Button>Option 2</Button>
+          <Button>Option 3</Button>
+        </ButtonGroup>
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Vertical Attached</p>
+        <ButtonGroup orientation="vertical" attached>
+          <Button>Option 1</Button>
+          <Button>Option 2</Button>
+          <Button>Option 3</Button>
+        </ButtonGroup>
+      </Box>
+    </Cluster>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="ButtonGroup Variants">
+    <Stack variant="loose">
+      <ButtonGroup attached>
+        <Button variant="primary">Save</Button>
+        <Button variant="secondary">Preview</Button>
+        <Button variant="secondary">Cancel</Button>
+      </ButtonGroup>
+      <ButtonGroup attached>
+        <Button variant="outline">Left</Button>
+        <Button variant="outline">Center</Button>
+        <Button variant="outline">Right</Button>
+      </ButtonGroup>
+    </Stack>
+  </Story>
+</Canvas>

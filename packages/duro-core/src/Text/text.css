@@ -1,0 +1,100 @@
+/**
+ * Text Component Styles
+ * Cyberpunk Tech Interface - Terminal-style typography
+ */
+
+.duro-text {
+  font-family: var(--duro-font-body);
+  line-height: var(--duro-line-height-normal);
+  color: var(--duro-color-text);
+}
+
+/* Variants */
+.duro-text-body {
+  font-family: var(--duro-font-body);
+}
+
+.duro-text-caption {
+  opacity: 0.7;
+  line-height: var(--duro-line-height-tight);
+  color: var(--duro-color-secondary);
+}
+
+.duro-text-label {
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: var(--duro-line-height-tight);
+}
+
+.duro-text-overline {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  font-size: 0.75em;
+  line-height: var(--duro-line-height-tight);
+  color: var(--duro-color-secondary);
+}
+
+.duro-text-code {
+  font-family: var(--duro-font-monospace);
+  padding: 0.125rem 0.375rem;
+  background-color: var(--duro-color-muted);
+  border: 1px solid var(--duro-color-text);
+  font-size: 0.9em;
+}
+
+/* Sizes */
+.duro-text-xs {
+  font-size: var(--duro-font-size-xs);
+}
+
+.duro-text-sm {
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-text-md {
+  font-size: var(--duro-font-size-md);
+}
+
+.duro-text-lg {
+  font-size: var(--duro-font-size-lg);
+}
+
+.duro-text-xl {
+  font-size: var(--duro-font-size-xl);
+}
+
+/* Weights - lighter for cyberpunk */
+.duro-text-normal {
+  font-weight: 300;
+}
+
+.duro-text-medium {
+  font-weight: 400;
+}
+
+.duro-text-semibold {
+  font-weight: 500;
+}
+
+.duro-text-bold {
+  font-weight: 600;
+}
+
+/* Glitch effect */
+.duro-text-glitch {
+  position: relative;
+}
+
+.duro-text-glitch:hover {
+  animation: text-glitch 0.3s ease;
+}
+
+@keyframes text-glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}

@@ -1,0 +1,96 @@
+/**
+ * Progress Component Styles
+ * Cyberpunk Tech Interface - Data loading bars
+ */
+
+.duro-progress {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid var(--duro-color-text);
+}
+
+.duro-progress-indicator {
+  height: 100%;
+  transition: width 0.3s ease;
+  background-color: var(--duro-color-text);
+}
+
+/* Sizes */
+.duro-progress-sm {
+  height: 0.25rem;
+}
+
+.duro-progress-md {
+  height: 0.5rem;
+}
+
+.duro-progress-lg {
+  height: 0.75rem;
+}
+
+/* Variants */
+.duro-progress-default .duro-progress-indicator {
+  background-color: var(--duro-color-text);
+}
+
+.duro-progress-primary .duro-progress-indicator {
+  background-color: var(--duro-color-text);
+}
+
+.duro-progress-success .duro-progress-indicator {
+  background-color: var(--duro-color-text);
+}
+
+.duro-progress-warning .duro-progress-indicator {
+  background-color: var(--duro-color-secondary);
+}
+
+.duro-progress-error .duro-progress-indicator {
+  background-color: var(--duro-color-text);
+  /* Striped pattern for error */
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    var(--duro-color-background) 2px,
+    var(--duro-color-background) 4px
+  );
+}
+
+/* Indeterminate state - scanning effect */
+.duro-progress-indeterminate .duro-progress-indicator {
+  width: 30%;
+  animation: duro-progress-scan 1.5s ease-in-out infinite;
+}
+
+@keyframes duro-progress-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(333%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Segmented variant - data blocks */
+.duro-progress-segmented {
+  display: flex;
+  gap: 2px;
+  border: none;
+  background: transparent;
+}
+
+.duro-progress-segmented .duro-progress-indicator {
+  flex: 1;
+  border: 1px solid var(--duro-color-text);
+  background: transparent;
+}
+
+.duro-progress-segmented .duro-progress-indicator.active {
+  background: var(--duro-color-text);
+}

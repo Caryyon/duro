@@ -1,0 +1,92 @@
+/**
+ * ButtonGroup Component Styles
+ * Cyberpunk Tech Interface - Grouped button controls
+ */
+
+.duro-button-group {
+  display: inline-flex;
+  gap: var(--duro-space-2);
+}
+
+.duro-button-group-horizontal {
+  flex-direction: row;
+}
+
+.duro-button-group-vertical {
+  flex-direction: column;
+}
+
+/* Attached variant - removes gap and connects buttons */
+.duro-button-group-attached {
+  gap: 0;
+}
+
+.duro-button-group-attached.duro-button-group-horizontal > * {
+  border-radius: 0;
+}
+
+.duro-button-group-attached.duro-button-group-horizontal > *:first-child {
+  border-radius: 0;
+}
+
+.duro-button-group-attached.duro-button-group-horizontal > *:last-child {
+  border-radius: 0;
+}
+
+.duro-button-group-attached.duro-button-group-vertical > * {
+  border-radius: 0;
+}
+
+.duro-button-group-attached.duro-button-group-vertical > *:first-child {
+  border-radius: 0;
+}
+
+.duro-button-group-attached.duro-button-group-vertical > *:last-child {
+  border-radius: 0;
+}
+
+/* Prevent double borders in attached mode */
+.duro-button-group-attached.duro-button-group-horizontal > * + * {
+  margin-left: -1px;
+}
+
+.duro-button-group-attached.duro-button-group-vertical > * + * {
+  margin-top: -1px;
+}
+
+/* Size variants */
+.duro-button-group-sm {
+  gap: var(--duro-space-1);
+}
+
+.duro-button-group-lg {
+  gap: var(--duro-space-3);
+}
+
+/* HUD variant with corner decorations */
+.duro-button-group-hud {
+  position: relative;
+  padding: var(--duro-space-1);
+}
+
+.duro-button-group-hud::before,
+.duro-button-group-hud::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+}
+
+.duro-button-group-hud::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.duro-button-group-hud::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}

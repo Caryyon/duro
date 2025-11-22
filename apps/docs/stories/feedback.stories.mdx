@@ -1,0 +1,275 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Alert, AlertTitle, AlertDescription, Progress, Tooltip, Button, Stack, Cluster, Box } from '@duro/core'
+
+export const AlertTemplate = (args) => (
+  <Alert variant={args.variant}>
+    {args.showTitle && <AlertTitle>{args.title}</AlertTitle>}
+    <AlertDescription>{args.description}</AlertDescription>
+  </Alert>
+)
+
+export const ProgressTemplate = (args) => <Progress {...args} />
+
+export const TooltipTemplate = (args) => (
+  <Tooltip content={args.content} position={args.position} delay={args.delay}>
+    <Button>{args.buttonText}</Button>
+  </Tooltip>
+)
+
+<Meta title="Components/Feedback" />
+
+# Feedback Components
+
+## Alert Playground
+
+<Canvas>
+  <Story
+    name="Alert Playground"
+    args={{
+      variant: 'default',
+      title: 'Alert Title',
+      description: 'This is an alert message.',
+      showTitle: true,
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: ['default', 'info', 'success', 'warning', 'error'],
+        description: 'Alert variant',
+      },
+      title: {
+        control: 'text',
+        description: 'Alert title',
+      },
+      description: {
+        control: 'text',
+        description: 'Alert description',
+      },
+      showTitle: {
+        control: 'boolean',
+        description: 'Show title',
+      },
+    }}
+  >
+    {AlertTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Progress Playground
+
+<Canvas>
+  <Story
+    name="Progress Playground"
+    args={{
+      value: 50,
+      variant: 'primary',
+      size: 'md',
+      indeterminate: false,
+    }}
+    argTypes={{
+      value: {
+        control: { type: 'range', min: 0, max: 100, step: 1 },
+        description: 'Progress value (0-100)',
+      },
+      variant: {
+        control: { type: 'select' },
+        options: ['default', 'primary', 'success', 'warning', 'error'],
+        description: 'Progress bar color',
+      },
+      size: {
+        control: { type: 'select' },
+        options: ['sm', 'md', 'lg'],
+        description: 'Progress bar size',
+      },
+      indeterminate: {
+        control: 'boolean',
+        description: 'Indeterminate state (loading)',
+      },
+    }}
+  >
+    {ProgressTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Tooltip Playground
+
+<Canvas>
+  <Story
+    name="Tooltip Playground"
+    args={{
+      content: 'This is a tooltip',
+      position: 'top',
+      delay: 0,
+      buttonText: 'Hover me',
+    }}
+    argTypes={{
+      content: {
+        control: 'text',
+        description: 'Tooltip content',
+      },
+      position: {
+        control: { type: 'select' },
+        options: ['top', 'bottom', 'left', 'right'],
+        description: 'Tooltip position',
+      },
+      delay: {
+        control: { type: 'number', min: 0, max: 1000, step: 100 },
+        description: 'Show delay in milliseconds',
+      },
+      buttonText: {
+        control: 'text',
+        description: 'Button text',
+      },
+    }}
+  >
+    {TooltipTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Alert
+
+<Canvas>
+  <Story name="Alert Variants">
+    <Stack>
+      <Alert variant="default">
+        <AlertTitle>Default Alert</AlertTitle>
+        <AlertDescription>This is a default alert message.</AlertDescription>
+      </Alert>
+      <Alert variant="info">
+        <AlertTitle>Info Alert</AlertTitle>
+        <AlertDescription>This is an informational message.</AlertDescription>
+      </Alert>
+      <Alert variant="success">
+        <AlertTitle>Success Alert</AlertTitle>
+        <AlertDescription>Your action was completed successfully.</AlertDescription>
+      </Alert>
+      <Alert variant="warning">
+        <AlertTitle>Warning Alert</AlertTitle>
+        <AlertDescription>Please be careful with this action.</AlertDescription>
+      </Alert>
+      <Alert variant="error">
+        <AlertTitle>Error Alert</AlertTitle>
+        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+      </Alert>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Alert Simple">
+    <Stack>
+      <Alert variant="info">
+        <AlertDescription>Simple info message without a title.</AlertDescription>
+      </Alert>
+      <Alert variant="success">
+        <AlertDescription>Operation completed successfully!</AlertDescription>
+      </Alert>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Progress
+
+<Canvas>
+  <Story name="Progress">
+    <Stack variant="loose">
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Default Progress (50%)</p>
+        <Progress value={50} />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Primary (75%)</p>
+        <Progress value={75} variant="primary" />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Success (100%)</p>
+        <Progress value={100} variant="success" />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Warning (60%)</p>
+        <Progress value={60} variant="warning" />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Error (30%)</p>
+        <Progress value={30} variant="error" />
+      </Box>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Progress Sizes">
+    <Stack variant="loose">
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Small</p>
+        <Progress value={60} size="sm" variant="primary" />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Medium</p>
+        <Progress value={60} size="md" variant="primary" />
+      </Box>
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Large</p>
+        <Progress value={60} size="lg" variant="primary" />
+      </Box>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Progress Indeterminate">
+    <Stack variant="loose">
+      <Box>
+        <p style={{ marginBottom: '0.5rem' }}>Loading...</p>
+        <Progress indeterminate variant="primary" />
+      </Box>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Tooltip
+
+<Canvas>
+  <Story name="Tooltip Positions">
+    <Box style={{ padding: '4rem' }}>
+      <Cluster variant="center">
+        <Tooltip content="Tooltip on top" position="top">
+          <Button>Top</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip on bottom" position="bottom">
+          <Button>Bottom</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip on left" position="left">
+          <Button>Left</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip on right" position="right">
+          <Button>Right</Button>
+        </Tooltip>
+      </Cluster>
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Tooltip Examples">
+    <Box style={{ padding: '2rem' }}>
+      <Stack variant="loose">
+        <Box>
+          <Tooltip content="This is helpful information">
+            <span style={{ textDecoration: 'underline', cursor: 'help' }}>Hover over me</span>
+          </Tooltip>
+        </Box>
+        <Box>
+          <Tooltip content="Click to edit" delay={0}>
+            <Button variant="secondary">Quick Tooltip</Button>
+          </Tooltip>
+        </Box>
+        <Box>
+          <Tooltip content="This tooltip has a 500ms delay" delay={500}>
+            <Button variant="outline">Delayed Tooltip</Button>
+          </Tooltip>
+        </Box>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>

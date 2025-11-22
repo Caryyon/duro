@@ -1,0 +1,294 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+
+<Meta title='Foundation/Theme' />
+
+# Theme System
+
+Duro's theme is built on CSS custom properties for maximum flexibility and SSR compatibility.
+
+## Colors
+
+All colors are available as CSS variables.
+
+<Canvas>
+  <Story name='Colors'>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-primary)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Primary</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-primary</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-secondary)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Secondary</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-secondary</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-accent)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Accent</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-accent</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-muted)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem',
+          border: '1px solid #ccc'
+        }} />
+        <div>Muted</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-muted</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-success)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Success</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-success</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-warning)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Warning</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-warning</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-error)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Error</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-error</code>
+      </div>
+      <div>
+        <div style={{
+          background: 'var(--duro-color-info)',
+          height: '100px',
+          borderRadius: '8px',
+          marginBottom: '0.5rem'
+        }} />
+        <div>Info</div>
+        <code style={{ fontSize: '0.75rem' }}>--duro-color-info</code>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## Spacing Scale
+
+Consistent spacing using the spacing scale.
+
+<Canvas>
+  <Story name='Spacing'>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(num => (
+        <div key={num} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <code style={{ minWidth: '150px' }}>--duro-space-{num}</code>
+          <div style={{
+            width: `var(--duro-space-${num})`,
+            height: '24px',
+            background: 'var(--duro-color-primary)'
+          }} />
+        </div>
+      ))}
+    </div>
+  </Story>
+</Canvas>
+
+## Typography
+
+Font sizes and line heights.
+
+<Canvas>
+  <Story name='Typography'>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ fontSize: 'var(--duro-font-size-xs)' }}>
+        Extra Small (--duro-font-size-xs)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-sm)' }}>
+        Small (--duro-font-size-sm)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-md)' }}>
+        Medium (--duro-font-size-md)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-lg)' }}>
+        Large (--duro-font-size-lg)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-xl)' }}>
+        Extra Large (--duro-font-size-xl)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-2xl)' }}>
+        2X Large (--duro-font-size-2xl)
+      </div>
+      <div style={{ fontSize: 'var(--duro-font-size-3xl)' }}>
+        3X Large (--duro-font-size-3xl)
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## Shadows
+
+Box shadow scale for depth and elevation.
+
+<Canvas>
+  <Story name='Shadows'>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', padding: '2rem' }}>
+      <div style={{
+        padding: '2rem',
+        background: 'white',
+        boxShadow: 'var(--duro-shadow-sm)',
+        borderRadius: '8px',
+        textAlign: 'center'
+      }}>
+        Small Shadow
+        <br />
+        <code>--duro-shadow-sm</code>
+      </div>
+      <div style={{
+        padding: '2rem',
+        background: 'white',
+        boxShadow: 'var(--duro-shadow-md)',
+        borderRadius: '8px',
+        textAlign: 'center'
+      }}>
+        Medium Shadow
+        <br />
+        <code>--duro-shadow-md</code>
+      </div>
+      <div style={{
+        padding: '2rem',
+        background: 'white',
+        boxShadow: 'var(--duro-shadow-lg)',
+        borderRadius: '8px',
+        textAlign: 'center'
+      }}>
+        Large Shadow
+        <br />
+        <code>--duro-shadow-lg</code>
+      </div>
+      <div style={{
+        padding: '2rem',
+        background: 'white',
+        boxShadow: 'var(--duro-shadow-xl)',
+        borderRadius: '8px',
+        textAlign: 'center'
+      }}>
+        Extra Large Shadow
+        <br />
+        <code>--duro-shadow-xl</code>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## Border Radius
+
+Rounded corners at different scales.
+
+<Canvas>
+  <Story name='Radii'>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem' }}>
+      <div style={{
+        width: '100px',
+        height: '100px',
+        background: 'var(--duro-color-primary)',
+        borderRadius: 'var(--duro-radius-none)'
+      }}>
+        <div style={{ padding: '0.5rem', color: 'white', fontSize: '0.75rem' }}>
+          None
+        </div>
+      </div>
+      <div style={{
+        width: '100px',
+        height: '100px',
+        background: 'var(--duro-color-primary)',
+        borderRadius: 'var(--duro-radius-sm)'
+      }}>
+        <div style={{ padding: '0.5rem', color: 'white', fontSize: '0.75rem' }}>
+          Small
+        </div>
+      </div>
+      <div style={{
+        width: '100px',
+        height: '100px',
+        background: 'var(--duro-color-primary)',
+        borderRadius: 'var(--duro-radius-md)'
+      }}>
+        <div style={{ padding: '0.5rem', color: 'white', fontSize: '0.75rem' }}>
+          Medium
+        </div>
+      </div>
+      <div style={{
+        width: '100px',
+        height: '100px',
+        background: 'var(--duro-color-primary)',
+        borderRadius: 'var(--duro-radius-lg)'
+      }}>
+        <div style={{ padding: '0.5rem', color: 'white', fontSize: '0.75rem' }}>
+          Large
+        </div>
+      </div>
+      <div style={{
+        width: '100px',
+        height: '100px',
+        background: 'var(--duro-color-primary)',
+        borderRadius: 'var(--duro-radius-full)'
+      }}>
+        <div style={{ padding: '0.5rem', color: 'white', fontSize: '0.75rem' }}>
+          Full
+        </div>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## Using CSS Variables
+
+All theme values are exposed as CSS custom properties:
+
+```css
+.my-component {
+  /* Colors */
+  color: var(--duro-color-text);
+  background: var(--duro-color-background);
+
+  /* Spacing */
+  padding: var(--duro-space-4);
+  margin: var(--duro-space-2);
+  gap: var(--duro-space-3);
+
+  /* Typography */
+  font-family: var(--duro-font-body);
+  font-size: var(--duro-font-size-lg);
+  line-height: var(--duro-line-height-normal);
+
+  /* Visual */
+  border-radius: var(--duro-radius-md);
+  box-shadow: var(--duro-shadow-lg);
+}
+```

@@ -1,0 +1,75 @@
+/**
+ * Skeleton Component Styles
+ * Cyberpunk Tech Interface - Data loading placeholders
+ */
+
+.duro-skeleton {
+  background: var(--duro-color-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scanning line effect */
+.duro-skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--duro-color-secondary) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: duro-skeleton-scan 1.5s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes duro-skeleton-scan {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* All radius variants map to 0 for cyberpunk */
+.duro-skeleton-radius-none,
+.duro-skeleton-radius-sm,
+.duro-skeleton-radius-md,
+.duro-skeleton-radius-lg,
+.duro-skeleton-radius-full {
+  border-radius: 0;
+}
+
+/* Optional border variant */
+.duro-skeleton-bordered {
+  border: 1px solid var(--duro-color-secondary);
+}
+
+/* Glitch variant */
+.duro-skeleton-glitch {
+  animation: duro-skeleton-glitch 2s ease-in-out infinite;
+}
+
+@keyframes duro-skeleton-glitch {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  52% {
+    opacity: 1;
+  }
+  54% {
+    opacity: 0.7;
+  }
+  56% {
+    opacity: 1;
+  }
+}

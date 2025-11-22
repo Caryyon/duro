@@ -1,0 +1,89 @@
+/**
+ * Box Component Styles
+ * Cyberpunk Tech Interface - Container primitives
+ */
+
+.duro-box {
+  box-sizing: border-box;
+}
+
+/* Max Width Variants */
+.duro-box-max-xs {
+  max-width: 320px;
+}
+
+.duro-box-max-sm {
+  max-width: 480px;
+}
+
+.duro-box-max-md {
+  max-width: 640px;
+}
+
+.duro-box-max-lg {
+  max-width: 768px;
+}
+
+.duro-box-max-xl {
+  max-width: 1024px;
+}
+
+.duro-box-max-full {
+  max-width: 100%;
+}
+
+/* Padding Variants */
+.duro-box-padding-none {
+  padding: 0;
+}
+
+.duro-box-padding-sm {
+  padding: var(--duro-space-2);
+}
+
+.duro-box-padding-md {
+  padding: var(--duro-space-4);
+}
+
+.duro-box-padding-lg {
+  padding: var(--duro-space-6);
+}
+
+/* Centered */
+.duro-box-centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bordered variant for cyberpunk */
+.duro-box-bordered {
+  border: 1px solid var(--duro-color-text);
+}
+
+/* HUD variant with corner brackets */
+.duro-box-hud {
+  position: relative;
+}
+
+.duro-box-hud::before,
+.duro-box-hud::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.duro-box-hud::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.duro-box-hud::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}

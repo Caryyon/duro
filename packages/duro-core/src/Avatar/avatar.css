@@ -1,0 +1,128 @@
+/**
+ * Avatar Component Styles
+ * Cyberpunk Tech Interface - User identification displays
+ */
+
+.duro-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--duro-color-muted);
+  color: var(--duro-color-text);
+  flex-shrink: 0;
+  border: 1px solid var(--duro-color-text);
+  transition: all 0.15s ease;
+}
+
+.duro-avatar:hover {
+  box-shadow: 0 0 0 1px var(--duro-color-text);
+}
+
+/* Sizes */
+.duro-avatar-sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--duro-font-size-xs);
+}
+
+.duro-avatar-md {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-avatar-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: var(--duro-font-size-md);
+}
+
+.duro-avatar-xl {
+  width: 5rem;
+  height: 5rem;
+  font-size: var(--duro-font-size-xl);
+}
+
+.duro-avatar-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.duro-avatar-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--duro-font-monospace);
+  font-weight: 400;
+  text-transform: uppercase;
+  background: var(--duro-color-muted);
+  color: var(--duro-color-text);
+  letter-spacing: 0.05em;
+  z-index: 0;
+}
+
+/* Variant: Rounded - not used in cyberpunk, but keep for compatibility */
+.duro-avatar-rounded {
+  border-radius: 0;
+}
+
+/* Variant: Circle - not used in cyberpunk, but keep for compatibility */
+.duro-avatar-circle {
+  border-radius: 0;
+}
+
+/* Status indicator */
+.duro-avatar-status {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--duro-color-background);
+  background-color: var(--duro-color-muted);
+}
+
+.duro-avatar-status-online {
+  background-color: var(--duro-color-text);
+}
+
+.duro-avatar-status-offline {
+  background-color: transparent;
+  border-style: dashed;
+}
+
+.duro-avatar-status-busy {
+  background-color: var(--duro-color-secondary);
+}
+
+/* Group avatars (stacked) */
+.duro-avatar-group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.duro-avatar-group .duro-avatar {
+  margin-left: -0.5rem;
+  border: 1px solid var(--duro-color-background);
+}
+
+.duro-avatar-group .duro-avatar:last-child {
+  margin-left: 0;
+}
+
+.duro-avatar-group .duro-avatar:hover {
+  z-index: 1;
+}

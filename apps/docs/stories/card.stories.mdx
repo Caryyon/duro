@@ -1,0 +1,169 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button, Stack, Grid, Cluster, Checkbox } from '@duro/core'
+
+export const CardTemplate = (args) => (
+  <Card>
+    {args.showHeader && (
+      <CardHeader>
+        <CardTitle>{args.title}</CardTitle>
+        {args.showDescription && <CardDescription>{args.description}</CardDescription>}
+      </CardHeader>
+    )}
+    <CardContent>
+      <p>{args.content}</p>
+    </CardContent>
+    {args.showFooter && (
+      <CardFooter>
+        <Button variant="primary">Action</Button>
+        <Button variant="secondary">Cancel</Button>
+      </CardFooter>
+    )}
+  </Card>
+)
+
+<Meta title="Components/Card" component={Card} />
+
+# Card
+
+A versatile container component with header, content, and footer sections.
+
+## Card Playground
+
+<Canvas>
+  <Story
+    name="Card Playground"
+    args={{
+      title: 'Card Title',
+      description: 'Card description goes here',
+      content: 'This is the main content of the card. You can put any content here.',
+      showHeader: true,
+      showDescription: true,
+      showFooter: true
+    }}
+    argTypes={{
+      title: {
+        control: 'text',
+        description: 'Card title',
+      },
+      description: {
+        control: 'text',
+        description: 'Card description',
+      },
+      content: {
+        control: 'text',
+        description: 'Card content',
+      },
+      showHeader: {
+        control: 'boolean',
+        description: 'Show card header',
+      },
+      showDescription: {
+        control: 'boolean',
+        description: 'Show card description',
+      },
+      showFooter: {
+        control: 'boolean',
+        description: 'Show card footer with buttons',
+      },
+    }}
+  >
+    {CardTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Basic Card
+
+<Canvas>
+  <Story name="Basic">
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>This is the main content of the card. You can put any content here.</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary">Action</Button>
+        <Button variant="secondary">Cancel</Button>
+      </CardFooter>
+    </Card>
+  </Story>
+</Canvas>
+
+## Simple Card
+
+<Canvas>
+  <Story name="Simple">
+    <Card>
+      <CardContent style={{ padding: '1.5rem' }}>
+        <p>A simple card with just content.</p>
+      </CardContent>
+    </Card>
+  </Story>
+</Canvas>
+
+## Card with Header Only
+
+<Canvas>
+  <Story name="Header Only">
+    <Card>
+      <CardHeader>
+        <CardTitle>Notification Settings</CardTitle>
+        <CardDescription>Manage your notification preferences</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Stack>
+          <Cluster>
+            <Checkbox defaultChecked />
+            <span>Email notifications</span>
+          </Cluster>
+          <Cluster>
+            <Checkbox />
+            <span>Push notifications</span>
+          </Cluster>
+          <Cluster>
+            <Checkbox defaultChecked />
+            <span>SMS notifications</span>
+          </Cluster>
+        </Stack>
+      </CardContent>
+    </Card>
+  </Story>
+</Canvas>
+
+## Multiple Cards
+
+<Canvas>
+  <Story name="Grid">
+    <Grid variant="responsive">
+      <Card>
+        <CardHeader>
+          <CardTitle>Card 1</CardTitle>
+          <CardDescription>First card</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Content for the first card.</p>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Card 2</CardTitle>
+          <CardDescription>Second card</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Content for the second card.</p>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Card 3</CardTitle>
+          <CardDescription>Third card</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Content for the third card.</p>
+        </CardContent>
+      </Card>
+    </Grid>
+  </Story>
+</Canvas>

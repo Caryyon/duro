@@ -12,7 +12,6 @@ module.exports = {
     builder: '@storybook/builder-vite',
   },
   async viteFinal(config, { configType }) {
-    // customize the Vite config here
     return {
       ...config,
       resolve: {

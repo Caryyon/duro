@@ -1,0 +1,240 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Text, Heading, Paragraph, Stack, Box } from '@duro/core'
+
+export const TextTemplate = (args) => <Text {...args} />
+export const HeadingTemplate = (args) => <Heading {...args} />
+export const ParagraphTemplate = (args) => <Paragraph {...args} />
+
+<Meta title="Foundation/Typography" />
+
+# Typography
+
+Text components for building consistent, accessible content using Space Grotesk.
+
+## Text Playground
+
+<Canvas>
+  <Story
+    name="Text Playground"
+    args={{
+      children: 'Customize this text',
+      variant: 'body',
+      size: 'md',
+      weight: 'normal',
+      as: 'span'
+    }}
+    argTypes={{
+      children: {
+        control: 'text',
+        description: 'Text content to display',
+      },
+      variant: {
+        control: { type: 'select' },
+        options: ['body', 'caption', 'label', 'overline', 'code'],
+        description: 'Text style variant',
+      },
+      size: {
+        control: { type: 'select' },
+        options: ['xs', 'sm', 'md', 'lg', 'xl'],
+        description: 'Text size',
+      },
+      weight: {
+        control: { type: 'select' },
+        options: ['normal', 'medium', 'semibold', 'bold'],
+        description: 'Font weight',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['span', 'div', 'p', 'label', 'code'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {TextTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Heading Playground
+
+<Canvas>
+  <Story
+    name="Heading Playground"
+    args={{
+      children: 'Customize this heading',
+      level: 2,
+      variant: 'heading'
+    }}
+    argTypes={{
+      children: {
+        control: 'text',
+        description: 'Heading text',
+      },
+      level: {
+        control: { type: 'select' },
+        options: [1, 2, 3, 4, 5, 6],
+        description: 'Heading level (h1-h6)',
+      },
+      variant: {
+        control: { type: 'select' },
+        options: ['heading', 'display', 'subheading'],
+        description: 'Heading style variant',
+      },
+    }}
+  >
+    {HeadingTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Paragraph Playground
+
+<Canvas>
+  <Story
+    name="Paragraph Playground"
+    args={{
+      children: 'This is a paragraph. Customize the size and variant to see different styles. The brutalist design aesthetic of Duro is complemented by clean, structured typography.',
+      size: 'md',
+      variant: 'default'
+    }}
+    argTypes={{
+      children: {
+        control: 'text',
+        description: 'Paragraph content',
+      },
+      size: {
+        control: { type: 'select' },
+        options: ['sm', 'md', 'lg'],
+        description: 'Paragraph size',
+      },
+      variant: {
+        control: { type: 'select' },
+        options: ['default', 'lead', 'muted'],
+        description: 'Paragraph style variant',
+      },
+    }}
+  >
+    {ParagraphTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Headings
+
+<Canvas>
+  <Story name="Headings">
+    <Stack variant="loose">
+      <Heading>Default Heading (h2)</Heading>
+      <Heading variant="display">Display Variant</Heading>
+      <Heading variant="subheading">Subheading Variant</Heading>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Text Variants
+
+<Canvas>
+  <Story name="Text Variants">
+    <Stack>
+      <Text variant="body">Body text variant</Text>
+      <Text variant="caption">Caption text variant</Text>
+      <Text variant="label">Label text variant</Text>
+      <Text variant="overline">Overline text variant</Text>
+      <Text variant="code">Code text variant</Text>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Text Sizes
+
+<Canvas>
+  <Story name="Text Sizes">
+    <Stack>
+      <Text size="xs">Extra Small (xs)</Text>
+      <Text size="sm">Small (sm)</Text>
+      <Text size="md">Medium (md) - Default</Text>
+      <Text size="lg">Large (lg)</Text>
+      <Text size="xl">Extra Large (xl)</Text>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Text Weights
+
+<Canvas>
+  <Story name="Text Weights">
+    <Stack>
+      <Text weight="normal">Normal (400)</Text>
+      <Text weight="medium">Medium (500)</Text>
+      <Text weight="semibold">Semibold (600)</Text>
+      <Text weight="bold">Bold (700)</Text>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Paragraph
+
+<Canvas>
+  <Story name="Paragraph Variants">
+    <Box style={{ maxWidth: '600px' }}>
+      <Stack variant="loose">
+        <Box>
+          <Heading variant="subheading">Default Paragraph</Heading>
+          <Paragraph>
+            This is a default paragraph using Space Grotesk. The brutalist design
+            aesthetic of Duro is complemented by clean, structured typography with
+            sharp corners and bold shadows.
+          </Paragraph>
+        </Box>
+        <Box>
+          <Heading variant="subheading">Lead Paragraph</Heading>
+          <Paragraph variant="lead">
+            Lead paragraphs are larger and bolder, perfect for introductions
+            or highlighting key information at the start of content sections.
+          </Paragraph>
+        </Box>
+        <Box>
+          <Heading variant="subheading">Muted Paragraph</Heading>
+          <Paragraph variant="muted">
+            Muted paragraphs have reduced opacity, ideal for secondary information
+            or supporting text that should not compete with primary content.
+          </Paragraph>
+        </Box>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+## Paragraph Sizes
+
+<Canvas>
+  <Story name="Paragraph Sizes">
+    <Box style={{ maxWidth: '600px' }}>
+      <Stack variant="loose">
+        <Paragraph size="sm">
+          Small paragraph text is useful for fine print, footnotes, or dense
+          information that needs to be compact while remaining legible.
+        </Paragraph>
+        <Paragraph size="md">
+          Medium paragraph text is the default size, optimized for comfortable
+          reading of body content in articles and documentation.
+        </Paragraph>
+        <Paragraph size="lg">
+          Large paragraph text provides emphasis and improved readability for
+          important content or introductions.
+        </Paragraph>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+## Polymorphic Text
+
+<Canvas>
+  <Story name="Text As Prop">
+    <Stack>
+      <Text as="div">Text rendered as div element</Text>
+      <Text as="span">Text rendered as span (default)</Text>
+      <Text as="p">Text rendered as paragraph element</Text>
+      <Text as="label">Text rendered as label element</Text>
+      <Text as="code" variant="code">Text rendered as code element</Text>
+    </Stack>
+  </Story>
+</Canvas>

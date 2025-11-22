@@ -1,0 +1,126 @@
+/**
+ * Badge Component Styles
+ * Cyberpunk Tech Interface - Terminal-style status badges
+ */
+
+.duro-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--duro-color-text);
+  font-family: var(--duro-font-monospace);
+  font-weight: 400;
+  line-height: 1;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Sizes */
+.duro-badge-sm {
+  font-size: var(--duro-font-size-xs);
+  padding: var(--duro-space-1) var(--duro-space-2);
+}
+
+.duro-badge-md {
+  font-size: var(--duro-font-size-xs);
+  padding: var(--duro-space-1) var(--duro-space-3);
+}
+
+.duro-badge-lg {
+  font-size: var(--duro-font-size-sm);
+  padding: var(--duro-space-2) var(--duro-space-4);
+}
+
+/* Variants */
+.duro-badge-default {
+  background-color: transparent;
+  color: var(--duro-color-text);
+  border-color: var(--duro-color-text);
+}
+
+.duro-badge-primary {
+  background-color: var(--duro-color-text);
+  color: var(--duro-color-background);
+  border-color: var(--duro-color-text);
+}
+
+.duro-badge-secondary {
+  background-color: var(--duro-color-secondary);
+  color: var(--duro-color-background);
+  border-color: var(--duro-color-secondary);
+}
+
+.duro-badge-success {
+  background-color: transparent;
+  color: var(--duro-color-text);
+  border-color: var(--duro-color-text);
+}
+
+.duro-badge-success::before {
+  content: '✓';
+  margin-right: var(--duro-space-1);
+}
+
+.duro-badge-warning {
+  background-color: transparent;
+  color: var(--duro-color-text);
+  border-color: var(--duro-color-text);
+  border-style: dashed;
+}
+
+.duro-badge-warning::before {
+  content: '!';
+  margin-right: var(--duro-space-1);
+  font-weight: 700;
+}
+
+.duro-badge-error {
+  background-color: transparent;
+  color: var(--duro-color-text);
+  border-color: var(--duro-color-text);
+  border-style: dashed;
+}
+
+.duro-badge-error::before {
+  content: '×';
+  margin-right: var(--duro-space-1);
+  font-weight: 700;
+}
+
+.duro-badge-outline {
+  background-color: transparent;
+  border: 1px solid var(--duro-color-secondary);
+  color: var(--duro-color-secondary);
+}
+
+/* HUD style badge with corner brackets */
+.duro-badge-hud {
+  background-color: transparent;
+  color: var(--duro-color-text);
+  border: none;
+  position: relative;
+  padding: var(--duro-space-1) var(--duro-space-3);
+}
+
+.duro-badge-hud::before,
+.duro-badge-hud::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+}
+
+.duro-badge-hud::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.duro-badge-hud::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}

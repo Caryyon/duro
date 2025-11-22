@@ -1,0 +1,53 @@
+/**
+ * Paragraph Component Styles
+ * Cyberpunk Tech Interface - Body text styling
+ */
+
+.duro-paragraph {
+  font-family: var(--duro-font-body);
+  line-height: var(--duro-line-height-relaxed);
+  color: var(--duro-color-text);
+  margin: 0;
+}
+
+/* Sizes */
+.duro-paragraph-sm {
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-paragraph-md {
+  font-size: var(--duro-font-size-md);
+}
+
+.duro-paragraph-lg {
+  font-size: var(--duro-font-size-lg);
+}
+
+/* Variants */
+.duro-paragraph-default {
+  opacity: 1;
+}
+
+.duro-paragraph-lead {
+  font-size: var(--duro-font-size-lg);
+  font-weight: 300;
+  line-height: var(--duro-line-height-normal);
+}
+
+.duro-paragraph-muted {
+  color: var(--duro-color-secondary);
+}
+
+/* Terminal-style log entry */
+.duro-paragraph-log {
+  font-family: var(--duro-font-monospace);
+  padding-left: var(--duro-space-4);
+  border-left: 1px solid var(--duro-color-secondary);
+}
+
+.duro-paragraph-log::before {
+  content: '>';
+  position: absolute;
+  left: var(--duro-space-1);
+  color: var(--duro-color-secondary);
+}

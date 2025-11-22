@@ -1,0 +1,68 @@
+/**
+ * Tabs Component Styles
+ * Cyberpunk Tech Interface - Terminal-style navigation tabs
+ */
+
+.duro-tabs {
+  width: 100%;
+}
+
+.duro-tabs-list {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--duro-color-text);
+  margin-bottom: var(--duro-space-4);
+}
+
+.duro-tabs-trigger {
+  padding: var(--duro-space-2) var(--duro-space-4);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  color: var(--duro-color-secondary);
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  margin-bottom: -1px;
+}
+
+.duro-tabs-trigger:hover {
+  color: var(--duro-color-text);
+  background-color: var(--duro-color-muted);
+}
+
+.duro-tabs-trigger:focus {
+  outline: 1px dotted var(--duro-color-text);
+  outline-offset: -2px;
+}
+
+.duro-tabs-trigger-active {
+  color: var(--duro-color-text);
+  background-color: var(--duro-color-background);
+  border: 1px solid var(--duro-color-text);
+  border-bottom-color: var(--duro-color-background);
+}
+
+.duro-tabs-trigger-active::before {
+  content: '>';
+  margin-right: var(--duro-space-1);
+}
+
+.duro-tabs-content {
+  padding: var(--duro-space-4) 0;
+  animation: duro-tabs-fade-in 0.15s ease;
+}
+
+@keyframes duro-tabs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,1 @@
+export { numToArr } from './numToArr'

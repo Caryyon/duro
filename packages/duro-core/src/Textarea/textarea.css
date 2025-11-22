@@ -1,0 +1,82 @@
+/**
+ * Textarea Component Styles
+ * Cyberpunk Tech Interface - Terminal-style text areas
+ */
+
+.duro-textarea {
+  /* Reset */
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+
+  /* Base styles */
+  display: block;
+  min-height: 5rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--duro-color-background);
+  border: 1px solid var(--duro-color-text);
+  padding: var(--duro-space-3);
+  font-family: var(--duro-font-body);
+  font-size: var(--duro-font-size-sm);
+  line-height: var(--duro-line-height-normal);
+  color: var(--duro-color-text);
+  transition: all 0.15s ease;
+  resize: vertical;
+}
+
+.duro-textarea::placeholder {
+  color: var(--duro-color-secondary);
+  opacity: 0.6;
+}
+
+.duro-textarea:hover:not(:disabled) {
+  border-color: var(--duro-color-text);
+  box-shadow: inset 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-textarea:focus {
+  outline: none;
+  border-color: var(--duro-color-text);
+  box-shadow: 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+  border-style: dashed;
+  resize: none;
+}
+
+.duro-textarea-error {
+  border-style: dashed;
+}
+
+.duro-textarea-error:focus {
+  box-shadow: 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-textarea-full-width {
+  width: 100%;
+}
+
+/* Resize options */
+.duro-textarea-resize-none {
+  resize: none;
+}
+
+.duro-textarea-resize-vertical {
+  resize: vertical;
+}
+
+.duro-textarea-resize-horizontal {
+  resize: horizontal;
+}
+
+.duro-textarea-resize-both {
+  resize: both;
+}

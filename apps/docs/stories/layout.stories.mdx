@@ -1,0 +1,457 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import {
+  Stack, Grid, Cluster, Sidebar, Box,
+  Card, CardHeader, CardTitle, CardContent,
+  Badge, Button, Heading, Paragraph
+} from '@duro/core'
+
+export const StackTemplate = (args) => (
+  <Stack variant={args.variant} as={args.as}>
+    <Card><CardContent>Item 1</CardContent></Card>
+    <Card><CardContent>Item 2</CardContent></Card>
+    <Card><CardContent>Item 3</CardContent></Card>
+  </Stack>
+)
+
+export const GridTemplate = (args) => (
+  <Grid variant={args.variant} as={args.as}>
+    <Card><CardContent>Grid Item 1</CardContent></Card>
+    <Card><CardContent>Grid Item 2</CardContent></Card>
+    <Card><CardContent>Grid Item 3</CardContent></Card>
+    <Card><CardContent>Grid Item 4</CardContent></Card>
+    <Card><CardContent>Grid Item 5</CardContent></Card>
+    <Card><CardContent>Grid Item 6</CardContent></Card>
+  </Grid>
+)
+
+export const ClusterTemplate = (args) => (
+  <Cluster variant={args.variant} as={args.as}>
+    <Badge>Design</Badge>
+    <Badge variant="success">Development</Badge>
+    <Badge variant="warning">Research</Badge>
+    <Badge variant="danger">Marketing</Badge>
+    <Badge variant="info">Product</Badge>
+    <Badge>Engineering</Badge>
+    <Badge variant="success">Sales</Badge>
+  </Cluster>
+)
+
+export const SidebarTemplate = (args) => (
+  <Sidebar variant={args.variant} as={args.as}>
+    <Card>
+      <CardHeader>
+        <CardTitle>Sidebar</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Paragraph>Navigation content goes here</Paragraph>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Main Content</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Paragraph>
+          This is the main content area that takes up the remaining space.
+          The sidebar layout automatically adapts based on the variant you choose.
+        </Paragraph>
+      </CardContent>
+    </Card>
+  </Sidebar>
+)
+
+<Meta title="Layouts/Layout Components" />
+
+# Layout Components
+
+Duro provides composable layout components that use **build-time generated CSS** and **container queries** for responsive, component-level layouts. These components replace the need for inline styles and custom layout code.
+
+## Architecture Overview
+
+Each layout component:
+- Uses CSS classes generated at build time from the theme object
+- Supports container queries for true component-level responsiveness
+- Has predefined variants for common use cases
+- Can be customized via the theme system
+
+## Stack Playground
+
+The Stack component creates vertical layouts with consistent spacing.
+
+<Canvas>
+  <Story
+    name="Stack Playground"
+    args={{
+      variant: undefined,
+      as: 'div',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'tight', 'loose'],
+        description: 'Stack spacing variant',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'article'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {StackTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Grid Playground
+
+The Grid component creates grid layouts with responsive columns.
+
+<Canvas>
+  <Story
+    name="Grid Playground"
+    args={{
+      variant: 'cols3',
+      as: 'div',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'cols2', 'cols3', 'cols4', 'responsive'],
+        description: 'Grid column variant',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'article'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {GridTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Cluster Playground
+
+The Cluster component creates flex-wrap layouts perfect for tags and badges.
+
+<Canvas>
+  <Story
+    name="Cluster Playground"
+    args={{
+      variant: undefined,
+      as: 'div',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'center', 'spaceBetween'],
+        description: 'Cluster alignment variant',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'article'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {ClusterTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Sidebar Playground
+
+The Sidebar component creates sidebar layouts with configurable positioning.
+
+<Canvas>
+  <Story
+    name="Sidebar Playground"
+    args={{
+      variant: 'left',
+      as: 'div',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'left', 'right', 'wide'],
+        description: 'Sidebar position and width',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'article'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {SidebarTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Stack Examples
+
+<Canvas>
+  <Story name="Stack Default">
+    <Stack>
+      <Card><CardContent>Default spacing (space-4)</CardContent></Card>
+      <Card><CardContent>Second item</CardContent></Card>
+      <Card><CardContent>Third item</CardContent></Card>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Stack Tight">
+    <Stack variant="tight">
+      <Card><CardContent>Tight spacing (space-2)</CardContent></Card>
+      <Card><CardContent>Second item</CardContent></Card>
+      <Card><CardContent>Third item</CardContent></Card>
+    </Stack>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Stack Loose">
+    <Stack variant="loose">
+      <Card><CardContent>Loose spacing (space-6)</CardContent></Card>
+      <Card><CardContent>Second item</CardContent></Card>
+      <Card><CardContent>Third item</CardContent></Card>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Grid Examples
+
+<Canvas>
+  <Story name="Grid 2 Columns">
+    <Grid variant="cols2">
+      <Card><CardContent>Column 1</CardContent></Card>
+      <Card><CardContent>Column 2</CardContent></Card>
+      <Card><CardContent>Column 3</CardContent></Card>
+      <Card><CardContent>Column 4</CardContent></Card>
+    </Grid>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Grid 3 Columns">
+    <Grid variant="cols3">
+      <Card><CardContent>Item 1</CardContent></Card>
+      <Card><CardContent>Item 2</CardContent></Card>
+      <Card><CardContent>Item 3</CardContent></Card>
+      <Card><CardContent>Item 4</CardContent></Card>
+      <Card><CardContent>Item 5</CardContent></Card>
+      <Card><CardContent>Item 6</CardContent></Card>
+    </Grid>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Grid Responsive">
+    <Grid variant="responsive">
+      <Card>
+        <CardHeader>
+          <CardTitle>Auto-fit Grid</CardTitle>
+        </CardHeader>
+        <CardContent>
+          This grid uses auto-fit with minmax(300px, 1fr) to automatically adjust columns based on available space.
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Container Query</CardTitle>
+        </CardHeader>
+        <CardContent>
+          Resize this container to see the grid adapt. It queries its own container, not the viewport.
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Truly Responsive</CardTitle>
+        </CardHeader>
+        <CardContent>
+          Component-level responsiveness means this grid behaves consistently whether in a sidebar or full-width.
+        </CardContent>
+      </Card>
+    </Grid>
+  </Story>
+</Canvas>
+
+## Cluster Examples
+
+<Canvas>
+  <Story name="Cluster Default">
+    <Cluster>
+      <Badge>JavaScript</Badge>
+      <Badge variant="success">TypeScript</Badge>
+      <Badge variant="info">React</Badge>
+      <Badge variant="warning">CSS</Badge>
+      <Badge variant="danger">HTML</Badge>
+      <Badge>Node.js</Badge>
+      <Badge variant="success">Deno</Badge>
+      <Badge variant="info">Bun</Badge>
+    </Cluster>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Cluster Centered">
+    <Cluster variant="center">
+      <Button variant="secondary">Cancel</Button>
+      <Button variant="primary">Save</Button>
+      <Button variant="outline">Delete</Button>
+    </Cluster>
+  </Story>
+</Canvas>
+
+## Sidebar Examples
+
+<Canvas>
+  <Story name="Sidebar Left">
+    <Sidebar variant="left">
+      <Box>
+        <Stack variant="tight">
+          <Heading level={3}>Navigation</Heading>
+          <Button variant="ghost">Dashboard</Button>
+          <Button variant="ghost">Projects</Button>
+          <Button variant="ghost">Settings</Button>
+        </Stack>
+      </Box>
+      <Card>
+        <CardHeader>
+          <CardTitle>Main Content Area</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Paragraph>
+            The sidebar is 250px wide and the main content takes up the remaining space.
+            This layout is perfect for dashboard interfaces and documentation.
+          </Paragraph>
+        </CardContent>
+      </Card>
+    </Sidebar>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Sidebar Right">
+    <Sidebar variant="right">
+      <Card>
+        <CardHeader>
+          <CardTitle>Main Content Area</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Paragraph>
+            With the right variant, the sidebar appears on the right side.
+            This is useful for supplementary information or metadata.
+          </Paragraph>
+        </CardContent>
+      </Card>
+      <Box>
+        <Stack variant="tight">
+          <Heading level={3}>Metadata</Heading>
+          <Paragraph variant="small">Created: 2024-01-01</Paragraph>
+          <Paragraph variant="small">Modified: 2024-01-15</Paragraph>
+          <Paragraph variant="small">Author: John Doe</Paragraph>
+        </Stack>
+      </Box>
+    </Sidebar>
+  </Story>
+</Canvas>
+
+## Composing Layouts
+
+Layout components can be nested to create complex interfaces:
+
+<Canvas>
+  <Story name="Composed Layout">
+    <Stack variant="loose">
+      <Card>
+        <CardHeader>
+          <CardTitle>Header Section</CardTitle>
+        </CardHeader>
+      </Card>
+      <Sidebar variant="left">
+        <Card>
+          <CardHeader>
+            <CardTitle>Sidebar</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack variant="tight">
+              <Button variant="ghost">Link 1</Button>
+              <Button variant="ghost">Link 2</Button>
+              <Button variant="ghost">Link 3</Button>
+            </Stack>
+          </CardContent>
+        </Card>
+        <Box>
+          <Stack>
+            <Card>
+              <CardHeader>
+                <CardTitle>Main Content</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Paragraph>
+                  This demonstrates how layout components compose together.
+                  We have a Stack containing a Sidebar, which itself contains more Stacks.
+                </Paragraph>
+              </CardContent>
+            </Card>
+            <Grid variant="cols2">
+              <Card><CardContent>Grid Item 1</CardContent></Card>
+              <Card><CardContent>Grid Item 2</CardContent></Card>
+            </Grid>
+          </Stack>
+        </Box>
+      </Sidebar>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Technical Implementation
+
+### Build-Time CSS Generation
+
+Layout components use CSS classes that are generated at build time:
+
+```typescript
+// In your theme
+const commonSections = {
+  stack: createSection({
+    baseLayout: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--duro-space-4)',
+    },
+    variants: {
+      tight: { gap: 'var(--duro-space-2)' },
+      loose: { gap: 'var(--duro-space-6)' },
+    },
+  }),
+}
+```
+
+This generates CSS at build time:
+
+```css
+.duro-section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--duro-space-4);
+}
+
+.duro-section-stack-tight {
+  gap: var(--duro-space-2);
+}
+```
+
+### Container Queries
+
+Each layout component supports container queries for true component-level responsiveness:
+
+```jsx
+<Stack containerQuery={true}>
+  {/* This Stack responds to its container size, not viewport */}
+</Stack>
+```
+
+### Zero Runtime
+
+All CSS is pre-generated. Using `<Stack>` has zero runtime overhead compared to writing the CSS yourself.

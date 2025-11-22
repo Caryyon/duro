@@ -1,0 +1,42 @@
+/**
+ * Label Component Styles
+ * Cyberpunk Tech Interface - Terminal-style labels
+ */
+
+.duro-label {
+  font-family: var(--duro-font-body);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: var(--duro-line-height-tight);
+  color: var(--duro-color-text);
+  display: inline-block;
+  margin-bottom: var(--duro-space-2);
+  cursor: pointer;
+}
+
+.duro-label-required {
+  color: var(--duro-color-text);
+  margin-left: var(--duro-space-1);
+}
+
+.duro-label-error {
+  color: var(--duro-color-text);
+  border-bottom: 1px dashed var(--duro-color-text);
+  padding-bottom: 1px;
+}
+
+.duro-label:has(+ input:disabled),
+.duro-label:has(+ textarea:disabled),
+.duro-label:has(+ select:disabled) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Remove bottom margin when label is inside a Stack */
+.duro-section-stack .duro-label,
+.duro-section-stack-tight .duro-label,
+.duro-section-stack-loose .duro-label {
+  margin-bottom: 0;
+}

@@ -1,0 +1,1047 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import {
+  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter,
+  Button, ButtonGroup,
+  Stack, Grid, Cluster, Box,
+  Input, Textarea, Label, Checkbox, Switch,
+  Badge, Progress, Alert, AlertTitle, AlertDescription, Tooltip,
+  Avatar, AvatarImage, AvatarFallback,
+  Tabs, TabsList, TabsTrigger, TabsContent,
+  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+  Separator, Skeleton,
+  Heading, Text, Paragraph
+} from '@duro/core'
+
+{/* ============================================================================
+    CUSTOM HUD COMPONENTS
+    ============================================================================ */}
+
+export const HudPanel = ({ title, children, status, noPadding }) => (
+  <div style={{
+    border: '1px solid var(--duro-color-text)',
+    background: 'var(--duro-color-background)',
+    position: 'relative'
+  }}>
+    {/* Corner brackets */}
+    <div style={{ position: 'absolute', top: '-1px', left: '-1px', width: '12px', height: '12px', borderTop: '2px solid var(--duro-color-text)', borderLeft: '2px solid var(--duro-color-text)' }} />
+    <div style={{ position: 'absolute', bottom: '-1px', right: '-1px', width: '12px', height: '12px', borderBottom: '2px solid var(--duro-color-text)', borderRight: '2px solid var(--duro-color-text)' }} />
+    {/* Header */}
+    <div style={{
+      padding: '0.75rem 1rem',
+      borderBottom: '1px dashed var(--duro-color-secondary)',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }}>
+      <span style={{
+        fontFamily: 'var(--duro-font-monospace)',
+        fontSize: 'var(--duro-font-size-xs)',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase'
+      }}>{title}</span>
+      {status && <Badge variant="primary" size="sm">{status}</Badge>}
+    </div>
+    {/* Content */}
+    <div style={{ padding: noPadding ? 0 : '1rem' }}>
+      {children}
+    </div>
+  </div>
+)
+
+export const StatBlock = ({ label, value, unit, trend, small }) => (
+  <div style={{
+    padding: small ? '0.75rem' : '1rem',
+    border: '1px solid var(--duro-color-text)',
+    position: 'relative',
+    flex: 1,
+    minWidth: small ? '80px' : '100px'
+  }}>
+    {/* Corner brackets */}
+    <div style={{ position: 'absolute', top: '-1px', left: '-1px', width: '8px', height: '8px', borderTop: '2px solid var(--duro-color-text)', borderLeft: '2px solid var(--duro-color-text)' }} />
+    <div style={{ position: 'absolute', bottom: '-1px', right: '-1px', width: '8px', height: '8px', borderBottom: '2px solid var(--duro-color-text)', borderRight: '2px solid var(--duro-color-text)' }} />
+    <div style={{
+      fontFamily: 'var(--duro-font-monospace)',
+      fontSize: 'var(--duro-font-size-xs)',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+      color: 'var(--duro-color-secondary)',
+      marginBottom: '0.25rem'
+    }}>{label}</div>
+    <div style={{
+      fontFamily: 'var(--duro-font-monospace)',
+      fontSize: small ? '1.25rem' : '1.75rem',
+      fontWeight: 300,
+      letterSpacing: '0.05em',
+      display: 'flex',
+      alignItems: 'baseline',
+      gap: '0.25rem'
+    }}>
+      {value}
+      <span style={{ fontSize: '0.75rem', color: 'var(--duro-color-secondary)' }}>{unit}</span>
+    </div>
+    {trend !== undefined && trend !== 0 && (
+      <div style={{
+        fontFamily: 'var(--duro-font-monospace)',
+        fontSize: 'var(--duro-font-size-xs)',
+        color: 'var(--duro-color-secondary)',
+        marginTop: '0.25rem'
+      }}>
+        {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}%
+      </div>
+    )}
+  </div>
+)
+
+export const DataRow = ({ label, value, highlight }) => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '0.5rem 0',
+    borderBottom: '1px dashed var(--duro-color-secondary)',
+    fontFamily: 'var(--duro-font-monospace)',
+    fontSize: 'var(--duro-font-size-sm)'
+  }}>
+    <span style={{ color: 'var(--duro-color-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</span>
+    <span style={{ color: highlight ? 'var(--duro-color-text)' : 'var(--duro-color-text)' }}>{value}</span>
+  </div>
+)
+
+export const TerminalLine = ({ prefix = '>', children, timestamp, type }) => (
+  <div style={{
+    fontFamily: 'var(--duro-font-monospace)',
+    fontSize: 'var(--duro-font-size-xs)',
+    padding: '0.25rem 0',
+    display: 'flex',
+    gap: '0.5rem',
+    color: type === 'warning' ? 'var(--duro-color-secondary)' : 'var(--duro-color-text)'
+  }}>
+    {timestamp && <span style={{ color: 'var(--duro-color-secondary)' }}>[{timestamp}]</span>}
+    <span style={{ color: type === 'warning' ? 'var(--duro-color-text)' : 'var(--duro-color-secondary)' }}>{prefix}</span>
+    <span>{children}</span>
+  </div>
+)
+
+{/* ============================================================================
+    ARTISTIC HUD COMPONENTS
+    ============================================================================ */}
+
+export const RadarDisplay = ({ size = 200 }) => (
+  <div style={{
+    width: size,
+    height: size,
+    position: 'relative',
+    border: '1px solid var(--duro-color-text)'
+  }}>
+    {/* Grid lines */}
+    <svg width={size} height={size} style={{ position: 'absolute', top: 0, left: 0 }}>
+      {/* Concentric circles */}
+      <circle cx={size/2} cy={size/2} r={size/4} fill="none" stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+      <circle cx={size/2} cy={size/2} r={size/2 - 10} fill="none" stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+      {/* Cross lines */}
+      <line x1={size/2} y1="0" x2={size/2} y2={size} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+      <line x1="0" y1={size/2} x2={size} y2={size/2} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+      {/* Diagonal lines */}
+      <line x1="0" y1="0" x2={size} y2={size} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.2" />
+      <line x1={size} y1="0" x2="0" y2={size} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="4 4" opacity="0.2" />
+      {/* Blips */}
+      <circle cx={size/2 + 30} cy={size/2 - 40} r="4" fill="var(--duro-color-text)" />
+      <circle cx={size/2 - 50} cy={size/2 + 20} r="3" fill="var(--duro-color-text)" opacity="0.7" />
+      <circle cx={size/2 + 10} cy={size/2 + 60} r="3" fill="var(--duro-color-text)" opacity="0.5" />
+      {/* Sweep line */}
+      <line x1={size/2} y1={size/2} x2={size - 20} y2={size/2 - 40} stroke="var(--duro-color-text)" strokeWidth="2" opacity="0.8">
+        <animateTransform attributeName="transform" type="rotate" from={`0 ${size/2} ${size/2}`} to={`360 ${size/2} ${size/2}`} dur="4s" repeatCount="indefinite" />
+      </line>
+    </svg>
+    {/* Corner brackets */}
+    <div style={{ position: 'absolute', top: '-1px', left: '-1px', width: '12px', height: '12px', borderTop: '2px solid var(--duro-color-text)', borderLeft: '2px solid var(--duro-color-text)' }} />
+    <div style={{ position: 'absolute', top: '-1px', right: '-1px', width: '12px', height: '12px', borderTop: '2px solid var(--duro-color-text)', borderRight: '2px solid var(--duro-color-text)' }} />
+    <div style={{ position: 'absolute', bottom: '-1px', left: '-1px', width: '12px', height: '12px', borderBottom: '2px solid var(--duro-color-text)', borderLeft: '2px solid var(--duro-color-text)' }} />
+    <div style={{ position: 'absolute', bottom: '-1px', right: '-1px', width: '12px', height: '12px', borderBottom: '2px solid var(--duro-color-text)', borderRight: '2px solid var(--duro-color-text)' }} />
+  </div>
+)
+
+export const WaveformDisplay = ({ height = 60 }) => (
+  <div style={{
+    height,
+    border: '1px solid var(--duro-color-secondary)',
+    background: 'var(--duro-color-muted)',
+    position: 'relative',
+    overflow: 'hidden'
+  }}>
+    <svg width="100%" height={height} preserveAspectRatio="none" style={{ display: 'block' }}>
+      <path
+        d={`M0,${height/2} Q25,${height*0.2} 50,${height/2} T100,${height/2} T150,${height/2} T200,${height/2} T250,${height/2} T300,${height/2} T350,${height/2} T400,${height/2}`}
+        fill="none"
+        stroke="var(--duro-color-text)"
+        strokeWidth="1"
+        opacity="0.8"
+      >
+        <animate attributeName="d" dur="2s" repeatCount="indefinite"
+          values={`M0,${height/2} Q25,${height*0.3} 50,${height/2} T100,${height/2} T150,${height/2} T200,${height/2} T250,${height/2} T300,${height/2} T350,${height/2} T400,${height/2};
+                  M0,${height/2} Q25,${height*0.7} 50,${height/2} T100,${height/2} T150,${height/2} T200,${height/2} T250,${height/2} T300,${height/2} T350,${height/2} T400,${height/2};
+                  M0,${height/2} Q25,${height*0.3} 50,${height/2} T100,${height/2} T150,${height/2} T200,${height/2} T250,${height/2} T300,${height/2} T350,${height/2} T400,${height/2}`}
+        />
+      </path>
+      {/* Baseline */}
+      <line x1="0" y1={height/2} x2="100%" y2={height/2} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="2 4" opacity="0.3" />
+    </svg>
+  </div>
+)
+
+export const BarChart = ({ data, height = 100 }) => {
+  const maxValue = Math.max(...data.map(d => d.value))
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', height, padding: '0 0.5rem' }}>
+      {data.map((item, i) => (
+        <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+          <div style={{
+            width: '100%',
+            height: `${(item.value / maxValue) * (height - 20)}px`,
+            background: item.active ? 'var(--duro-color-text)' : 'var(--duro-color-secondary)',
+            transition: 'height 0.3s ease'
+          }} />
+          <span style={{
+            fontFamily: 'var(--duro-font-monospace)',
+            fontSize: '0.5rem',
+            color: 'var(--duro-color-secondary)'
+          }}>{item.label}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export const BinaryDisplay = ({ rows = 4 }) => {
+  const generateBinary = () => Array(32).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join('')
+  return (
+    <div style={{
+      fontFamily: 'var(--duro-font-monospace)',
+      fontSize: '0.5rem',
+      lineHeight: 1.4,
+      color: 'var(--duro-color-secondary)',
+      opacity: 0.6,
+      overflow: 'hidden'
+    }}>
+      {Array(rows).fill(0).map((_, i) => (
+        <div key={i}>{generateBinary()}</div>
+      ))}
+    </div>
+  )
+}
+
+export const Crosshair = ({ size = 100 }) => (
+  <div style={{
+    width: size,
+    height: size,
+    position: 'relative'
+  }}>
+    <svg width={size} height={size}>
+      {/* Outer circle */}
+      <circle cx={size/2} cy={size/2} r={size/2 - 4} fill="none" stroke="var(--duro-color-text)" strokeWidth="1" />
+      {/* Inner circle */}
+      <circle cx={size/2} cy={size/2} r={size/4} fill="none" stroke="var(--duro-color-text)" strokeWidth="1" strokeDasharray="4 4" />
+      {/* Crosshair lines */}
+      <line x1={size/2} y1="4" x2={size/2} y2={size/2 - 15} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2} y1={size/2 + 15} x2={size/2} y2={size - 4} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1="4" y1={size/2} x2={size/2 - 15} y2={size/2} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 + 15} y1={size/2} x2={size - 4} y2={size/2} stroke="var(--duro-color-text)" strokeWidth="1" />
+      {/* Corner ticks */}
+      <line x1={size/2 - 25} y1={size/2 - 25} x2={size/2 - 18} y2={size/2 - 25} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 - 25} y1={size/2 - 25} x2={size/2 - 25} y2={size/2 - 18} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 + 25} y1={size/2 - 25} x2={size/2 + 18} y2={size/2 - 25} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 + 25} y1={size/2 - 25} x2={size/2 + 25} y2={size/2 - 18} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 - 25} y1={size/2 + 25} x2={size/2 - 18} y2={size/2 + 25} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 - 25} y1={size/2 + 25} x2={size/2 - 25} y2={size/2 + 18} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 + 25} y1={size/2 + 25} x2={size/2 + 18} y2={size/2 + 25} stroke="var(--duro-color-text)" strokeWidth="1" />
+      <line x1={size/2 + 25} y1={size/2 + 25} x2={size/2 + 25} y2={size/2 + 18} stroke="var(--duro-color-text)" strokeWidth="1" />
+      {/* Center dot */}
+      <circle cx={size/2} cy={size/2} r="2" fill="var(--duro-color-text)" />
+    </svg>
+  </div>
+)
+
+export const HexDisplay = () => (
+  <div style={{
+    fontFamily: 'var(--duro-font-monospace)',
+    fontSize: 'var(--duro-font-size-xs)',
+    color: 'var(--duro-color-secondary)',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(8, 1fr)',
+    gap: '2px'
+  }}>
+    {['0x7F', '0xA3', '0x4E', '0x9B', '0x2D', '0xF1', '0x8C', '0x56',
+      '0x3A', '0xC7', '0x1E', '0x85', '0xD4', '0x69', '0xB2', '0x0F'].map((hex, i) => (
+      <span key={i} style={{ opacity: Math.random() * 0.5 + 0.5 }}>{hex}</span>
+    ))}
+  </div>
+)
+
+export const PulseMeter = ({ value = 75, label }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+    <div style={{
+      display: 'flex',
+      gap: '2px',
+      height: '20px',
+      alignItems: 'flex-end'
+    }}>
+      {Array(10).fill(0).map((_, i) => {
+        const threshold = (i + 1) * 10
+        const isActive = value >= threshold
+        return (
+          <div
+            key={i}
+            style={{
+              flex: 1,
+              height: `${40 + i * 6}%`,
+              background: isActive ? 'var(--duro-color-text)' : 'var(--duro-color-muted)',
+              border: isActive ? 'none' : '1px dashed var(--duro-color-secondary)'
+            }}
+          />
+        )
+      })}
+    </div>
+    {label && (
+      <div style={{
+        fontFamily: 'var(--duro-font-monospace)',
+        fontSize: '0.5rem',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
+        color: 'var(--duro-color-secondary)',
+        textAlign: 'center'
+      }}>{label}</div>
+    )}
+  </div>
+)
+
+export const CircuitNode = ({ size = 80, active = true }) => (
+  <svg width={size} height={size} viewBox="0 0 80 80">
+    {/* Circuit traces */}
+    <path d="M0,40 H20 L30,30 H50 L60,40 H80" stroke="var(--duro-color-secondary)" strokeWidth="1" fill="none" strokeDasharray={active ? "none" : "4 2"} />
+    <path d="M40,0 V20 L30,30" stroke="var(--duro-color-secondary)" strokeWidth="1" fill="none" strokeDasharray={active ? "none" : "4 2"} />
+    <path d="M40,80 V60 L50,50 H50 L50,30 L50,30" stroke="var(--duro-color-secondary)" strokeWidth="1" fill="none" strokeDasharray={active ? "none" : "4 2"} />
+    {/* Central node */}
+    <rect x="25" y="25" width="30" height="30" fill="none" stroke="var(--duro-color-text)" strokeWidth="1" />
+    <rect x="30" y="30" width="20" height="20" fill={active ? "var(--duro-color-text)" : "none"} stroke="var(--duro-color-text)" strokeWidth="1" />
+    {/* Connection points */}
+    <circle cx="20" cy="40" r="3" fill="var(--duro-color-text)" />
+    <circle cx="60" cy="40" r="3" fill="var(--duro-color-text)" />
+    <circle cx="40" cy="20" r="3" fill="var(--duro-color-text)" />
+    <circle cx="40" cy="60" r="3" fill="var(--duro-color-text)" />
+  </svg>
+)
+
+export const SignalStrength = ({ strength = 3, max = 5 }) => (
+  <div style={{ display: 'flex', gap: '2px', alignItems: 'flex-end', height: '16px' }}>
+    {Array(max).fill(0).map((_, i) => (
+      <div
+        key={i}
+        style={{
+          width: '4px',
+          height: `${40 + i * 15}%`,
+          background: i < strength ? 'var(--duro-color-text)' : 'transparent',
+          border: i >= strength ? '1px dashed var(--duro-color-secondary)' : 'none'
+        }}
+      />
+    ))}
+  </div>
+)
+
+export const DataGraph = ({ width = 200, height = 60 }) => {
+  const points = Array(12).fill(0).map((_, i) => ({
+    x: (i / 11) * (width - 20) + 10,
+    y: height - (Math.random() * 0.6 + 0.2) * height
+  }))
+  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ')
+  return (
+    <div style={{ position: 'relative', width, height }}>
+      <svg width={width} height={height}>
+        {/* Grid lines */}
+        {[0.25, 0.5, 0.75].map((y, i) => (
+          <line key={i} x1="10" y1={height * y} x2={width - 10} y2={height * y} stroke="var(--duro-color-secondary)" strokeWidth="1" strokeDasharray="2 4" opacity="0.3" />
+        ))}
+        {/* Data line */}
+        <path d={pathD} fill="none" stroke="var(--duro-color-text)" strokeWidth="1.5" />
+        {/* Data points */}
+        {points.map((p, i) => (
+          <circle key={i} cx={p.x} cy={p.y} r="2" fill="var(--duro-color-text)" />
+        ))}
+      </svg>
+    </div>
+  )
+}
+
+export const GaugeMeter = ({ value = 65, size = 100 }) => {
+  const angle = (value / 100) * 180 - 90
+  const radius = size / 2 - 10
+  return (
+    <div style={{ width: size, height: size / 2 + 20, position: 'relative' }}>
+      <svg width={size} height={size / 2 + 20}>
+        {/* Background arc */}
+        <path
+          d={`M10,${size/2} A${radius},${radius} 0 0,1 ${size - 10},${size/2}`}
+          fill="none"
+          stroke="var(--duro-color-secondary)"
+          strokeWidth="4"
+          strokeDasharray="4 2"
+          opacity="0.5"
+        />
+        {/* Value arc */}
+        <path
+          d={`M10,${size/2} A${radius},${radius} 0 0,1 ${10 + radius * (1 - Math.cos(angle * Math.PI / 180))},${size/2 - radius * Math.sin(angle * Math.PI / 180)}`}
+          fill="none"
+          stroke="var(--duro-color-text)"
+          strokeWidth="4"
+        />
+        {/* Tick marks */}
+        {[0, 25, 50, 75, 100].map((tick, i) => {
+          const tickAngle = (tick / 100) * 180 - 90
+          const x1 = size/2 + (radius - 8) * Math.cos(tickAngle * Math.PI / 180)
+          const y1 = size/2 - (radius - 8) * Math.sin(tickAngle * Math.PI / 180)
+          const x2 = size/2 + (radius + 2) * Math.cos(tickAngle * Math.PI / 180)
+          const y2 = size/2 - (radius + 2) * Math.sin(tickAngle * Math.PI / 180)
+          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--duro-color-text)" strokeWidth="1" />
+        })}
+        {/* Center point */}
+        <circle cx={size/2} cy={size/2} r="4" fill="var(--duro-color-text)" />
+        {/* Needle */}
+        <line
+          x1={size/2}
+          y1={size/2}
+          x2={size/2 + (radius - 15) * Math.cos(angle * Math.PI / 180)}
+          y2={size/2 - (radius - 15) * Math.sin(angle * Math.PI / 180)}
+          stroke="var(--duro-color-text)"
+          strokeWidth="2"
+        />
+      </svg>
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        fontFamily: 'var(--duro-font-monospace)',
+        fontSize: 'var(--duro-font-size-lg)',
+        fontWeight: 300
+      }}>{value}%</div>
+    </div>
+  )
+}
+
+export const NodeNetwork = ({ width = 200, height = 120 }) => {
+  const nodes = [
+    { x: 30, y: 30, active: true },
+    { x: 100, y: 25, active: true },
+    { x: 170, y: 35, active: false },
+    { x: 50, y: 90, active: true },
+    { x: 130, y: 95, active: true },
+  ]
+  const connections = [
+    [0, 1], [1, 2], [0, 3], [1, 4], [3, 4]
+  ]
+  return (
+    <svg width={width} height={height}>
+      {/* Connections */}
+      {connections.map(([from, to], i) => (
+        <line
+          key={i}
+          x1={nodes[from].x}
+          y1={nodes[from].y}
+          x2={nodes[to].x}
+          y2={nodes[to].y}
+          stroke="var(--duro-color-secondary)"
+          strokeWidth="1"
+          strokeDasharray={nodes[from].active && nodes[to].active ? "none" : "4 2"}
+        />
+      ))}
+      {/* Nodes */}
+      {nodes.map((node, i) => (
+        <g key={i}>
+          <rect
+            x={node.x - 8}
+            y={node.y - 8}
+            width="16"
+            height="16"
+            fill={node.active ? "var(--duro-color-text)" : "none"}
+            stroke="var(--duro-color-text)"
+            strokeWidth="1"
+          />
+          {node.active && (
+            <rect x={node.x - 4} y={node.y - 4} width="8" height="8" fill="var(--duro-color-background)" />
+          )}
+        </g>
+      ))}
+    </svg>
+  )
+}
+
+export const StatusIndicator = ({ status, label }) => {
+  const styles = {
+    active: { bg: 'var(--duro-color-text)', border: 'none' },
+    standby: { bg: 'transparent', border: '1px dashed var(--duro-color-text)' },
+    offline: { bg: 'transparent', border: '1px dashed var(--duro-color-secondary)' },
+    error: { bg: 'var(--duro-color-text)', border: 'none', animate: true }
+  }
+  const s = styles[status] || styles.offline
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div style={{
+        width: '8px',
+        height: '8px',
+        background: s.bg,
+        border: s.border,
+        animation: s.animate ? 'blink 1s infinite' : 'none'
+      }} />
+      <span style={{
+        fontFamily: 'var(--duro-font-monospace)',
+        fontSize: 'var(--duro-font-size-xs)',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em'
+      }}>{label}</span>
+    </div>
+  )
+}
+
+export const DecorativeLine = ({ width = '100%' }) => (
+  <div style={{
+    width,
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent 0%, var(--duro-color-text) 20%, var(--duro-color-text) 80%, transparent 100%)',
+    position: 'relative'
+  }}>
+    <div style={{
+      position: 'absolute',
+      left: '50%',
+      top: '-3px',
+      transform: 'translateX(-50%)',
+      width: '6px',
+      height: '6px',
+      background: 'var(--duro-color-text)',
+      transform: 'translateX(-50%) rotate(45deg)'
+    }} />
+  </div>
+)
+
+export const GridPattern = ({ size = 100 }) => (
+  <div style={{
+    width: size,
+    height: size,
+    backgroundImage: `
+      linear-gradient(var(--duro-color-secondary) 1px, transparent 1px),
+      linear-gradient(90deg, var(--duro-color-secondary) 1px, transparent 1px)
+    `,
+    backgroundSize: '10px 10px',
+    opacity: 0.2
+  }} />
+)
+
+<Meta title="Showcase/Cyberpunk Dashboard" />
+
+# Cyberpunk Tech Interface
+
+A complete showcase of the Duro design system in the cyberpunk tech style.
+
+---
+
+## Full Dashboard Layout
+
+<Canvas>
+  <Story name="Full Dashboard">
+    <div style={{
+      background: 'var(--duro-color-background)',
+      color: 'var(--duro-color-text)',
+      padding: '1.5rem',
+      minHeight: '100vh',
+      fontFamily: 'var(--duro-font-monospace)'
+    }}>
+      {/* Header */}
+      <div style={{
+        borderBottom: '1px solid var(--duro-color-text)',
+        paddingBottom: '1rem',
+        marginBottom: '1.5rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Heading level={4} style={{ margin: 0, fontSize: 'var(--duro-font-size-md)' }}>// SYSTEM INTERFACE V2.4.1</Heading>
+          <Badge variant="success" size="sm">ONLINE</Badge>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div style={{ textAlign: 'right', fontSize: 'var(--duro-font-size-xs)' }}>
+            <div style={{ color: 'var(--duro-color-secondary)' }}>SYS.TIME:</div>
+            <div>14:32:07</div>
+          </div>
+          <div style={{ textAlign: 'right', fontSize: 'var(--duro-font-size-xs)' }}>
+            <div style={{ color: 'var(--duro-color-secondary)' }}>NODE:</div>
+            <div>ALPHA-7</div>
+          </div>
+          <Avatar size="sm"><AvatarFallback>CW</AvatarFallback></Avatar>
+        </div>
+      </div>
+      {/* Stats Row */}
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
+        <StatBlock label="CPU LOAD" value="47" unit="%" trend={-3} />
+        <StatBlock label="MEMORY" value="8.2" unit="GB" trend={12} />
+        <StatBlock label="NETWORK" value="1.4" unit="Gbps" />
+        <StatBlock label="STORAGE" value="847" unit="GB" />
+        <StatBlock label="UPTIME" value="127" unit="days" />
+      </div>
+      {/* Main Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+        {/* Left Column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <HudPanel title="SYSTEM STATUS" status="NOMINAL">
+            <div>
+              <DataRow label="Core Temp" value="42°C" />
+              <DataRow label="Fan Speed" value="1200 RPM" />
+              <DataRow label="Power Draw" value="285W" highlight />
+              <DataRow label="Voltage" value="12.1V" />
+              <DataRow label="Clock Speed" value="3.8 GHz" highlight />
+            </div>
+          </HudPanel>
+          <HudPanel title="ACTIVE PROCESSES">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {[
+                { name: 'neural_net.exe', value: 78 },
+                { name: 'data_stream.bin', value: 45 },
+                { name: 'security.daemon', value: 92 },
+                { name: 'render_engine', value: 33 }
+              ].map((proc, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 'var(--duro-font-size-xs)' }}>
+                  <span style={{ fontFamily: 'var(--duro-font-monospace)' }}>{proc.name}</span>
+                  <div style={{ width: '60px' }}>
+                    <Progress value={proc.value} size="sm" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </HudPanel>
+          <HudPanel title="SIGNAL ANALYSIS" noPadding>
+            <WaveformDisplay height={50} />
+          </HudPanel>
+        </div>
+        {/* Center Column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <HudPanel title="TERMINAL OUTPUT">
+            <div style={{
+              background: 'var(--duro-color-muted)',
+              padding: '0.75rem',
+              border: '1px solid var(--duro-color-secondary)',
+              maxHeight: '160px',
+              overflow: 'auto'
+            }}>
+              <TerminalLine timestamp="14:32:01">System initialization complete</TerminalLine>
+              <TerminalLine timestamp="14:32:02">Loading neural network modules...</TerminalLine>
+              <TerminalLine timestamp="14:32:03" prefix="!" type="warning">Warning: Memory threshold at 82%</TerminalLine>
+              <TerminalLine timestamp="14:32:04">Establishing secure connection...</TerminalLine>
+              <TerminalLine timestamp="14:32:05" prefix="✓">Connection established: NODE-ALPHA-7</TerminalLine>
+              <TerminalLine timestamp="14:32:06">Running diagnostics...</TerminalLine>
+              <TerminalLine timestamp="14:32:07" prefix="✓">All systems operational</TerminalLine>
+            </div>
+          </HudPanel>
+          <HudPanel title="COMMAND INPUT">
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <span style={{ color: 'var(--duro-color-secondary)', lineHeight: '2.25rem' }}>$</span>
+              <Input placeholder="Enter command..." style={{ flex: 1 }} />
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <Button variant="primary" size="sm">EXECUTE</Button>
+              <Button variant="outline" size="sm">CLEAR</Button>
+              <Button variant="ghost" size="sm">HISTORY</Button>
+            </div>
+          </HudPanel>
+          <HudPanel title="NETWORK TRAFFIC">
+            <BarChart
+              data={[
+                { label: '00', value: 45, active: false },
+                { label: '04', value: 32, active: false },
+                { label: '08', value: 67, active: false },
+                { label: '12', value: 89, active: true },
+                { label: '16', value: 54, active: false },
+                { label: '20', value: 71, active: false },
+                { label: 'NOW', value: 83, active: true }
+              ]}
+              height={80}
+            />
+          </HudPanel>
+        </div>
+        {/* Right Column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <HudPanel title="QUICK CONTROLS">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {[
+                { label: 'AUTO-BACKUP', checked: true },
+                { label: 'ENCRYPTION', checked: true },
+                { label: 'FIREWALL', checked: true },
+                { label: 'DEBUG MODE', checked: false },
+                { label: 'STEALTH', checked: false }
+              ].map((ctrl, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: 'var(--duro-font-size-xs)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{ctrl.label}</span>
+                  <Switch defaultChecked={ctrl.checked} size="sm" />
+                </div>
+              ))}
+            </div>
+          </HudPanel>
+          <HudPanel title="NETWORK NODES">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {[
+                { name: 'ALPHA-7', status: 'active' },
+                { name: 'BETA-12', status: 'active' },
+                { name: 'GAMMA-3', status: 'standby' },
+                { name: 'DELTA-9', status: 'offline' }
+              ].map((node, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <StatusIndicator status={node.status} label={node.name} />
+                  <Badge
+                    variant={node.status === 'active' ? 'success' : node.status === 'standby' ? 'warning' : 'outline'}
+                    size="sm"
+                  >
+                    {node.status.toUpperCase()}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </HudPanel>
+          <HudPanel title="DATA STREAM" noPadding>
+            <div style={{ padding: '0.5rem', background: 'var(--duro-color-muted)' }}>
+              <BinaryDisplay rows={5} />
+            </div>
+          </HudPanel>
+        </div>
+      </div>
+      {/* Alert Bar */}
+      <div style={{ marginTop: '1.5rem' }}>
+        <Alert variant="warning">
+          <AlertTitle>System Notice</AlertTitle>
+          <AlertDescription>Scheduled maintenance window: 02:00 - 04:00 UTC. All non-critical processes will be suspended.</AlertDescription>
+        </Alert>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+---
+
+## System Diagnostics
+
+<Canvas>
+  <Story name="System Diagnostics">
+    <div style={{
+      background: 'var(--duro-color-background)',
+      color: 'var(--duro-color-text)',
+      padding: '2rem'
+    }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem' }}>
+        {/* Gauge Panel */}
+        <HudPanel title="SYSTEM LOAD">
+          <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '0.5rem' }}>
+            <GaugeMeter value={72} size={140} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.75rem', fontSize: 'var(--duro-font-size-xs)' }}>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>MIN: 12%</span>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>AVG: 58%</span>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>MAX: 94%</span>
+          </div>
+        </HudPanel>
+        {/* Circuit Board */}
+        <HudPanel title="CIRCUIT STATUS">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', justifyItems: 'center' }}>
+            <CircuitNode size={60} active={true} />
+            <CircuitNode size={60} active={true} />
+            <CircuitNode size={60} active={false} />
+            <CircuitNode size={60} active={true} />
+            <CircuitNode size={60} active={true} />
+            <CircuitNode size={60} active={true} />
+          </div>
+        </HudPanel>
+        {/* Network Map */}
+        <HudPanel title="NETWORK TOPOLOGY">
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <NodeNetwork width={200} height={120} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '0.75rem', fontSize: 'var(--duro-font-size-xs)' }}>
+            <div><span style={{ color: 'var(--duro-color-secondary)' }}>NODES:</span> 5</div>
+            <div><span style={{ color: 'var(--duro-color-secondary)' }}>ACTIVE:</span> 4</div>
+            <div><span style={{ color: 'var(--duro-color-secondary)' }}>LINKS:</span> 5</div>
+          </div>
+        </HudPanel>
+        {/* Data Graph */}
+        <HudPanel title="PERFORMANCE HISTORY">
+          <DataGraph width={250} height={80} />
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: 'var(--duro-font-size-xs)' }}>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>-24H</span>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>-12H</span>
+            <span style={{ color: 'var(--duro-color-secondary)' }}>NOW</span>
+          </div>
+        </HudPanel>
+        {/* Pulse Meters */}
+        <HudPanel title="CHANNEL LEVELS">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+            <PulseMeter value={85} label="CH-A" />
+            <PulseMeter value={62} label="CH-B" />
+            <PulseMeter value={91} label="CH-C" />
+            <PulseMeter value={45} label="CH-D" />
+          </div>
+        </HudPanel>
+        {/* Signal Status */}
+        <HudPanel title="SIGNAL STATUS">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {[
+              { label: 'MAIN UPLINK', strength: 5 },
+              { label: 'BACKUP LINK', strength: 3 },
+              { label: 'SAT RELAY', strength: 4 },
+              { label: 'MESH NET', strength: 2 },
+            ].map((signal, i) => (
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-xs)', textTransform: 'uppercase' }}>{signal.label}</span>
+                <SignalStrength strength={signal.strength} />
+              </div>
+            ))}
+          </div>
+        </HudPanel>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+---
+
+## Artistic HUD Elements
+
+<Canvas>
+  <Story name="HUD Elements">
+    <div style={{
+      background: 'var(--duro-color-background)',
+      color: 'var(--duro-color-text)',
+      padding: '2rem'
+    }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+        {/* Radar Display */}
+        <HudPanel title="PROXIMITY SCANNER">
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <RadarDisplay size={180} />
+          </div>
+          <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-around', fontSize: 'var(--duro-font-size-xs)' }}>
+            <div><span style={{ color: 'var(--duro-color-secondary)' }}>RANGE:</span> 500m</div>
+            <div><span style={{ color: 'var(--duro-color-secondary)' }}>TARGETS:</span> 3</div>
+          </div>
+        </HudPanel>
+        {/* Crosshair Display */}
+        <HudPanel title="TARGETING SYSTEM">
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '180px' }}>
+            <Crosshair size={140} />
+          </div>
+          <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+            <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)' }}>LOCK STATUS</div>
+            <div style={{ fontSize: 'var(--duro-font-size-sm)', color: 'var(--duro-color-text)' }}>ACQUIRING...</div>
+          </div>
+        </HudPanel>
+        {/* Hex Memory Display */}
+        <HudPanel title="MEMORY DUMP">
+          <div style={{
+            background: 'var(--duro-color-muted)',
+            padding: '1rem',
+            border: '1px solid var(--duro-color-secondary)'
+          }}>
+            <HexDisplay />
+            <div style={{ marginTop: '0.5rem', borderTop: '1px dashed var(--duro-color-secondary)', paddingTop: '0.5rem' }}>
+              <HexDisplay />
+            </div>
+          </div>
+          <div style={{ marginTop: '0.75rem', fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)' }}>
+            ADDR: 0x7FFF0000 - 0x7FFF00FF
+          </div>
+        </HudPanel>
+        {/* Waveform Analysis */}
+        <HudPanel title="AUDIO ANALYSIS">
+          <Stack gap="tight">
+            <div>
+              <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)', marginBottom: '0.25rem' }}>CHANNEL A</div>
+              <WaveformDisplay height={40} />
+            </div>
+            <div>
+              <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)', marginBottom: '0.25rem' }}>CHANNEL B</div>
+              <WaveformDisplay height={40} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--duro-font-size-xs)', marginTop: '0.5rem' }}>
+              <span><span style={{ color: 'var(--duro-color-secondary)' }}>FREQ:</span> 440Hz</span>
+              <span><span style={{ color: 'var(--duro-color-secondary)' }}>AMP:</span> -3dB</span>
+              <span><span style={{ color: 'var(--duro-color-secondary)' }}>PHASE:</span> 0°</span>
+            </div>
+          </Stack>
+        </HudPanel>
+        {/* Performance Metrics */}
+        <HudPanel title="HOURLY METRICS">
+          <BarChart
+            data={[
+              { label: '00', value: 45 },
+              { label: '02', value: 32 },
+              { label: '04', value: 28 },
+              { label: '06', value: 41 },
+              { label: '08', value: 67 },
+              { label: '10', value: 89 },
+              { label: '12', value: 95, active: true },
+              { label: '14', value: 78, active: true }
+            ]}
+            height={120}
+          />
+        </HudPanel>
+        {/* System Stats */}
+        <HudPanel title="CORE METRICS">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+            <StatBlock label="THREADS" value="16" unit="" small />
+            <StatBlock label="CACHE" value="32" unit="MB" small />
+            <StatBlock label="IOPS" value="150" unit="K" small />
+            <StatBlock label="LATENCY" value="2.3" unit="ms" small />
+          </div>
+        </HudPanel>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+---
+
+## Data Entry Form
+
+<Canvas>
+  <Story name="Data Entry Form">
+    <Box maxWidth="md" centered padding="lg" style={{ background: 'var(--duro-color-background)' }}>
+      <HudPanel title="// USER REGISTRATION">
+        <Stack>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div>
+              <Label htmlFor="callsign">CALLSIGN</Label>
+              <Input id="callsign" placeholder="Enter callsign..." />
+            </div>
+            <div>
+              <Label htmlFor="node">ASSIGNED NODE</Label>
+              <Input id="node" placeholder="NODE-XXXX" />
+            </div>
+          </div>
+          <div>
+            <Label htmlFor="access-key">ACCESS KEY</Label>
+            <Input id="access-key" type="password" placeholder="••••••••••••••••" />
+          </div>
+          <div>
+            <Label htmlFor="bio">BIO SIGNATURE</Label>
+            <Textarea id="bio" placeholder="Enter biometric data hash..." rows={3} />
+          </div>
+          <Separator />
+          <Stack gap="tight">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Checkbox id="terms" />
+              <Label htmlFor="terms" style={{ margin: 0 }}>Accept network protocols</Label>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Checkbox id="two-factor" defaultChecked />
+              <Label htmlFor="two-factor" style={{ margin: 0 }}>Enable two-factor authentication</Label>
+            </div>
+          </Stack>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
+            <Button variant="ghost">CANCEL</Button>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <Button variant="outline">VERIFY</Button>
+              <Button variant="primary">REGISTER</Button>
+            </div>
+          </div>
+        </Stack>
+      </HudPanel>
+    </Box>
+  </Story>
+</Canvas>
+
+---
+
+## Component Showcase
+
+<Canvas>
+  <Story name="Component Grid">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        {/* Buttons */}
+        <HudPanel title="BUTTON VARIANTS">
+          <Stack>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Button variant="primary">PRIMARY</Button>
+              <Button variant="secondary">SECONDARY</Button>
+              <Button variant="outline">OUTLINE</Button>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Button variant="ghost">GHOST</Button>
+              <Button variant="destructive">DELETE</Button>
+              <Button variant="hud">HUD STYLE</Button>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Button variant="primary" size="sm">SMALL</Button>
+              <Button variant="primary">DEFAULT</Button>
+              <Button variant="primary" size="lg">LARGE</Button>
+            </div>
+          </Stack>
+        </HudPanel>
+        {/* Badges */}
+        <HudPanel title="BADGE VARIANTS">
+          <Stack>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Badge variant="default">DEFAULT</Badge>
+              <Badge variant="primary">PRIMARY</Badge>
+              <Badge variant="secondary">SECONDARY</Badge>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Badge variant="success">SUCCESS</Badge>
+              <Badge variant="warning">WARNING</Badge>
+              <Badge variant="error">ERROR</Badge>
+            </div>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Badge variant="outline">OUTLINE</Badge>
+              <Badge size="sm">SMALL</Badge>
+              <Badge size="lg">LARGE</Badge>
+            </div>
+          </Stack>
+        </HudPanel>
+        {/* Progress */}
+        <HudPanel title="PROGRESS INDICATORS">
+          <Stack>
+            <div>
+              <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)', marginBottom: '0.25rem' }}>DOWNLOAD: 75%</div>
+              <Progress value={75} size="md" />
+            </div>
+            <div>
+              <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)', marginBottom: '0.25rem' }}>UPLOAD: 45%</div>
+              <Progress value={45} size="md" />
+            </div>
+            <div>
+              <div style={{ fontSize: 'var(--duro-font-size-xs)', color: 'var(--duro-color-secondary)', marginBottom: '0.25rem' }}>SIZE VARIANTS</div>
+              <Stack gap="tight">
+                <Progress value={60} size="sm" />
+                <Progress value={60} size="md" />
+                <Progress value={60} size="lg" />
+              </Stack>
+            </div>
+          </Stack>
+        </HudPanel>
+        {/* Alerts */}
+        <HudPanel title="ALERT MESSAGES">
+          <Stack>
+            <Alert variant="info">
+              <AlertTitle>Information</AlertTitle>
+              <AlertDescription>System update available</AlertDescription>
+            </Alert>
+            <Alert variant="success">
+              <AlertTitle>Success</AlertTitle>
+              <AlertDescription>Operation completed</AlertDescription>
+            </Alert>
+            <Alert variant="warning">
+              <AlertTitle>Warning</AlertTitle>
+              <AlertDescription>Resource limit approaching</AlertDescription>
+            </Alert>
+            <Alert variant="error">
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>Connection failed</AlertDescription>
+            </Alert>
+          </Stack>
+        </HudPanel>
+      </div>
+    </div>
+  </Story>
+</Canvas>

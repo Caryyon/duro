@@ -1,26 +1,55 @@
-// import components from libraries
-import type { FC } from 'react'
-import { Button as UIButton } from 'theme-ui'
-// import theme config
-import buttons from './index.theme'
+/**
+ * Button Component
+ *
+ * Modern button component using CSS custom properties.
+ * Works seamlessly with SSR and has zero runtime CSS-in-JS overhead.
+ * Requires importing '@duro/core/styles' in your app.
+ */
 
-export interface ButtonProps {
-  /**
-   * One of a few variants
-   */
-  variant?: 'primary' | 'secondary'
-  children: string
+import type { FC, ButtonHTMLAttributes, ReactNode } from 'react'
+
+export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'destructive'
+export type ButtonSize = 'sm' | 'md' | 'lg'
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Visual variant of the button */
+  variant?: ButtonVariant
+  /** Size of the button */
+  size?: ButtonSize
+  /** Children elements */
+  children: ReactNode
+  /** Disabled state */
+  disabled?: boolean
 }
 
-const Button: FC<ButtonProps> = ({
+/**
+ * Button component
+ */
+export const Button: FC<ButtonProps> = ({
   variant = 'primary',
+  size = 'md',
   children,
+  disabled = false,
+  className,
   ...props
-}) => (
-  <UIButton variant={variant} {...props}>
-    {children}
-  </UIButton>
-)
+}) => {
+  const buttonClasses = [
+    'duro-button',
+    `duro-button-${variant}`,
+    size !== 'md' && `duro-button-${size}`,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ')
 
-// exports component and component theme
-export { Button, buttons }
+  return (
+    <button
+      className={buttonClasses}
+      disabled={disabled}
+      type="button"
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}

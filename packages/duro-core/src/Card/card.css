@@ -1,0 +1,101 @@
+/**
+ * Card Component Styles
+ * Cyberpunk Tech Interface - HUD-style containers
+ */
+
+.duro-card {
+  background: var(--duro-color-background);
+  border: 1px solid var(--duro-color-text);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Corner bracket decorations */
+.duro-card::before,
+.duro-card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.duro-card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.duro-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Static variant - no hover effects */
+.duro-card-static::before,
+.duro-card-static::after {
+  display: none;
+}
+
+.duro-card-header {
+  padding: var(--duro-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--duro-space-2);
+  border-bottom: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-card-title {
+  font-size: var(--duro-font-size-md);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: var(--duro-line-height-tight);
+  margin: 0;
+  color: var(--duro-color-text);
+}
+
+.duro-card-description {
+  font-size: var(--duro-font-size-xs);
+  color: var(--duro-color-secondary);
+  line-height: var(--duro-line-height-normal);
+  margin: 0;
+}
+
+.duro-card-content {
+  padding: var(--duro-space-4);
+  flex: 1;
+}
+
+.duro-card-footer {
+  padding: var(--duro-space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--duro-space-3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.duro-card-footer-bordered {
+  border-top: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-card-footer-start {
+  justify-content: flex-start;
+}
+
+.duro-card-footer-end {
+  justify-content: flex-end;
+}
+
+.duro-card-footer-center {
+  justify-content: center;
+}
+
+.duro-card-footer-spaceBetween {
+  justify-content: space-between;
+}

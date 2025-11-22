@@ -1,0 +1,97 @@
+/**
+ * Input Component Styles
+ * Cyberpunk Tech Interface - Terminal-style inputs
+ */
+
+.duro-input {
+  /* Reset */
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+
+  /* Base styles */
+  display: flex;
+  height: 2.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--duro-color-background);
+  border: 1px solid var(--duro-color-text);
+  padding: var(--duro-space-2) var(--duro-space-3);
+  font-family: var(--duro-font-body);
+  font-size: var(--duro-font-size-sm);
+  line-height: var(--duro-line-height-normal);
+  color: var(--duro-color-text);
+  transition: all 0.15s ease;
+}
+
+.duro-input::placeholder {
+  color: var(--duro-color-secondary);
+  opacity: 0.6;
+}
+
+.duro-input:hover:not(:disabled) {
+  border-color: var(--duro-color-text);
+  box-shadow: inset 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-input:focus {
+  outline: none;
+  border-color: var(--duro-color-text);
+  box-shadow: 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+  border-style: dashed;
+}
+
+.duro-input-error {
+  border-color: var(--duro-color-text);
+  border-style: dashed;
+}
+
+.duro-input-error:focus {
+  box-shadow: 0 0 0 1px var(--duro-color-text);
+}
+
+.duro-input-full-width {
+  width: 100%;
+}
+
+/* Container query responsive sizing */
+@container (min-width: 0px) {
+  .duro-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Input types */
+.duro-input[type="file"] {
+  padding: var(--duro-space-2);
+  cursor: pointer;
+}
+
+.duro-input[type="file"]::-webkit-file-upload-button {
+  padding: var(--duro-space-1) var(--duro-space-3);
+  margin-right: var(--duro-space-2);
+  border: 1px solid var(--duro-color-text);
+  background: transparent;
+  color: var(--duro-color-text);
+  font-family: var(--duro-font-body);
+  font-size: var(--duro-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.duro-input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--duro-color-text);
+  color: var(--duro-color-background);
+}

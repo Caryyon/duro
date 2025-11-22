@@ -1,0 +1,236 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Label, Input, Textarea, Checkbox, Switch, Card, CardHeader, CardTitle, CardContent, CardFooter, Stack, Grid, Box, Cluster, Button } from '@duro/core'
+
+<Meta title="Components/Forms" />
+
+# Form Components
+
+## Label
+
+<Canvas>
+  <Story name="Label">
+    <Stack>
+      <Label>Default Label</Label>
+      <Label required>Required Label</Label>
+      <Label error>Error Label</Label>
+      <Label disabled>Disabled Label</Label>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Input
+
+<Canvas>
+  <Story name="Input">
+    <Box maxWidth="sm">
+      <Stack>
+        <Stack variant="tight">
+          <Label>Default Input</Label>
+          <Input placeholder="Enter text..." />
+        </Stack>
+        <Stack variant="tight">
+          <Label>With Value</Label>
+          <Input value="John Doe" />
+        </Stack>
+        <Stack variant="tight">
+          <Label error>Error State</Label>
+          <Input error placeholder="Invalid input" />
+        </Stack>
+        <Stack variant="tight">
+          <Label disabled>Disabled</Label>
+          <Input disabled placeholder="Disabled input" />
+        </Stack>
+        <Stack variant="tight">
+          <Label>Full Width</Label>
+          <Input fullWidth placeholder="Full width input" />
+        </Stack>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+## Textarea
+
+<Canvas>
+  <Story name="Textarea">
+    <Box maxWidth="sm">
+      <Stack>
+        <Stack variant="tight">
+          <Label>Default Textarea</Label>
+          <Textarea placeholder="Enter multiple lines..." rows={4} />
+        </Stack>
+        <Stack variant="tight">
+          <Label>Vertical Resize</Label>
+          <Textarea resize="vertical" placeholder="Can resize vertically" rows={3} />
+        </Stack>
+        <Stack variant="tight">
+          <Label>No Resize</Label>
+          <Textarea resize="none" placeholder="Cannot resize" rows={3} />
+        </Stack>
+        <Stack variant="tight">
+          <Label error>Error State</Label>
+          <Textarea error placeholder="Invalid input" rows={3} />
+        </Stack>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+## Checkbox
+
+<Canvas>
+  <Story name="Checkbox">
+    <Stack>
+      <Cluster>
+        <Checkbox />
+        <span>Default Checkbox</span>
+      </Cluster>
+      <Cluster>
+        <Checkbox defaultChecked />
+        <span>Checked Checkbox</span>
+      </Cluster>
+      <Cluster>
+        <Checkbox disabled />
+        <span>Disabled Checkbox</span>
+      </Cluster>
+      <Cluster>
+        <Checkbox error />
+        <span>Error Checkbox</span>
+      </Cluster>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Switch
+
+<Canvas>
+  <Story name="Switch">
+    <Stack>
+      <Cluster>
+        <Switch size="sm" />
+        <span>Small Switch</span>
+      </Cluster>
+      <Cluster>
+        <Switch size="md" />
+        <span>Medium Switch</span>
+      </Cluster>
+      <Cluster>
+        <Switch size="lg" />
+        <span>Large Switch</span>
+      </Cluster>
+      <Cluster>
+        <Switch defaultChecked />
+        <span>Checked Switch</span>
+      </Cluster>
+      <Cluster>
+        <Switch disabled />
+        <span>Disabled Switch</span>
+      </Cluster>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Complete Form Example
+
+This example showcases a polished registration form with proper visual hierarchy,
+breathing room between elements, and correctly aligned action buttons.
+
+<Canvas>
+  <Story name="Complete Form">
+    <Box maxWidth="sm" centered padding="lg">
+      <Card>
+        <CardHeader>
+          <CardTitle>Create Account</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Stack as="form" variant="loose">
+            <Grid variant="cols2">
+              <Stack>
+                <Label required>First Name</Label>
+                <Input placeholder="John" fullWidth />
+              </Stack>
+              <Stack>
+                <Label required>Last Name</Label>
+                <Input placeholder="Doe" fullWidth />
+              </Stack>
+            </Grid>
+            <Stack>
+              <Label required>Email</Label>
+              <Input type="email" placeholder="john@example.com" fullWidth />
+            </Stack>
+            <Stack>
+              <Label required>Password</Label>
+              <Input type="password" placeholder="••••••••" fullWidth />
+            </Stack>
+            <Stack>
+              <Label>Bio</Label>
+              <Textarea placeholder="Tell us about yourself..." rows={3} fullWidth />
+            </Stack>
+            <Stack variant="tight">
+              <Cluster>
+                <Checkbox />
+                <span>I agree to the terms and conditions</span>
+              </Cluster>
+              <Cluster>
+                <Switch />
+                <span>Send me email notifications</span>
+              </Cluster>
+            </Stack>
+          </Stack>
+        </CardContent>
+        <CardFooter justify="spaceBetween" bordered>
+          <Button variant="ghost">Cancel</Button>
+          <Button variant="primary">Create Account</Button>
+        </CardFooter>
+      </Card>
+    </Box>
+  </Story>
+</Canvas>
+
+## Complete Form (Compact)
+
+A more compact version for space-constrained layouts.
+
+<Canvas>
+  <Story name="Complete Form Compact">
+    <Box maxWidth="sm" centered padding="md">
+      <Card>
+        <CardHeader>
+          <CardTitle>Create Account</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Stack as="form">
+            <Grid variant="cols2">
+              <Stack variant="tight">
+                <Label required>First Name</Label>
+                <Input placeholder="John" fullWidth />
+              </Stack>
+              <Stack variant="tight">
+                <Label required>Last Name</Label>
+                <Input placeholder="Doe" fullWidth />
+              </Stack>
+            </Grid>
+            <Stack variant="tight">
+              <Label required>Email</Label>
+              <Input type="email" placeholder="john@example.com" fullWidth />
+            </Stack>
+            <Stack variant="tight">
+              <Label required>Password</Label>
+              <Input type="password" placeholder="••••••••" fullWidth />
+            </Stack>
+            <Stack variant="tight">
+              <Cluster>
+                <Checkbox />
+                <span>I agree to the terms and conditions</span>
+              </Cluster>
+            </Stack>
+          </Stack>
+        </CardContent>
+        <CardFooter justify="spaceBetween">
+          <Button variant="ghost">Cancel</Button>
+          <Button variant="primary">Sign Up</Button>
+        </CardFooter>
+      </Card>
+    </Box>
+  </Story>
+</Canvas>

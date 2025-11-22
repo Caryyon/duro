@@ -1,0 +1,155 @@
+/**
+ * Alert Component Styles
+ * Cyberpunk Tech Interface - Terminal-style alerts
+ */
+
+.duro-alert {
+  position: relative;
+  padding: var(--duro-space-4);
+  border: 1px solid var(--duro-color-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--duro-space-2);
+  background-color: var(--duro-color-background);
+}
+
+/* Corner bracket decorations */
+.duro-alert::before,
+.duro-alert::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.duro-alert::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.duro-alert::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Variants */
+.duro-alert-default {
+  border-color: var(--duro-color-secondary);
+  color: var(--duro-color-text);
+}
+
+.duro-alert-default::before,
+.duro-alert-default::after {
+  border-color: var(--duro-color-secondary);
+}
+
+.duro-alert-info {
+  border-color: var(--duro-color-text);
+  color: var(--duro-color-text);
+}
+
+.duro-alert-info::before {
+  content: '[i]';
+  position: absolute;
+  top: var(--duro-space-4);
+  left: var(--duro-space-4);
+  width: auto;
+  height: auto;
+  border: none;
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 700;
+}
+
+.duro-alert-success {
+  border-color: var(--duro-color-text);
+  color: var(--duro-color-text);
+}
+
+.duro-alert-success::before {
+  content: '[✓]';
+  position: absolute;
+  top: var(--duro-space-4);
+  left: var(--duro-space-4);
+  width: auto;
+  height: auto;
+  border: none;
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 700;
+}
+
+.duro-alert-warning {
+  border-color: var(--duro-color-text);
+  border-style: dashed;
+  color: var(--duro-color-text);
+}
+
+.duro-alert-warning::before {
+  content: '[!]';
+  position: absolute;
+  top: var(--duro-space-4);
+  left: var(--duro-space-4);
+  width: auto;
+  height: auto;
+  border: none;
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 700;
+}
+
+.duro-alert-warning::after {
+  border-style: dashed;
+}
+
+.duro-alert-error {
+  border-color: var(--duro-color-text);
+  border-style: dashed;
+  color: var(--duro-color-text);
+}
+
+.duro-alert-error::before {
+  content: '[×]';
+  position: absolute;
+  top: var(--duro-space-4);
+  left: var(--duro-space-4);
+  width: auto;
+  height: auto;
+  border: none;
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  font-weight: 700;
+}
+
+.duro-alert-error::after {
+  border-style: dashed;
+}
+
+/* Alert with icons have left padding */
+.duro-alert-info,
+.duro-alert-success,
+.duro-alert-warning,
+.duro-alert-error {
+  padding-left: calc(var(--duro-space-4) + 2rem);
+}
+
+.duro-alert-title {
+  margin: 0;
+  font-family: var(--duro-font-heading);
+  font-size: var(--duro-font-size-sm);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: var(--duro-line-height-tight);
+}
+
+.duro-alert-description {
+  font-size: var(--duro-font-size-sm);
+  line-height: var(--duro-line-height-normal);
+  opacity: 0.8;
+}

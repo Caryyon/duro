@@ -1,0 +1,245 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Badge, Separator, Avatar, AvatarImage, AvatarFallback, Skeleton, Card, CardContent, Stack, Cluster, Box } from '@duro/core'
+
+export const BadgeTemplate = (args) => <Badge {...args} />
+
+export const AvatarTemplate = (args) => (
+  <Avatar {...args}>
+    {args.showImage && <AvatarImage src={args.imageUrl} alt="User" />}
+    <AvatarFallback>{args.fallbackText}</AvatarFallback>
+  </Avatar>
+)
+
+export const SkeletonTemplate = (args) => <Skeleton {...args} />
+
+<Meta title="Components/Display" />
+
+# Display Components
+
+## Badge Playground
+
+<Canvas>
+  <Story
+    name="Badge Playground"
+    args={{
+      children: 'Badge',
+      variant: 'default',
+      size: 'md',
+    }}
+    argTypes={{
+      children: {
+        control: 'text',
+        description: 'Badge content',
+      },
+      variant: {
+        control: { type: 'select' },
+        options: ['default', 'primary', 'secondary', 'success', 'warning', 'error', 'outline'],
+        description: 'Badge color variant',
+      },
+      size: {
+        control: { type: 'select' },
+        options: ['sm', 'md', 'lg'],
+        description: 'Badge size',
+      },
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Avatar Playground
+
+<Canvas>
+  <Story
+    name="Avatar Playground"
+    args={{
+      size: 'md',
+      showImage: true,
+      imageUrl: 'https://i.pravatar.cc/150?img=1',
+      fallbackText: 'JD',
+    }}
+    argTypes={{
+      size: {
+        control: { type: 'select' },
+        options: ['sm', 'md', 'lg', 'xl'],
+        description: 'Avatar size',
+      },
+      showImage: {
+        control: 'boolean',
+        description: 'Show avatar image',
+      },
+      imageUrl: {
+        control: 'text',
+        description: 'Image URL',
+      },
+      fallbackText: {
+        control: 'text',
+        description: 'Fallback text (2 chars)',
+      },
+    }}
+  >
+    {AvatarTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Skeleton Playground
+
+<Canvas>
+  <Story
+    name="Skeleton Playground"
+    args={{
+      height: 20,
+      width: '100%',
+      radius: 'sm',
+    }}
+    argTypes={{
+      height: {
+        control: { type: 'number', min: 10, max: 200 },
+        description: 'Skeleton height in pixels',
+      },
+      width: {
+        control: 'text',
+        description: 'Skeleton width (px or %)',
+      },
+      radius: {
+        control: { type: 'select' },
+        options: ['none', 'sm', 'md', 'lg', 'full'],
+        description: 'Border radius',
+      },
+    }}
+  >
+    {SkeletonTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Badge
+
+<Canvas>
+  <Story name="Badge Variants">
+    <Cluster>
+      <Badge variant="default">Default</Badge>
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
+      <Badge variant="error">Error</Badge>
+      <Badge variant="outline">Outline</Badge>
+    </Cluster>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Badge Sizes">
+    <Cluster variant="center">
+      <Badge size="sm" variant="primary">Small</Badge>
+      <Badge size="md" variant="primary">Medium</Badge>
+      <Badge size="lg" variant="primary">Large</Badge>
+    </Cluster>
+  </Story>
+</Canvas>
+
+## Separator
+
+<Canvas>
+  <Story name="Separator">
+    <Stack variant="loose">
+      <Box>
+        <p>Content above</p>
+        <Separator />
+        <p>Content below</p>
+      </Box>
+      <Cluster style={{ height: '100px' }}>
+        <p>Left content</p>
+        <Separator orientation="vertical" />
+        <p>Right content</p>
+      </Cluster>
+    </Stack>
+  </Story>
+</Canvas>
+
+## Avatar
+
+<Canvas>
+  <Story name="Avatar">
+    <Cluster variant="center">
+      <Avatar size="sm">
+        <AvatarImage src="https://i.pravatar.cc/150?img=1" alt="User 1" />
+        <AvatarFallback>JD</AvatarFallback>
+      </Avatar>
+      <Avatar size="md">
+        <AvatarImage src="https://i.pravatar.cc/150?img=2" alt="User 2" />
+        <AvatarFallback>AS</AvatarFallback>
+      </Avatar>
+      <Avatar size="lg">
+        <AvatarImage src="https://i.pravatar.cc/150?img=3" alt="User 3" />
+        <AvatarFallback>MK</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl">
+        <AvatarImage src="https://i.pravatar.cc/150?img=4" alt="User 4" />
+        <AvatarFallback>RW</AvatarFallback>
+      </Avatar>
+    </Cluster>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Avatar Fallback">
+    <Cluster variant="center">
+      <Avatar>
+        <AvatarImage src="invalid-url" alt="User" />
+        <AvatarFallback>JD</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>AS</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>MK</AvatarFallback>
+      </Avatar>
+    </Cluster>
+  </Story>
+</Canvas>
+
+## Skeleton
+
+<Canvas>
+  <Story name="Skeleton">
+    <Box style={{ maxWidth: '400px' }}>
+      <Stack>
+        <Skeleton height={20} width="100%" radius="sm" />
+        <Skeleton height={20} width="80%" radius="sm" />
+        <Skeleton height={20} width="60%" radius="sm" />
+        <Skeleton height={100} width="100%" radius="md" />
+        <Cluster>
+          <Skeleton height={60} width={60} radius="full" />
+          <Stack variant="tight" style={{ flex: 1 }}>
+            <Skeleton height={20} width="100%" />
+            <Skeleton height={20} width="70%" />
+          </Stack>
+        </Cluster>
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Skeleton Card">
+    <Card style={{ maxWidth: '400px' }}>
+      <CardContent style={{ padding: '1.5rem' }}>
+        <Stack>
+          <Cluster>
+            <Skeleton height={60} width={60} radius="full" />
+            <Stack variant="tight" style={{ flex: 1 }}>
+              <Skeleton height={20} width="60%" />
+              <Skeleton height={16} width="40%" />
+            </Stack>
+          </Cluster>
+          <Stack variant="tight">
+            <Skeleton height={16} width="100%" />
+            <Skeleton height={16} width="90%" />
+            <Skeleton height={16} width="70%" />
+          </Stack>
+        </Stack>
+      </CardContent>
+    </Card>
+  </Story>
+</Canvas>

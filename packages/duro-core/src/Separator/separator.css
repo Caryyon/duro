@@ -1,0 +1,46 @@
+/**
+ * Separator Component Styles
+ * Cyberpunk Tech Interface - Visual dividers
+ */
+
+.duro-separator {
+  flex-shrink: 0;
+  background-color: var(--duro-color-text);
+}
+
+.duro-separator-horizontal {
+  height: 1px;
+  width: 100%;
+}
+
+.duro-separator-vertical {
+  width: 1px;
+  height: 100%;
+  min-height: 1rem;
+}
+
+/* Dashed variant */
+.duro-separator-dashed {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--duro-color-text),
+    var(--duro-color-text) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.duro-separator-vertical.duro-separator-dashed {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--duro-color-text),
+    var(--duro-color-text) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* Muted variant */
+.duro-separator-muted {
+  background-color: var(--duro-color-secondary);
+}

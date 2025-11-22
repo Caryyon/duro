@@ -1,0 +1,83 @@
+/**
+ * Heading Component Styles
+ * Cyberpunk Tech Interface - Terminal-style headings
+ */
+
+.duro-heading {
+  font-family: var(--duro-font-heading);
+  line-height: var(--duro-line-height-tight);
+  color: var(--duro-color-text);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Level-based sizes */
+.duro-heading-1 {
+  font-size: var(--duro-font-size-3xl);
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.duro-heading-2 {
+  font-size: var(--duro-font-size-2xl);
+  letter-spacing: 0.08em;
+  font-weight: 300;
+}
+
+.duro-heading-3 {
+  font-size: var(--duro-font-size-xl);
+  letter-spacing: 0.05em;
+}
+
+.duro-heading-4 {
+  font-size: var(--duro-font-size-lg);
+  letter-spacing: 0.05em;
+}
+
+.duro-heading-5 {
+  font-size: var(--duro-font-size-md);
+  letter-spacing: 0.05em;
+}
+
+.duro-heading-6 {
+  font-size: var(--duro-font-size-sm);
+  letter-spacing: 0.1em;
+}
+
+/* Variants */
+.duro-heading-display {
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 0.15em;
+}
+
+.duro-heading-heading {
+  font-weight: 400;
+}
+
+.duro-heading-subheading {
+  font-weight: 400;
+  color: var(--duro-color-secondary);
+}
+
+/* Prefix decorators */
+.duro-heading-decorated::before {
+  content: '//';
+  margin-right: var(--duro-space-2);
+  color: var(--duro-color-secondary);
+}
+
+/* Glitch effect on hover */
+.duro-heading-glitch:hover {
+  animation: heading-glitch 0.3s ease;
+}
+
+@keyframes heading-glitch {
+  0%, 100% { transform: translate(0); opacity: 1; }
+  20% { transform: translate(-2px, 2px); opacity: 0.8; }
+  40% { transform: translate(-2px, -2px); opacity: 1; }
+  60% { transform: translate(2px, 2px); opacity: 0.8; }
+  80% { transform: translate(2px, -2px); opacity: 1; }
+}

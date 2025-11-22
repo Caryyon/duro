@@ -1,0 +1,138 @@
+/**
+ * Switch Component Styles
+ * Cyberpunk Tech Interface - Binary toggle switches
+ */
+
+.duro-switch {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.duro-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.duro-switch-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 1px solid var(--duro-color-text);
+  transition: all 0.2s ease;
+  font-family: var(--duro-font-monospace);
+  font-size: 0.625rem;
+  font-weight: 400;
+  color: var(--duro-color-secondary);
+  padding: 0 0.25rem;
+}
+
+.duro-switch-slider::before {
+  content: '';
+  position: absolute;
+  background-color: var(--duro-color-secondary);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.duro-switch-slider::after {
+  content: '0';
+  position: absolute;
+  right: 0.25rem;
+  font-family: var(--duro-font-monospace);
+}
+
+/* Sizes */
+.duro-switch-sm .duro-switch-slider {
+  width: 2rem;
+  height: 1rem;
+}
+
+.duro-switch-sm .duro-switch-slider::before {
+  width: 0.625rem;
+  height: 0.625rem;
+  left: 0.1875rem;
+  top: 0.1875rem;
+}
+
+.duro-switch-md .duro-switch-slider {
+  width: 2.5rem;
+  height: 1.25rem;
+}
+
+.duro-switch-md .duro-switch-slider::before {
+  width: 0.875rem;
+  height: 0.875rem;
+  left: 0.1875rem;
+  top: 0.1875rem;
+}
+
+.duro-switch-lg .duro-switch-slider {
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.duro-switch-lg .duro-switch-slider::before {
+  width: 1.125rem;
+  height: 1.125rem;
+  left: 0.1875rem;
+  top: 0.1875rem;
+}
+
+/* Checked state */
+.duro-switch-input:checked + .duro-switch-slider {
+  background-color: var(--duro-color-text);
+}
+
+.duro-switch-input:checked + .duro-switch-slider::before {
+  background-color: var(--duro-color-background);
+}
+
+.duro-switch-input:checked + .duro-switch-slider::after {
+  content: '1';
+  right: auto;
+  left: 0.25rem;
+  color: var(--duro-color-background);
+}
+
+.duro-switch-sm .duro-switch-input:checked + .duro-switch-slider::before {
+  transform: translateX(1rem);
+}
+
+.duro-switch-md .duro-switch-input:checked + .duro-switch-slider::before {
+  transform: translateX(1.25rem);
+}
+
+.duro-switch-lg .duro-switch-input:checked + .duro-switch-slider::before {
+  transform: translateX(1.5rem);
+}
+
+/* Focus state */
+.duro-switch-input:focus + .duro-switch-slider {
+  outline: 1px dotted var(--duro-color-text);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.duro-switch:hover .duro-switch-slider {
+  box-shadow: inset 0 0 0 1px var(--duro-color-text);
+}
+
+/* Disabled state */
+.duro-switch-input:disabled + .duro-switch-slider {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+.duro-switch:has(.duro-switch-input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Error state */
+.duro-switch-error .duro-switch-slider {
+  border-style: dashed;
+}

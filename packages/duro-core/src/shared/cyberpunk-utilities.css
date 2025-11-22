@@ -1,0 +1,404 @@
+/**
+ * Cyberpunk Utility Classes
+ * Additional decorative and utility styles for the tech interface
+ */
+
+/* ==========================================================================
+   Corner Bracket Decorations
+   ========================================================================== */
+
+.duro-brackets {
+  position: relative;
+}
+
+.duro-brackets::before,
+.duro-brackets::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.duro-brackets::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.duro-brackets::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.duro-brackets-sm::before,
+.duro-brackets-sm::after {
+  width: 6px;
+  height: 6px;
+  border-width: 1px;
+}
+
+.duro-brackets-sm::before {
+  border-width: 1px 0 0 1px;
+}
+
+.duro-brackets-sm::after {
+  border-width: 0 1px 1px 0;
+}
+
+.duro-brackets-lg::before,
+.duro-brackets-lg::after {
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+}
+
+.duro-brackets-lg::before {
+  border-width: 3px 0 0 3px;
+}
+
+.duro-brackets-lg::after {
+  border-width: 0 3px 3px 0;
+}
+
+/* ==========================================================================
+   Scanline Effect
+   ========================================================================== */
+
+.duro-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.duro-scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Glitch Effects
+   ========================================================================== */
+
+.duro-glitch {
+  animation: duro-glitch-effect 3s infinite;
+}
+
+@keyframes duro-glitch-effect {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  2% {
+    transform: translate(-2px, 0);
+    filter: hue-rotate(90deg);
+  }
+  4% {
+    transform: translate(2px, 0);
+    filter: none;
+  }
+  6% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(0);
+  }
+  52% {
+    transform: translate(1px, -1px);
+  }
+  54% {
+    transform: translate(-1px, 1px);
+  }
+  56% {
+    transform: translate(0);
+  }
+}
+
+.duro-glitch-text {
+  position: relative;
+}
+
+.duro-glitch-text:hover::before,
+.duro-glitch-text:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.duro-glitch-text:hover::before {
+  animation: duro-glitch-text-1 0.3s infinite;
+  color: var(--duro-color-text);
+  z-index: -1;
+}
+
+.duro-glitch-text:hover::after {
+  animation: duro-glitch-text-2 0.3s infinite;
+  color: var(--duro-color-secondary);
+  z-index: -2;
+}
+
+@keyframes duro-glitch-text-1 {
+  0%, 100% { clip-path: inset(0 0 80% 0); transform: translate(-2px, 0); }
+  25% { clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 0); }
+  75% { clip-path: inset(60% 0 20% 0); transform: translate(2px, 0); }
+}
+
+@keyframes duro-glitch-text-2 {
+  0%, 100% { clip-path: inset(80% 0 0 0); transform: translate(2px, 0); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translate(-2px, 0); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(2px, 0); }
+  75% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 0); }
+}
+
+/* ==========================================================================
+   Terminal/Code Style Text
+   ========================================================================== */
+
+.duro-terminal {
+  font-family: var(--duro-font-monospace);
+  background: var(--duro-color-muted);
+  border: 1px solid var(--duro-color-secondary);
+  padding: var(--duro-space-4);
+}
+
+.duro-terminal-line {
+  display: flex;
+  gap: var(--duro-space-2);
+  padding: var(--duro-space-1) 0;
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-terminal-prompt {
+  color: var(--duro-color-secondary);
+}
+
+.duro-terminal-output {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-error {
+  color: var(--duro-color-text);
+  border-left: 2px solid var(--duro-color-text);
+  padding-left: var(--duro-space-2);
+}
+
+.duro-terminal-success {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-warning {
+  color: var(--duro-color-secondary);
+  border-left: 2px dashed var(--duro-color-secondary);
+  padding-left: var(--duro-space-2);
+}
+
+/* ==========================================================================
+   Data Display Elements
+   ========================================================================== */
+
+.duro-stat-block {
+  padding: var(--duro-space-4);
+  border: 1px solid var(--duro-color-text);
+  position: relative;
+}
+
+.duro-stat-label {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--duro-color-secondary);
+  margin-bottom: var(--duro-space-1);
+}
+
+.duro-stat-value {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-2xl);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.duro-stat-unit {
+  font-size: var(--duro-font-size-sm);
+  color: var(--duro-color-secondary);
+  margin-left: var(--duro-space-1);
+}
+
+.duro-stat-trend {
+  font-size: var(--duro-font-size-xs);
+  margin-top: var(--duro-space-1);
+}
+
+.duro-stat-trend-up {
+  color: var(--duro-color-text);
+}
+
+.duro-stat-trend-down {
+  color: var(--duro-color-secondary);
+}
+
+/* ==========================================================================
+   Data Row/Table Styles
+   ========================================================================== */
+
+.duro-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--duro-space-2) 0;
+  border-bottom: 1px dashed var(--duro-color-secondary);
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-data-row:last-child {
+  border-bottom: none;
+}
+
+.duro-data-label {
+  color: var(--duro-color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.duro-data-value {
+  color: var(--duro-color-text);
+}
+
+.duro-data-value-highlight {
+  color: var(--duro-color-text);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Status Indicators
+   ========================================================================== */
+
+.duro-status-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+}
+
+.duro-status-active {
+  background: var(--duro-color-text);
+}
+
+.duro-status-standby {
+  background: var(--duro-color-secondary);
+  border: 1px dashed var(--duro-color-text);
+}
+
+.duro-status-offline {
+  background: transparent;
+  border: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-status-error {
+  background: var(--duro-color-text);
+  animation: duro-status-blink 1s infinite;
+}
+
+@keyframes duro-status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ==========================================================================
+   Decorative Patterns
+   ========================================================================== */
+
+.duro-grid-pattern {
+  background-image:
+    linear-gradient(var(--duro-color-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--duro-color-secondary) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+  opacity: 0.1;
+}
+
+.duro-diagonal-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    var(--duro-color-secondary) 4px,
+    var(--duro-color-secondary) 5px
+  );
+  opacity: 0.1;
+}
+
+.duro-dots-pattern {
+  background-image: radial-gradient(var(--duro-color-secondary) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   Typography Utilities
+   ========================================================================== */
+
+.duro-mono {
+  font-family: var(--duro-font-monospace);
+}
+
+.duro-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.duro-prefix::before {
+  content: '// ';
+  color: var(--duro-color-secondary);
+}
+
+.duro-cursor::after {
+  content: '█';
+  animation: duro-cursor-blink 1s infinite;
+}
+
+@keyframes duro-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   Interactive Hover Effects
+   ========================================================================== */
+
+.duro-hover-glow:hover {
+  box-shadow: var(--duro-shadow-glow);
+}
+
+.duro-hover-expand {
+  transition: transform 0.15s ease;
+}
+
+.duro-hover-expand:hover {
+  transform: scale(1.02);
+}
+
+.duro-hover-invert:hover {
+  background: var(--duro-color-text);
+  color: var(--duro-color-background);
+}

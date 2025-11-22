@@ -1,0 +1,77 @@
+/**
+ * Accordion Component Styles
+ * Cyberpunk Tech Interface - Expandable data panels
+ */
+
+.duro-accordion {
+  border: 1px solid var(--duro-color-text);
+  overflow: hidden;
+}
+
+.duro-accordion-item {
+  border-bottom: 1px solid var(--duro-color-text);
+}
+
+.duro-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.duro-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--duro-space-4);
+  background: transparent;
+  border: none;
+  color: var(--duro-color-text);
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-sm);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.duro-accordion-trigger:hover {
+  background-color: var(--duro-color-muted);
+}
+
+.duro-accordion-trigger:focus {
+  outline: 1px dotted var(--duro-color-text);
+  outline-offset: -2px;
+}
+
+.duro-accordion-chevron {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-sm);
+  transition: transform 0.15s ease;
+}
+
+.duro-accordion-chevron::before {
+  content: '[+]';
+}
+
+.duro-accordion-trigger-open .duro-accordion-chevron::before {
+  content: '[-]';
+}
+
+.duro-accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease;
+  border-top: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-accordion-content-open {
+  max-height: 1000px;
+}
+
+.duro-accordion-content-inner {
+  padding: var(--duro-space-4);
+  color: var(--duro-color-text);
+  font-size: var(--duro-font-size-sm);
+  line-height: var(--duro-line-height-normal);
+}
