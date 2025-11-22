@@ -10,9 +10,11 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
-  async viteFinal(config) {
+  async viteFinal(config, { configType }) {
     return {
       ...config,
+      // Set base path for GitHub Pages deployment
+      base: configType === 'PRODUCTION' ? '/duro/' : '/',
       resolve: {
         alias: [
           // CSS styles alias
