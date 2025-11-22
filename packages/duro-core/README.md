@@ -1,294 +1,175 @@
-# Duro Design System
+# Duro
 
-A durable, brutalist design system built for the modern web. Duro combines bold aesthetics with practical, accessible components that will last beyond framework trends.
+A cyberpunk tech interface component library for React. Monochromatic. Sharp. Terminal-inspired.
 
 ## Philosophy
 
-Duro is built on solid fundamentals:
-- **Zero-runtime CSS** - CSS custom properties for theming, no JS overhead
-- **SSR-ready** - Works seamlessly with Next.js, Remix, and other SSR frameworks
-- **Brutalist aesthetics** - Sharp corners, hard shadows, bold borders
-- **Web-first** - Semantic HTML and progressive enhancement
-- **Durable** - Built to last as frameworks come and go
+Duro embraces a stark, technical aesthetic:
+- **Monochromatic** - Black, white, and grays only. No color distractions.
+- **Sharp corners** - No border-radius. Everything is angular and precise.
+- **Thin borders** - Delicate 1px lines define structure without weight.
+- **No shadows** - Flat and honest. Depth comes from layout, not effects.
+- **Terminal-inspired** - JetBrains Mono font. Technical. Readable.
+- **Zero-runtime CSS** - CSS custom properties, no JS overhead.
+- **SSR-ready** - Works seamlessly with Next.js, Remix, and other SSR frameworks.
 
 ## Installation
 
 ```bash
 # yarn
-yarn add @duro/core
+yarn add @caryyon/duro
 
 # npm
-npm install @duro/core
+npm install @caryyon/duro
 
 # pnpm
-pnpm add @duro/core
+pnpm add @caryyon/duro
 ```
 
 ## Quick Start
 
-### 1. Wrap your app with DuroProvider
+### 1. Import the styles
 
 ```tsx
-import { DuroProvider } from '@duro/core'
-import '@duro/core/dist/duro.css'
-
-function App() {
-  return (
-    <DuroProvider>
-      {/* Your app */}
-    </DuroProvider>
-  )
-}
+// In your app's entry point (e.g., layout.tsx, _app.tsx)
+import '@caryyon/duro/styles'
 ```
 
 ### 2. Start using components
 
 ```tsx
-import { Button, Card, CardHeader, CardTitle, CardContent, Heading, Paragraph } from '@duro/core'
+import { Button, Card, CardHeader, CardTitle, CardContent, Heading, Paragraph } from '@caryyon/duro'
 
 function Example() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Welcome to Duro</CardTitle>
+        <CardTitle>System Status</CardTitle>
       </CardHeader>
       <CardContent>
-        <Heading level={3}>Brutalist Design</Heading>
+        <Heading level={3}>ACTIVE</Heading>
         <Paragraph>
-          A design system that embraces bold, unapologetic aesthetics
-          with sharp corners and hard shadows.
+          All systems operational. Monitoring enabled.
         </Paragraph>
-        <Button variant="primary">Get Started</Button>
+        <Button variant="primary">Initialize</Button>
       </CardContent>
     </Card>
   )
 }
 ```
 
-## Features
+## Components
+
+### Layout
+- `Stack` - Vertical stacking with consistent spacing
+- `Grid` - Responsive grid layouts
+- `Cluster` - Horizontal grouping with wrapping
+- `Box` - Basic container with padding/margin control
+- `Section` - Semantic section with container queries
+
+### Forms
+- `Button` / `ButtonGroup` - Actions and grouped actions
+- `Input` - Text input fields
+- `Textarea` - Multi-line text input
+- `Label` - Form labels
+- `Checkbox` - Boolean selection
+- `Switch` - Toggle switches
+
+### Display
+- `Card` - Content containers with header/content/footer
+- `Badge` - Status indicators and labels
+- `Alert` - Notifications and messages
+- `Progress` - Progress indicators
+- `Avatar` - User/entity representations
+- `Skeleton` - Loading placeholders
+- `Separator` - Visual dividers
+
+### Navigation
+- `Tabs` - Tabbed content switching
+- `Accordion` - Collapsible content sections
+
+### Overlay
+- `Dialog` - Modal dialogs
+- `Tooltip` - Hover information
 
 ### Typography
+- `Heading` - h1-h6 headings
+- `Text` - Inline text with variants
+- `Paragraph` - Block text
 
-Space Grotesk brings a modern, geometric feel while maintaining excellent readability.
+## Cyberpunk Utility Classes
 
-```tsx
-import { Heading, Text, Paragraph } from '@duro/core'
-
-<Heading level={1} variant="display">
-  Display Heading
-</Heading>
-
-<Text variant="code" as="code">
-  const hello = "world"
-</Text>
-
-<Paragraph variant="lead">
-  Lead paragraphs are larger and bolder, perfect for introductions.
-</Paragraph>
-```
-
-### Components
-
-#### Buttons
+Duro includes utility classes for enhanced visual effects:
 
 ```tsx
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="destructive">Delete</Button>
+// Bracketed text decorations
+<span className="duro-brackets">SYSTEM ONLINE</span>
+
+// Scanline overlay effect
+<div className="duro-scanlines">
+  <p>Retro CRT aesthetic</p>
+</div>
+
+// Glitch text animation
+<h1 className="duro-glitch" data-text="ERROR">ERROR</h1>
+
+// Terminal-style text
+<code className="duro-terminal">$ npm run build</code>
+
+// Grid background pattern
+<div className="duro-grid-bg">
+  <p>Technical grid backdrop</p>
+</div>
 ```
 
-#### Cards
+## Next.js Integration
 
-```tsx
-<Card>
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card description goes here</CardDescription>
-  </CardHeader>
-  <CardContent>
-    Main content
-  </CardContent>
-  <CardFooter>
-    <Button>Action</Button>
-  </CardFooter>
-</Card>
-```
-
-#### Forms
-
-```tsx
-<Label htmlFor="email">Email</Label>
-<Input
-  id="email"
-  type="email"
-  placeholder="you@example.com"
-/>
-
-<Label htmlFor="message">Message</Label>
-<Textarea
-  id="message"
-  placeholder="Your message..."
-  rows={4}
-/>
-
-<Checkbox id="terms">
-  I agree to the terms
-</Checkbox>
-
-<Switch id="notifications">
-  Enable notifications
-</Switch>
-```
-
-#### Feedback
-
-```tsx
-<Alert variant="info">
-  <AlertTitle>Info</AlertTitle>
-  <AlertDescription>This is an informational message</AlertDescription>
-</Alert>
-
-<Progress value={60} />
-
-<Tooltip content="Helpful tip">
-  <Button>Hover me</Button>
-</Tooltip>
-
-<Badge variant="success">New</Badge>
-```
-
-#### Interactive
-
-```tsx
-<Tabs defaultValue="tab1">
-  <TabsList>
-    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
-  </TabsList>
-  <TabsContent value="tab1">Content 1</TabsContent>
-  <TabsContent value="tab2">Content 2</TabsContent>
-</Tabs>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item1">
-    <AccordionTrigger>Section 1</AccordionTrigger>
-    <AccordionContent>Content for section 1</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<Dialog>
-  <DialogTrigger>Open Dialog</DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Dialog Title</DialogTitle>
-      <DialogDescription>Description</DialogDescription>
-    </DialogHeader>
-    Content goes here
-  </DialogContent>
-</Dialog>
-```
-
-### Layout Components
-
-```tsx
-import { Section, Dashboard, Stack, Grid, Sidebar } from '@duro/core'
-
-// Responsive section with built-in container queries
-<Section variant="centered" gap="large">
-  <Heading>Section Content</Heading>
-</Section>
-
-// Dashboard layout with sidebar and main content
-<Dashboard>
-  <Sidebar>Navigation</Sidebar>
-  <main>Main content</main>
-</Dashboard>
-
-// Vertical stack with consistent spacing
-<Stack gap="4">
-  <Card>Card 1</Card>
-  <Card>Card 2</Card>
-</Stack>
-
-// Responsive grid
-<Grid columns={3} gap="4">
-  <Card>Item 1</Card>
-  <Card>Item 2</Card>
-  <Card>Item 3</Card>
-</Grid>
-```
-
-## Theming
-
-Duro uses CSS custom properties for zero-runtime theming:
-
-```tsx
-<DuroProvider colorMode="light">
-  <YourApp />
-</DuroProvider>
-
-// Or with custom theme
-<DuroProvider theme={customTheme}>
-  <YourApp />
-</DuroProvider>
-```
-
-### Custom Theme
-
-```ts
-import { duroTheme } from '@duro/core'
-
-const customTheme = {
-  ...duroTheme,
-  colors: {
-    ...duroTheme.colors,
-    primary: '#FF6B6B',
-    secondary: '#4ECDC4',
-  },
-}
-```
-
-## Server-Side Rendering
-
-Duro works seamlessly with SSR frameworks:
-
-### Next.js (App Router)
+### App Router
 
 ```tsx
 // app/layout.tsx
-import { DuroProvider, getServerThemeCSS } from '@duro/core'
-import '@duro/core/dist/duro.css'
+import '@caryyon/duro/styles'
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <style dangerouslySetInnerHTML={{ __html: getServerThemeCSS() }} />
-      </head>
-      <body>
-        <DuroProvider>{children}</DuroProvider>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
 ```
 
-### Next.js (Pages Router)
+### Pages Router
 
 ```tsx
 // pages/_app.tsx
-import { DuroProvider } from '@duro/core'
-import '@duro/core/dist/duro.css'
+import '@caryyon/duro/styles'
+import type { AppProps } from 'next/app'
 
-export default function App({ Component, pageProps }) {
-  return (
-    <DuroProvider>
-      <Component {...pageProps} />
-    </DuroProvider>
-  )
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
 }
+```
+
+## Design Tokens
+
+Duro uses CSS custom properties for consistent styling:
+
+```css
+/* Colors */
+--duro-black: #000000;
+--duro-white: #ffffff;
+--duro-gray-100 through --duro-gray-900;
+
+/* Typography */
+--duro-font-mono: 'JetBrains Mono', monospace;
+
+/* Spacing */
+--duro-space-1 through --duro-space-12;
+
+/* Borders */
+--duro-border-width: 1px;
+--duro-border-color: var(--duro-gray-300);
 ```
 
 ## Accessibility
@@ -298,7 +179,7 @@ All Duro components are built with accessibility in mind:
 - ARIA attributes where appropriate
 - Keyboard navigation support
 - Screen reader friendly
-- Sufficient color contrast
+- Sufficient color contrast (WCAG AA compliant)
 
 ## Browser Support
 
@@ -310,15 +191,11 @@ Duro supports all modern browsers:
 
 ## TypeScript
 
-Duro is built with TypeScript and includes full type definitions out of the box.
+Duro is built with TypeScript and includes full type definitions:
 
 ```tsx
-import type { ButtonProps, CardProps, HeadingLevel } from '@duro/core'
+import type { ButtonProps, CardProps, HeadingLevel } from '@caryyon/duro'
 ```
-
-## Documentation
-
-Visit our [Storybook](http://localhost:6006) for live examples and interactive documentation.
 
 ## License
 

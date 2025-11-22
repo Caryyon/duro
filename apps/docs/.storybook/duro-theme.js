@@ -1,40 +1,38 @@
 import { create } from '@storybook/theming'
 
 export default create({
-  base: 'light',
-  brandTitle: 'Duro Design System',
-  brandUrl: 'https://github.com/yourusername/duro',
+  base: 'dark',
+  brandTitle: 'DURO',
+  brandUrl: 'https://github.com/caryyon/duro',
   brandTarget: '_self',
 
-  // Typography
-  fontBase: '"Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  fontCode: '"Space Mono", monospace',
+  // Typography - JetBrains Mono for cyberpunk terminal feel
+  fontBase: '"JetBrains Mono", "SF Mono", "Fira Code", monospace',
+  fontCode: '"JetBrains Mono", "SF Mono", "Fira Code", monospace',
 
-  // Colors - matching Duro theme
-  colorPrimary: '#EB5757',
-  colorSecondary: '#a55eea',
+  // Monochromatic colors - black/white/gray only
+  colorPrimary: '#FFFFFF',
+  colorSecondary: '#888888',
 
-  // UI
-  appBg: '#FFFFFF',
-  appContentBg: '#FFFFFF',
+  // UI - dark background, sharp edges
+  appBg: '#000000',
+  appContentBg: '#0A0A0A',
   appBorderColor: '#333333',
   appBorderRadius: 0,
 
   // Text colors
-  textColor: '#333333',
-  textInverseColor: '#FFFFFF',
+  textColor: '#E0E0E0',
+  textInverseColor: '#000000',
+  textMutedColor: '#666666',
 
-  // Toolbar default and active colors
-  barTextColor: '#333333',
-  barSelectedColor: '#EB5757',
-  barBg: '#F5F5F5',
+  // Toolbar
+  barTextColor: '#AAAAAA',
+  barSelectedColor: '#FFFFFF',
+  barBg: '#0A0A0A',
 
   // Form colors
-  inputBg: '#FFFFFF',
+  inputBg: '#0A0A0A',
   inputBorder: '#333333',
-  inputTextColor: '#333333',
+  inputTextColor: '#E0E0E0',
   inputBorderRadius: 0,
-
-  // Brand
-  brandImage: undefined, // Logo is shown in story pages
 })

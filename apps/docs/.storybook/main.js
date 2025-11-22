@@ -5,17 +5,40 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@react-theming/storybook-addon',
   ],
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-vite',
   },
-  async viteFinal(config, { configType }) {
+  async viteFinal(config) {
     return {
       ...config,
       resolve: {
         alias: [
+          // CSS styles alias
+          {
+            find: '@caryyon/duro/styles',
+            replacement: path.resolve(
+              __dirname,
+              '../../../packages/duro-core/dist/duro.css'
+            ),
+          },
+          // Main package alias
+          {
+            find: '@caryyon/duro',
+            replacement: path.resolve(
+              __dirname,
+              '../../../packages/duro-core/'
+            ),
+          },
+          // Legacy alias for old imports
+          {
+            find: '@duro/core/dist/duro.css',
+            replacement: path.resolve(
+              __dirname,
+              '../../../packages/duro-core/dist/duro.css'
+            ),
+          },
           {
             find: '@duro/core',
             replacement: path.resolve(
