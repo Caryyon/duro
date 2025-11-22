@@ -26,8 +26,8 @@ importers:
 
   apps/docs:
     dependencies:
-      '@duro/core':
-        specifier: workspace:0.0.0
+      '@caryyon/duro':
+        specifier: workspace:0.1.0
         version: link:../../packages/duro-core
       '@emotion/react':
         specifier: ^11.10.5
@@ -87,6 +87,9 @@ importers:
       '@emotion/react':
         specifier: ^11.10.5
         version: 11.10.5(@babel/core@7.23.9)(@types/react@18.0.26)(react@18.2.0)
+      react-dom:
+        specifier: ^17.0.0 || ^18.0.0
+        version: 18.2.0(react@18.2.0)
       theme-ui:
         specifier: ^0.15.5
         version: 0.15.5(@emotion/react@11.10.5)(react@18.2.0)
@@ -106,9 +109,6 @@ importers:
       eslint:
         specifier: ^8.15.0
         version: 8.29.0
-      eslint-config-duro:
-        specifier: workspace:*
-        version: link:../eslint-config-duro
       react:
         specifier: ^18.1.0
         version: 18.2.0

@@ -1,4 +1,4 @@
-# @duro/core
+# @caryyon/duro
 
 ## 0.1.0
 

@@ -1,5 +1,5 @@
 {
-  "name": "@duro/core",
+  "name": "@caryyon/duro",
   "version": "0.1.0",
   "description": "Cyberpunk tech interface component library for React",
   "author": "caryyon",
@@ -50,7 +50,6 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "eslint": "^8.15.0",
-    "eslint-config-duro": "workspace:*",
     "react": "^18.1.0",
     "tsup": "^5.10.1",
     "tsx": "^3.14.0",
