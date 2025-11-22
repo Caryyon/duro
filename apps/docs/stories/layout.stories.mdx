@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import {
-  Stack, Grid, Cluster, Sidebar, Box,
+  Stack, Grid, Cluster, Sidebar, Box, Hero, Dashboard,
   Card, CardHeader, CardTitle, CardContent,
   Badge, Button, Heading, Paragraph
 } from '@caryyon/duro'
@@ -58,6 +58,45 @@ export const SidebarTemplate = (args) => (
       </CardContent>
     </Card>
   </Sidebar>
+)
+
+export const HeroTemplate = (args) => (
+  <Hero variant={args.variant} as={args.as}>
+    <Heading level={1}>Welcome to Duro</Heading>
+    <Paragraph>A cyberpunk tech interface component library for React</Paragraph>
+    <Cluster>
+      <Button variant="primary" size="lg">Get Started</Button>
+      <Button variant="secondary" size="lg">Learn More</Button>
+    </Cluster>
+  </Hero>
+)
+
+export const DashboardTemplate = (args) => (
+  <Dashboard variant={args.variant} as={args.as} style={{ minHeight: '400px' }}>
+    <Card style={{ gridArea: 'header' }}>
+      <CardContent>Header</CardContent>
+    </Card>
+    <Card style={{ gridArea: 'sidebar' }}>
+      <CardContent>
+        <Stack variant="tight">
+          <Button variant="ghost">Dashboard</Button>
+          <Button variant="ghost">Projects</Button>
+          <Button variant="ghost">Settings</Button>
+        </Stack>
+      </CardContent>
+    </Card>
+    <Card style={{ gridArea: 'main' }}>
+      <CardHeader>
+        <CardTitle>Main Content</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Paragraph>Your dashboard content goes here</Paragraph>
+      </CardContent>
+    </Card>
+    <Card style={{ gridArea: 'footer' }}>
+      <CardContent>Footer</CardContent>
+    </Card>
+  </Dashboard>
 )
 
 <Meta title="Layouts/Layout Components" />
@@ -183,6 +222,62 @@ The Sidebar component creates sidebar layouts with configurable positioning.
     }}
   >
     {SidebarTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Hero Playground
+
+The Hero component creates full-width hero sections for landing pages and feature highlights.
+
+<Canvas>
+  <Story
+    name="Hero Playground"
+    args={{
+      variant: 'centered',
+      as: 'section',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'centered', 'split'],
+        description: 'Hero layout variant',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'header'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {HeroTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Dashboard Playground
+
+The Dashboard component creates grid-based dashboard layouts with named areas.
+
+<Canvas>
+  <Story
+    name="Dashboard Playground"
+    args={{
+      variant: 'admin',
+      as: 'div',
+    }}
+    argTypes={{
+      variant: {
+        control: { type: 'select' },
+        options: [undefined, 'admin', 'guest'],
+        description: 'Dashboard layout variant',
+      },
+      as: {
+        control: { type: 'select' },
+        options: ['div', 'section', 'main'],
+        description: 'HTML element to render',
+      },
+    }}
+  >
+    {DashboardTemplate.bind({})}
   </Story>
 </Canvas>
 
@@ -353,6 +448,113 @@ The Sidebar component creates sidebar layouts with configurable positioning.
         </Stack>
       </Box>
     </Sidebar>
+  </Story>
+</Canvas>
+
+## Hero Examples
+
+<Canvas>
+  <Story name="Hero Centered">
+    <Hero variant="centered">
+      <Heading level={1}>Welcome to Duro</Heading>
+      <Paragraph>A cyberpunk tech interface component library for React</Paragraph>
+      <Cluster>
+        <Button variant="primary" size="lg">Get Started</Button>
+        <Button variant="secondary" size="lg">Documentation</Button>
+      </Cluster>
+    </Hero>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Hero Split">
+    <Hero variant="split">
+      <Box>
+        <Stack variant="tight">
+          <Heading level={2}>Build Cyberpunk Interfaces</Heading>
+          <Paragraph>
+            Duro provides composable components with a monochromatic aesthetic.
+            Perfect for tech dashboards, data visualization, and futuristic UIs.
+          </Paragraph>
+          <Button variant="primary">Explore Components</Button>
+        </Stack>
+      </Box>
+      <Card>
+        <CardContent>
+          <Paragraph variant="small">Visual content or demo goes here</Paragraph>
+        </CardContent>
+      </Card>
+    </Hero>
+  </Story>
+</Canvas>
+
+## Dashboard Examples
+
+<Canvas>
+  <Story name="Dashboard Admin">
+    <Dashboard variant="admin" style={{ minHeight: '400px' }}>
+      <Card style={{ gridArea: 'header' }}>
+        <CardContent>
+          <Cluster variant="spaceBetween">
+            <Heading level={3}>ADMIN DASHBOARD</Heading>
+            <Badge>ONLINE</Badge>
+          </Cluster>
+        </CardContent>
+      </Card>
+      <Card style={{ gridArea: 'sidebar' }}>
+        <CardContent>
+          <Stack variant="tight">
+            <Button variant="ghost">Overview</Button>
+            <Button variant="ghost">Analytics</Button>
+            <Button variant="ghost">Settings</Button>
+          </Stack>
+        </CardContent>
+      </Card>
+      <Card style={{ gridArea: 'main' }}>
+        <CardHeader>
+          <CardTitle>Main Content</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Paragraph>
+            The admin dashboard layout includes a header, sidebar, main content area, and footer.
+            All areas are responsive and adapt to container size.
+          </Paragraph>
+        </CardContent>
+      </Card>
+      <Card style={{ gridArea: 'footer' }}>
+        <CardContent>
+          <Paragraph variant="small">System Status: All services operational</Paragraph>
+        </CardContent>
+      </Card>
+    </Dashboard>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Dashboard Guest">
+    <Dashboard variant="guest" style={{ minHeight: '300px' }}>
+      <Card style={{ gridArea: 'header' }}>
+        <CardContent>
+          <Heading level={3}>GUEST VIEW</Heading>
+        </CardContent>
+      </Card>
+      <Card style={{ gridArea: 'main' }}>
+        <CardHeader>
+          <CardTitle>Welcome</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Paragraph>
+            The guest dashboard variant provides a simpler layout without a sidebar.
+            Perfect for public-facing pages or simplified views.
+          </Paragraph>
+        </CardContent>
+      </Card>
+      <Card style={{ gridArea: 'footer' }}>
+        <CardContent>
+          <Paragraph variant="small">Footer content</Paragraph>
+        </CardContent>
+      </Card>
+    </Dashboard>
   </Story>
 </Canvas>
 
