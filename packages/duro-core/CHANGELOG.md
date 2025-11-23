@@ -1,5 +1,11 @@
 # @caryyon/duro
 
+## 0.2.2
+
+### Patch Changes
+
+- Fix GaugeMeter component angle calculations for correct arc and needle positioning
+
 ## 0.2.1
 
 ### Patch Changes
