@@ -1,5 +1,22 @@
 # @caryyon/duro
 
+## 0.2.0
+
+### Minor Changes
+
+- Add 18 new HUD components for building tech interfaces and dashboards:
+  - Panels: HudPanel
+  - Data Display: StatBlock, DataRow, TerminalLine
+  - Visualizations: RadarDisplay, Crosshair, WaveformDisplay
+  - Charts: BarChart, DataGraph, GaugeMeter, PulseMeter
+  - Utility: StatusIndicator, SignalStrength, BinaryDisplay, HexDisplay
+  - Decorative: DecorativeLine, GridPattern, CircuitNode, NodeNetwork
+
+### Breaking Changes
+
+- Removed Logo component
+- Removed Filler component
+
 ## 0.1.0
 
 ### Minor Changes
