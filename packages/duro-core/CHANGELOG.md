@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- Initial release of Duro - Cyberpunk Tech Interface Component Library
+- Initial release of Duro - HUD Tech Interface Component Library
 
   Features:
 
@@ -14,7 +14,7 @@
   - Navigation: Tabs, Accordion
   - Overlay: Dialog, Tooltip
   - Typography: Heading, Text, Paragraph
-  - Cyberpunk utility classes: brackets, scanlines, glitch effects, terminal styles
+  - HUD utility classes: brackets, scanlines, glitch effects, terminal styles
   - Monochromatic black/white/gray color scheme
   - Sharp corners, thin borders, JetBrains Mono typography
   - Full TypeScript support

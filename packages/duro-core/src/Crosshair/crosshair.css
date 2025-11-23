@@ -1,0 +1,9 @@
+/**
+ * Crosshair Component Styles
+ * Duro HUD - Targeting reticle
+ */
+
+.duro-crosshair {
+  position: relative;
+  display: inline-block;
+}

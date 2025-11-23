@@ -1,6 +1,6 @@
 /**
  * Box Component Styles
- * Cyberpunk Tech Interface - Container primitives
+ * Duro HUD - Container primitives
  */
 
 .duro-box {
@@ -55,7 +55,7 @@
   margin-right: auto;
 }
 
-/* Bordered variant for cyberpunk */
+/* Bordered variant for HUD aesthetic */
 .duro-box-bordered {
   border: 1px solid var(--duro-color-text);
 }

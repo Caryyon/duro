@@ -1,0 +1,26 @@
+/**
+ * DecorativeLine Component Styles
+ * Duro HUD - Decorative divider line
+ */
+
+.duro-decorative-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--duro-color-text) 20%,
+    var(--duro-color-text) 80%,
+    transparent 100%
+  );
+  position: relative;
+}
+
+.duro-decorative-line-diamond {
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  background: var(--duro-color-text);
+  transform: translateX(-50%) rotate(45deg);
+}

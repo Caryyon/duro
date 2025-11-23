@@ -1,0 +1,17 @@
+/**
+ * BinaryDisplay Component Styles
+ * Duro HUD - Binary data stream
+ */
+
+.duro-binary-display {
+  font-family: var(--duro-font-monospace);
+  font-size: 0.5rem;
+  line-height: 1.4;
+  color: var(--duro-color-secondary);
+  opacity: 0.6;
+  overflow: hidden;
+}
+
+.duro-binary-display-row {
+  white-space: nowrap;
+}

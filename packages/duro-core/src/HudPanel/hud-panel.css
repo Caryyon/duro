@@ -1,0 +1,67 @@
+/**
+ * HudPanel Component Styles
+ * Duro HUD - Panel container with corner brackets
+ */
+
+.duro-hud-panel {
+  border: 1px solid var(--duro-color-text);
+  background: var(--duro-color-background);
+  position: relative;
+}
+
+/* Corner brackets */
+.duro-hud-panel-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+}
+
+.duro-hud-panel-corner-tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.duro-hud-panel-corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Header */
+.duro-hud-panel-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px dashed var(--duro-color-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duro-hud-panel-title {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--duro-color-text);
+}
+
+.duro-hud-panel-status {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  padding: var(--duro-space-1) var(--duro-space-2);
+  background: var(--duro-color-text);
+  color: var(--duro-color-background);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Content */
+.duro-hud-panel-content {
+  padding: 1rem;
+}
+
+.duro-hud-panel-no-padding .duro-hud-panel-content {
+  padding: 0;
+}

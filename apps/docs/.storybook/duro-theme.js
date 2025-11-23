@@ -2,11 +2,11 @@ import { create } from '@storybook/theming'
 
 export default create({
   base: 'dark',
-  brandTitle: 'DURO',
-  brandUrl: 'https://github.com/caryyon/duro',
+  brandTitle: '',
+  brandUrl: '',
   brandTarget: '_self',
 
-  // Typography - JetBrains Mono for cyberpunk terminal feel
+  // Typography - JetBrains Mono for terminal aesthetic
   fontBase: '"JetBrains Mono", "SF Mono", "Fira Code", monospace',
   fontCode: '"JetBrains Mono", "SF Mono", "Fira Code", monospace',
 

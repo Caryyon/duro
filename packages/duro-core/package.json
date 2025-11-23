@@ -1,7 +1,7 @@
 {
   "name": "@caryyon/duro",
   "version": "0.1.0",
-  "description": "Cyberpunk tech interface component library for React",
+  "description": "HUD tech interface component library for React",
   "author": "caryyon",
   "homepage": "https://github.com/caryyon/duro#readme",
   "repository": {
@@ -17,7 +17,7 @@
     "components",
     "ui",
     "design-system",
-    "cyberpunk",
+    "hud",
     "monochrome",
     "typescript"
   ],

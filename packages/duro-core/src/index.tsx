@@ -23,9 +23,6 @@ export type {
 } from './theme'
 
 // Components
-export { Logo } from './Logo'
-export type { LogoProps } from './Logo'
-
 export { Button } from './Button'
 export type { ButtonProps, ButtonVariant, ButtonSize } from './Button'
 
@@ -109,6 +106,65 @@ export type { HeadingProps, HeadingLevel, HeadingVariant } from './Heading'
 export { Paragraph } from './Paragraph'
 export type { ParagraphProps, ParagraphSize, ParagraphVariant } from './Paragraph'
 
-// Legacy components (to be migrated)
-export { Filler } from './Filler'
-export type { FillerProps } from './Filler'
+// HUD Components - Panels
+export { HudPanel } from './HudPanel'
+export type { HudPanelProps } from './HudPanel'
+
+// HUD Components - Data Display
+export { StatBlock } from './StatBlock'
+export type { StatBlockProps } from './StatBlock'
+
+export { DataRow } from './DataRow'
+export type { DataRowProps } from './DataRow'
+
+export { TerminalLine } from './TerminalLine'
+export type { TerminalLineProps, TerminalLineType } from './TerminalLine'
+
+// HUD Components - Visualizations
+export { RadarDisplay } from './RadarDisplay'
+export type { RadarDisplayProps } from './RadarDisplay'
+
+export { Crosshair } from './Crosshair'
+export type { CrosshairProps } from './Crosshair'
+
+export { WaveformDisplay } from './WaveformDisplay'
+export type { WaveformDisplayProps } from './WaveformDisplay'
+
+// HUD Components - Charts
+export { BarChart } from './BarChart'
+export type { BarChartProps, BarChartDataItem } from './BarChart'
+
+export { DataGraph } from './DataGraph'
+export type { DataGraphProps } from './DataGraph'
+
+export { GaugeMeter } from './GaugeMeter'
+export type { GaugeMeterProps } from './GaugeMeter'
+
+export { PulseMeter } from './PulseMeter'
+export type { PulseMeterProps } from './PulseMeter'
+
+// HUD Components - Utility
+export { StatusIndicator } from './StatusIndicator'
+export type { StatusIndicatorProps, StatusIndicatorStatus } from './StatusIndicator'
+
+export { SignalStrength } from './SignalStrength'
+export type { SignalStrengthProps } from './SignalStrength'
+
+export { BinaryDisplay } from './BinaryDisplay'
+export type { BinaryDisplayProps } from './BinaryDisplay'
+
+export { HexDisplay } from './HexDisplay'
+export type { HexDisplayProps } from './HexDisplay'
+
+// HUD Components - Decorative
+export { DecorativeLine } from './DecorativeLine'
+export type { DecorativeLineProps } from './DecorativeLine'
+
+export { GridPattern } from './GridPattern'
+export type { GridPatternProps } from './GridPattern'
+
+export { CircuitNode } from './CircuitNode'
+export type { CircuitNodeProps } from './CircuitNode'
+
+export { NodeNetwork } from './NodeNetwork'
+export type { NodeNetworkProps, NetworkNode } from './NodeNetwork'

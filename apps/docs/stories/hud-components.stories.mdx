@@ -1,0 +1,570 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import {
+  HudPanel,
+  StatBlock,
+  DataRow,
+  TerminalLine,
+  RadarDisplay,
+  Crosshair,
+  WaveformDisplay,
+  BarChart,
+  DataGraph,
+  GaugeMeter,
+  PulseMeter,
+  StatusIndicator,
+  SignalStrength,
+  BinaryDisplay,
+  HexDisplay,
+  DecorativeLine,
+  GridPattern,
+  CircuitNode,
+  NodeNetwork,
+  Stack,
+  Progress,
+  Badge,
+} from '@caryyon/duro'
+
+<Meta title="Components/Display/HUD Components" />
+
+# HUD Components
+
+A collection of HUD (Heads-Up Display) components for building tech interfaces, dashboards, and data visualizations.
+
+---
+
+## HudPanel
+
+A styled container panel with corner brackets and optional status badge.
+
+<Canvas>
+  <Story name="HudPanel">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <Stack gap="default">
+        <HudPanel title="SYSTEM STATUS" status="NOMINAL">
+          <p style={{ margin: 0, fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-sm)' }}>
+            Panel content goes here. This is a flexible container for any content.
+          </p>
+        </HudPanel>
+        <HudPanel title="DATA STREAM" noPadding>
+          <div style={{ background: 'var(--duro-color-muted)', padding: '1rem' }}>
+            <p style={{ margin: 0, fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-sm)' }}>
+              Panel with noPadding prop - content fills the entire area.
+            </p>
+          </div>
+        </HudPanel>
+      </Stack>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | required | Panel title displayed in header |
+| `status` | `string` | - | Optional status badge text |
+| `noPadding` | `boolean` | `false` | Remove padding from content area |
+
+---
+
+## StatBlock
+
+A statistics display block with label, value, unit, and optional trend indicator.
+
+<Canvas>
+  <Story name="StatBlock">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <StatBlock label="CPU LOAD" value="47" unit="%" trend={-3} />
+        <StatBlock label="MEMORY" value="8.2" unit="GB" trend={12} />
+        <StatBlock label="NETWORK" value="1.4" unit="Gbps" />
+        <StatBlock label="UPTIME" value="127" unit="days" />
+        <StatBlock label="THREADS" value="16" unit="" small />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | required | Label text displayed above the value |
+| `value` | `string \| number` | required | Main value to display |
+| `unit` | `string` | `''` | Unit suffix (e.g., "GB", "%", "ms") |
+| `trend` | `number` | - | Trend percentage (positive = up, negative = down) |
+| `small` | `boolean` | `false` | Use smaller size variant |
+
+---
+
+## DataRow
+
+A key-value row for displaying labeled data.
+
+<Canvas>
+  <Story name="DataRow">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem', maxWidth: '300px' }}>
+      <DataRow label="Core Temp" value="42°C" />
+      <DataRow label="Fan Speed" value="1200 RPM" />
+      <DataRow label="Power Draw" value="285W" highlight />
+      <DataRow label="Voltage" value="12.1V" />
+      <DataRow label="Clock Speed" value="3.8 GHz" highlight />
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | required | Label text |
+| `value` | `string` | required | Value text |
+| `highlight` | `boolean` | `false` | Highlight the value |
+
+---
+
+## TerminalLine
+
+A terminal-style output line with optional timestamp and type styling.
+
+<Canvas>
+  <Story name="TerminalLine">
+    <div style={{ background: 'var(--duro-color-muted)', padding: '1rem', border: '1px solid var(--duro-color-secondary)' }}>
+      <TerminalLine timestamp="14:32:01">System initialization complete</TerminalLine>
+      <TerminalLine timestamp="14:32:02">Loading neural network modules...</TerminalLine>
+      <TerminalLine timestamp="14:32:03" prefix="!" type="warning">Warning: Memory threshold at 82%</TerminalLine>
+      <TerminalLine timestamp="14:32:04" prefix="×" type="error">Error: Connection timeout</TerminalLine>
+      <TerminalLine timestamp="14:32:05" prefix="✓" type="success">Connection established: NODE-ALPHA-7</TerminalLine>
+      <TerminalLine timestamp="14:32:06" type="info">Running diagnostics...</TerminalLine>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `prefix` | `string` | `'>'` | Prefix character |
+| `timestamp` | `string` | - | Optional timestamp |
+| `type` | `'default' \| 'warning' \| 'error' \| 'success' \| 'info'` | `'default'` | Line type for styling |
+
+---
+
+## RadarDisplay
+
+An animated radar scanner visualization.
+
+<Canvas>
+  <Story name="RadarDisplay">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <RadarDisplay size={200} />
+        <RadarDisplay size={150} />
+        <RadarDisplay size={100} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number` | `200` | Size of the radar in pixels |
+
+---
+
+## Crosshair
+
+A targeting crosshair visualization.
+
+<Canvas>
+  <Story name="Crosshair">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <Crosshair size={140} />
+        <Crosshair size={100} />
+        <Crosshair size={60} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number` | `100` | Size of the crosshair in pixels |
+
+---
+
+## WaveformDisplay
+
+An animated waveform/audio visualization.
+
+<Canvas>
+  <Story name="WaveformDisplay">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <Stack gap="default">
+        <WaveformDisplay height={60} />
+        <WaveformDisplay height={40} />
+        <WaveformDisplay height={30} />
+      </Stack>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `height` | `number` | `60` | Height of the waveform in pixels |
+
+---
+
+## BarChart
+
+A vertical bar chart visualization.
+
+<Canvas>
+  <Story name="BarChart">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <BarChart
+        data={[
+          { label: '00', value: 45 },
+          { label: '04', value: 32 },
+          { label: '08', value: 67 },
+          { label: '12', value: 89, active: true },
+          { label: '16', value: 54 },
+          { label: '20', value: 71 },
+          { label: 'NOW', value: 83, active: true }
+        ]}
+        height={120}
+      />
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `BarChartDataItem[]` | required | Data array for the chart |
+| `height` | `number` | `100` | Height of the chart in pixels |
+
+---
+
+## DataGraph
+
+A line graph visualization with grid lines.
+
+<Canvas>
+  <Story name="DataGraph">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem' }}>
+        <DataGraph width={250} height={80} />
+        <DataGraph width={200} height={60} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `number` | `200` | Width of the graph in pixels |
+| `height` | `number` | `60` | Height of the graph in pixels |
+| `data` | `number[]` | - | Data points (array of values 0-1) |
+
+---
+
+## GaugeMeter
+
+A semi-circular gauge meter visualization.
+
+<Canvas>
+  <Story name="GaugeMeter">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end' }}>
+        <GaugeMeter value={72} size={140} />
+        <GaugeMeter value={45} size={100} />
+        <GaugeMeter value={90} size={80} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `65` | Value (0-100) |
+| `size` | `number` | `100` | Size of the gauge in pixels |
+
+---
+
+## PulseMeter
+
+A segmented level meter visualization.
+
+<Canvas>
+  <Story name="PulseMeter">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1rem' }}>
+        <PulseMeter value={85} label="CH-A" />
+        <PulseMeter value={62} label="CH-B" />
+        <PulseMeter value={91} label="CH-C" />
+        <PulseMeter value={45} label="CH-D" />
+        <PulseMeter value={30} label="CH-E" />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `75` | Value (0-100) |
+| `label` | `string` | - | Label text |
+| `segments` | `number` | `10` | Number of segments |
+
+---
+
+## StatusIndicator
+
+A status indicator dot with label.
+
+<Canvas>
+  <Story name="StatusIndicator">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <Stack gap="default">
+        <StatusIndicator status="active" label="ALPHA-7" />
+        <StatusIndicator status="standby" label="BETA-12" />
+        <StatusIndicator status="offline" label="GAMMA-3" />
+        <StatusIndicator status="error" label="DELTA-9" />
+      </Stack>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `'active' \| 'standby' \| 'offline' \| 'error'` | required | Status state |
+| `label` | `string` | - | Label text |
+
+---
+
+## SignalStrength
+
+A signal strength bar indicator.
+
+<Canvas>
+  <Story name="SignalStrength">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <span style={{ fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-xs)' }}>MAIN UPLINK</span>
+          <SignalStrength strength={5} max={5} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <span style={{ fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-xs)' }}>BACKUP LINK</span>
+          <SignalStrength strength={3} max={5} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <span style={{ fontFamily: 'var(--duro-font-monospace)', fontSize: 'var(--duro-font-size-xs)' }}>SAT RELAY</span>
+          <SignalStrength strength={1} max={5} />
+        </div>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `strength` | `number` | `3` | Current signal strength (1 to max) |
+| `max` | `number` | `5` | Maximum signal bars |
+
+---
+
+## BinaryDisplay
+
+A binary data stream display.
+
+<Canvas>
+  <Story name="BinaryDisplay">
+    <div style={{ background: 'var(--duro-color-muted)', padding: '1rem' }}>
+      <BinaryDisplay rows={5} columns={32} />
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `rows` | `number` | `4` | Number of rows to display |
+| `columns` | `number` | `32` | Characters per row |
+
+---
+
+## HexDisplay
+
+A hexadecimal memory dump display.
+
+<Canvas>
+  <Story name="HexDisplay">
+    <div style={{ background: 'var(--duro-color-muted)', padding: '1rem', border: '1px solid var(--duro-color-secondary)' }}>
+      <HexDisplay count={16} columns={8} />
+      <div style={{ marginTop: '0.5rem', borderTop: '1px dashed var(--duro-color-secondary)', paddingTop: '0.5rem' }}>
+        <HexDisplay count={16} columns={8} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `count` | `number` | `16` | Number of hex values to display |
+| `columns` | `number` | `8` | Columns per row |
+
+---
+
+## CircuitNode
+
+A circuit board node visualization.
+
+<Canvas>
+  <Story name="CircuitNode">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', justifyItems: 'center' }}>
+        <CircuitNode size={60} active={true} />
+        <CircuitNode size={60} active={true} />
+        <CircuitNode size={60} active={false} />
+        <CircuitNode size={60} active={true} />
+        <CircuitNode size={60} active={true} />
+        <CircuitNode size={60} active={true} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number` | `80` | Size of the node in pixels |
+| `active` | `boolean` | `true` | Whether the node is active |
+
+---
+
+## NodeNetwork
+
+A network topology visualization.
+
+<Canvas>
+  <Story name="NodeNetwork">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <NodeNetwork width={200} height={120} />
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `number` | `200` | Width of the visualization |
+| `height` | `number` | `120` | Height of the visualization |
+| `nodes` | `NetworkNode[]` | - | Array of nodes |
+| `connections` | `[number, number][]` | - | Array of connections as [fromIndex, toIndex] pairs |
+
+---
+
+## DecorativeLine
+
+A decorative horizontal line with center diamond.
+
+<Canvas>
+  <Story name="DecorativeLine">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <DecorativeLine width="100%" />
+      <div style={{ marginTop: '2rem' }}>
+        <DecorativeLine width="50%" />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `string \| number` | `'100%'` | Width of the line |
+
+---
+
+## GridPattern
+
+A background grid pattern.
+
+<Canvas>
+  <Story name="GridPattern">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem' }}>
+        <GridPattern size={100} cellSize={10} />
+        <GridPattern size={100} cellSize={5} />
+        <GridPattern size={100} cellSize={20} />
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number` | `100` | Size of the pattern area |
+| `cellSize` | `number` | `10` | Grid cell size in pixels |
+
+---
+
+## Combined Example
+
+Here's an example combining multiple HUD components into a panel:
+
+<Canvas>
+  <Story name="Combined Example">
+    <div style={{ background: 'var(--duro-color-background)', padding: '2rem' }}>
+      <HudPanel title="SYSTEM DIAGNOSTICS" status="ONLINE">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div>
+            <DataRow label="Status" value="Operational" />
+            <DataRow label="Uptime" value="127 days" highlight />
+            <DataRow label="Load" value="47%" />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <StatusIndicator status="active" label="PRIMARY" />
+              <SignalStrength strength={5} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <StatusIndicator status="standby" label="BACKUP" />
+              <SignalStrength strength={3} />
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: '1rem' }}>
+          <WaveformDisplay height={40} />
+        </div>
+      </HudPanel>
+    </div>
+  </Story>
+</Canvas>

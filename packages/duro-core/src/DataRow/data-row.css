@@ -1,0 +1,32 @@
+/**
+ * DataRow Component Styles
+ * Duro HUD - Label-value data row
+ */
+
+.duro-data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--duro-color-secondary);
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-sm);
+}
+
+.duro-data-row:last-child {
+  border-bottom: none;
+}
+
+.duro-data-row-label {
+  color: var(--duro-color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.duro-data-row-value {
+  color: var(--duro-color-text);
+}
+
+.duro-data-row-highlight .duro-data-row-value {
+  color: var(--duro-color-text);
+  font-weight: 500;
+}

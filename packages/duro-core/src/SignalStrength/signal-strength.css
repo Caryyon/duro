@@ -1,0 +1,22 @@
+/**
+ * SignalStrength Component Styles
+ * Duro HUD - Signal strength bars
+ */
+
+.duro-signal-strength {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 16px;
+}
+
+.duro-signal-strength-bar {
+  width: 4px;
+  background: transparent;
+  border: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-signal-strength-bar-active {
+  background: var(--duro-color-text);
+  border: none;
+}

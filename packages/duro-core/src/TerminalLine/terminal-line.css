@@ -1,0 +1,58 @@
+/**
+ * TerminalLine Component Styles
+ * Duro HUD - Terminal output line
+ */
+
+.duro-terminal-line {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  padding: 0.25rem 0;
+  display: flex;
+  gap: 0.5rem;
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-timestamp {
+  color: var(--duro-color-secondary);
+}
+
+.duro-terminal-line-prefix {
+  color: var(--duro-color-secondary);
+}
+
+.duro-terminal-line-content {
+  flex: 1;
+}
+
+/* Type variants */
+.duro-terminal-line-default {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-warning {
+  color: var(--duro-color-secondary);
+}
+
+.duro-terminal-line-warning .duro-terminal-line-prefix {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-error {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-error .duro-terminal-line-prefix {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-success {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-success .duro-terminal-line-prefix {
+  color: var(--duro-color-text);
+}
+
+.duro-terminal-line-info {
+  color: var(--duro-color-secondary);
+}

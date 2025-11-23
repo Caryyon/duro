@@ -1,6 +1,6 @@
 # Duro
 
-A cyberpunk tech interface component library for React. Monochromatic. Sharp. Terminal-inspired.
+A HUD tech interface component library for React. Monochromatic. Sharp. Terminal-inspired.
 
 ## Philosophy
 
@@ -97,7 +97,7 @@ function Example() {
 - `Text` - Inline text with variants
 - `Paragraph` - Block text
 
-## Cyberpunk Utility Classes
+## HUD Utility Classes
 
 Duro includes utility classes for enhanced visual effects:
 

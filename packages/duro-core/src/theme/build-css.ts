@@ -18,7 +18,7 @@ import { join } from 'path'
 export function buildCompleteCSS(): string {
   const sections: string[] = []
 
-  // Add Google Fonts import - JetBrains Mono for cyberpunk tech aesthetic
+  // Add Google Fonts import - JetBrains Mono for HUD tech aesthetic
   sections.push(`/* Google Fonts - JetBrains Mono */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700&display=swap');
 `)
@@ -125,7 +125,27 @@ export function buildCompleteCSS(): string {
     'Text/text.css',
     'Heading/heading.css',
     'Paragraph/paragraph.css',
-    'shared/cyberpunk-utilities.css',
+    'shared/hud-utilities.css',
+    // HUD Components
+    'HudPanel/hud-panel.css',
+    'StatBlock/stat-block.css',
+    'DataRow/data-row.css',
+    'TerminalLine/terminal-line.css',
+    'RadarDisplay/radar-display.css',
+    'Crosshair/crosshair.css',
+    'WaveformDisplay/waveform-display.css',
+    'BarChart/bar-chart.css',
+    'DataGraph/data-graph.css',
+    'GaugeMeter/gauge-meter.css',
+    'PulseMeter/pulse-meter.css',
+    'StatusIndicator/status-indicator.css',
+    'SignalStrength/signal-strength.css',
+    'BinaryDisplay/binary-display.css',
+    'HexDisplay/hex-display.css',
+    'DecorativeLine/decorative-line.css',
+    'GridPattern/grid-pattern.css',
+    'CircuitNode/circuit-node.css',
+    'NodeNetwork/node-network.css',
   ]
 
   // Load each component CSS file

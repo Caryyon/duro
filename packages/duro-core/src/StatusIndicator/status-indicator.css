@@ -1,0 +1,52 @@
+/**
+ * StatusIndicator Component Styles
+ * Duro HUD - Status indicator with label
+ */
+
+.duro-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.duro-status-indicator-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.duro-status-indicator-label {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--duro-color-text);
+}
+
+/* Status variants */
+.duro-status-indicator-active .duro-status-indicator-dot {
+  background: var(--duro-color-text);
+}
+
+.duro-status-indicator-standby .duro-status-indicator-dot {
+  background: transparent;
+  border: 1px dashed var(--duro-color-text);
+}
+
+.duro-status-indicator-offline .duro-status-indicator-dot {
+  background: transparent;
+  border: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-status-indicator-error .duro-status-indicator-dot {
+  background: var(--duro-color-text);
+  animation: duro-status-blink 1s infinite;
+}
+
+@keyframes duro-status-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

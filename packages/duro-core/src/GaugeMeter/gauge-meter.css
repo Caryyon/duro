@@ -1,0 +1,19 @@
+/**
+ * GaugeMeter Component Styles
+ * Duro HUD - Semi-circular gauge
+ */
+
+.duro-gauge-meter {
+  position: relative;
+}
+
+.duro-gauge-meter-value {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-lg);
+  font-weight: 300;
+  color: var(--duro-color-text);
+}

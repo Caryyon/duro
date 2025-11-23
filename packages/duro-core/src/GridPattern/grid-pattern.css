@@ -1,0 +1,11 @@
+/**
+ * GridPattern Component Styles
+ * Duro HUD - Background grid pattern
+ */
+
+.duro-grid-pattern {
+  background-image:
+    linear-gradient(var(--duro-color-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--duro-color-secondary) 1px, transparent 1px);
+  opacity: 0.2;
+}

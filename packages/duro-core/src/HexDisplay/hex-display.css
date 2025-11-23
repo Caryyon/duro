@@ -1,0 +1,16 @@
+/**
+ * HexDisplay Component Styles
+ * Duro HUD - Hexadecimal memory dump
+ */
+
+.duro-hex-display {
+  font-family: var(--duro-font-monospace);
+  font-size: var(--duro-font-size-xs);
+  color: var(--duro-color-secondary);
+  display: grid;
+  gap: 2px;
+}
+
+.duro-hex-display-value {
+  text-align: center;
+}

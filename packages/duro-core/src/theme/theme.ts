@@ -147,7 +147,7 @@ export interface SectionRegistry {
   [sectionName: string]: SectionDefinition
 }
 
-// Default Duro theme - Cyberpunk Tech Interface
+// Default Duro theme - HUD Tech Interface
 export const duroTheme: DuroTheme = {
   colors: {
     // Strictly monochromatic palette
@@ -211,7 +211,7 @@ export const duroTheme: DuroTheme = {
   borders: {
     none: 'none',
     thin: '1px solid',
-    medium: '1px solid',  // Keep thin for cyberpunk aesthetic
+    medium: '1px solid',  // Keep thin for HUD aesthetic
     thick: '2px solid',
   },
 

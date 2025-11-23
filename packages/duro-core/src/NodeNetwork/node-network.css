@@ -1,0 +1,8 @@
+/**
+ * NodeNetwork Component Styles
+ * Duro HUD - Network topology visualization
+ */
+
+.duro-node-network {
+  display: inline-block;
+}

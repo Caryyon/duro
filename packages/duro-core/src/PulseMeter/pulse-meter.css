@@ -1,0 +1,37 @@
+/**
+ * PulseMeter Component Styles
+ * Duro HUD - Segmented level meter
+ */
+
+.duro-pulse-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.duro-pulse-meter-bars {
+  display: flex;
+  gap: 2px;
+  height: 20px;
+  align-items: flex-end;
+}
+
+.duro-pulse-meter-bar {
+  flex: 1;
+  background: transparent;
+  border: 1px dashed var(--duro-color-secondary);
+}
+
+.duro-pulse-meter-bar-active {
+  background: var(--duro-color-text);
+  border: none;
+}
+
+.duro-pulse-meter-label {
+  font-family: var(--duro-font-monospace);
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--duro-color-secondary);
+  text-align: center;
+}

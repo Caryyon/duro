@@ -1,204 +1,111 @@
 import { Meta } from '@storybook/addon-docs'
-import { Logo, Button, Card, CardHeader, CardTitle, CardContent, Paragraph, Badge, Separator, Stack, Grid, Cluster } from '@caryyon/duro'
+import { Card, CardHeader, CardTitle, CardContent, Paragraph, Badge, Separator, Stack, Heading } from '@caryyon/duro'
 
 <Meta title="Welcome" />
 
-<div style={{ maxWidth: '1200px', margin: '0 auto', padding: '3rem 2rem' }}>
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '4rem' }}>
-    <Logo width={408} height={166.5} />
-    <h1 style={{ marginTop: '2rem', fontSize: '3rem', fontWeight: 'bold', lineHeight: '1.2' }}>
-      Built to Last
-    </h1>
-    <Paragraph variant="lead" style={{ marginTop: '1.5rem', maxWidth: '600px' }}>
-      A design system engineered for durability. Zero runtime overhead, future-proof patterns, and a composable architecture that survives framework churn.
-    </Paragraph>
-  </div>
+# DURO
 
-  <Separator style={{ margin: '3rem 0' }} />
+A design system engineered for durability. Zero runtime overhead, future-proof patterns, and a composable architecture that survives framework churn.
 
-  <Stack variant="loose">
-    <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem', fontWeight: 'bold' }}>
-      Technical Architecture
-    </h2>
+---
 
-    <Stack>
-      <Card>
-        <CardHeader>
-          <Badge variant="primary">Zero Runtime</Badge>
-          <CardTitle style={{ marginTop: '1rem' }}>Build-Time CSS Generation</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Duro's theme system runs at build time, converting TypeScript theme objects into CSS custom properties.
-            A Node.js script (<code>generate-css.ts</code>) reads your theme configuration and generates a static <code>duro.css</code> file.
-            No JavaScript theme context, no runtime overhead, perfect for server-side rendering.
-          </Paragraph>
-          <pre style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#F5F5F5', borderRadius: '4px', fontSize: '0.875rem' }}>
-{`// theme.ts - Your theme definition
-export const duroTheme = {
-  colors: { primary: '#EB5757', text: '#333' },
-  space: { 1: '0.25rem', 2: '0.5rem', 4: '1rem' },
-  shadows: { brutal: '4px 4px 0px 0px #333' },
-}
+## Technical Architecture
 
-// ↓ Build script generates CSS
-// :root {
-//   --duro-color-primary: #EB5757;
-//   --duro-space-4: 1rem;
-//   --duro-shadow-brutal: 4px 4px 0px 0px #333;
-// }`}
-          </pre>
-        </CardContent>
-      </Card>
+<Stack>
+  <Card>
+    <CardHeader>
+      <Badge variant="primary">Zero Runtime</Badge>
+      <CardTitle style={{ marginTop: '1rem' }}>Build-Time CSS Generation</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Duro's theme system runs at build time, converting TypeScript theme objects into CSS custom properties.
+        A Node.js script reads your theme configuration and generates a static duro.css file.
+        No JavaScript theme context, no runtime overhead, perfect for server-side rendering.
+      </Paragraph>
+    </CardContent>
+  </Card>
 
-      <Card>
-        <CardHeader>
-          <Badge variant="success">Modern</Badge>
-          <CardTitle style={{ marginTop: '1rem' }}>Container Queries</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Components respond to their container size, not the viewport. This enables true component-driven responsive design.
-            A Grid behaves the same whether it's in a sidebar or full-width, because it queries its own container.
-          </Paragraph>
-          <pre style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#F5F5F5', borderRadius: '4px', fontSize: '0.875rem' }}>
-{`// Generated at build time for each section variant
-@container (min-width: 768px) {
-  .duro-section-grid-responsive {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-}`}
-          </pre>
-          <Paragraph style={{ marginTop: '1rem', fontSize: '0.875rem', opacity: 0.7 }}>
-            Container queries are set via inline <code>containerType: 'inline-size'</code> in the Section component,
-            while all styling comes from pre-generated CSS classes.
-          </Paragraph>
-        </CardContent>
-      </Card>
+  <Card>
+    <CardHeader>
+      <Badge variant="success">Modern</Badge>
+      <CardTitle style={{ marginTop: '1rem' }}>Container Queries</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Components respond to their container size, not the viewport. This enables true component-driven responsive design.
+        A Grid behaves the same whether it's in a sidebar or full-width, because it queries its own container.
+      </Paragraph>
+    </CardContent>
+  </Card>
 
-      <Card>
-        <CardHeader>
-          <Badge variant="info">Composable</Badge>
-          <CardTitle style={{ marginTop: '1rem' }}>Layout Component System</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Duro provides layout primitives (Stack, Grid, Cluster, Sidebar) that compose together to build interfaces.
-            Each component has variants defined in the theme that generate corresponding CSS classes at build time.
-          </Paragraph>
-          <pre style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#F5F5F5', borderRadius: '4px', fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: `&lt;Stack variant="loose"&gt;
-  &lt;Sidebar variant="left"&gt;
-    &lt;Box&gt;Navigation...&lt;/Box&gt;
-    &lt;Stack&gt;
-      &lt;Card&gt;Content...&lt;/Card&gt;
-      &lt;Grid variant="cols3"&gt;
-        {items.map(item =&gt; &lt;Card&gt;{item}&lt;/Card&gt;)}
-      &lt;/Grid&gt;
-    &lt;/Stack&gt;
-  &lt;/Sidebar&gt;
-&lt;/Stack&gt;` }} />
-          <Paragraph style={{ marginTop: '1rem', fontSize: '0.875rem', opacity: 0.7 }}>
-            No inline styles needed - components use semantic layout variants that map to pre-generated CSS classes.
-          </Paragraph>
-        </CardContent>
-      </Card>
-    </Stack>
-  </Stack>
+  <Card>
+    <CardHeader>
+      <Badge variant="outline">Composable</Badge>
+      <CardTitle style={{ marginTop: '1rem' }}>Layout Component System</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Duro provides layout primitives (Stack, Grid, Cluster, Sidebar) that compose together to build interfaces.
+        Each component has variants defined in the theme that generate corresponding CSS classes at build time.
+      </Paragraph>
+    </CardContent>
+  </Card>
+</Stack>
 
-  <Separator style={{ margin: '3rem 0' }} />
+---
 
-  <div style={{ marginBottom: '3rem' }}>
-    <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem', fontWeight: 'bold' }}>
-      Why Inline Styles in Storybook?
-    </h2>
-    <Card>
-      <CardContent style={{ padding: '2rem' }}>
-        <Paragraph>
-          You'll notice <code style={{ padding: '0.25rem 0.5rem', backgroundColor: '#F5F5F5' }}>style={'{{}}'}</code> throughout these story files. This is intentional for documentation purposes only:
-        </Paragraph>
-        <ul style={{ marginTop: '1rem', marginLeft: '1.5rem', lineHeight: '1.8' }}>
-          <li><strong>Self-contained examples:</strong> Each story demonstrates components without external CSS dependencies</li>
-          <li><strong>Layout helpers:</strong> Inline styles position and space examples, not style actual components</li>
-          <li><strong>Not production code:</strong> Your application code uses Duro's CSS custom properties and semantic classes</li>
-        </ul>
-        <Paragraph style={{ marginTop: '1.5rem' }}>
-          In production, Duro components are styled via <code style={{ padding: '0.25rem 0.5rem', backgroundColor: '#F5F5F5' }}>duro.css</code> which uses CSS custom properties for theming. Zero inline styles in shipped components.
-        </Paragraph>
-      </CardContent>
-    </Card>
-  </div>
+## Design Principles
 
-  <Separator style={{ margin: '3rem 0' }} />
+<Stack>
+  <Card>
+    <CardHeader>
+      <CardTitle>HUD Tech Aesthetic</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Monospace typography, monochromatic colors, and sharp geometric shapes.
+        Corner brackets, dashed borders, and terminal-style interfaces define Duro's HUD character.
+      </Paragraph>
+    </CardContent>
+  </Card>
 
-  <Stack variant="loose">
-    <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem', fontWeight: 'bold' }}>
-      Design Principles
-    </h2>
-    <Stack>
-      <Card>
-        <CardHeader>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '600' }}>Brutalist Aesthetics</h3>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Sharp corners, hard shadows, and bold borders. No soft edges, no gradients, no blur effects.
-            Every component features distinctive offset shadows (4px 4px 0px) that give Duro its uncompromising character.
-          </Paragraph>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '600' }}>Framework Agnostic</h3>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Built with React but designed to outlast it. CSS custom properties mean your theme survives framework migrations.
-            The component layer is thin - most logic lives in composable hooks and pure functions that work anywhere.
-          </Paragraph>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: '600' }}>Progressive Enhancement</h3>
-        </CardHeader>
-        <CardContent>
-          <Paragraph>
-            Semantic HTML first. Components work without JavaScript, then enhance with interactivity. Container queries degrade gracefully.
-            Every component follows the principle: baseline functionality doesn't require runtime.
-          </Paragraph>
-        </CardContent>
-      </Card>
-    </Stack>
-  </Stack>
+  <Card>
+    <CardHeader>
+      <CardTitle>Framework Agnostic</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Built with React but designed to outlast it. CSS custom properties mean your theme survives framework migrations.
+        The component layer is thin - most logic lives in composable hooks and pure functions.
+      </Paragraph>
+    </CardContent>
+  </Card>
 
-  <Separator style={{ margin: '3rem 0' }} />
+  <Card>
+    <CardHeader>
+      <CardTitle>Progressive Enhancement</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Paragraph>
+        Semantic HTML first. Components work without JavaScript, then enhance with interactivity.
+        Container queries degrade gracefully. Baseline functionality doesn't require runtime.
+      </Paragraph>
+    </CardContent>
+  </Card>
+</Stack>
 
-  <div style={{ textAlign: 'center' }}>
-    <h2 style={{ marginBottom: '1rem', fontSize: '2rem', fontWeight: 'bold' }}>
-      Get Started
-    </h2>
-    <Paragraph variant="lead" style={{ marginBottom: '2rem' }}>
-      Install Duro and start building durable interfaces
-    </Paragraph>
-    <Card style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left' }}>
-      <CardContent>
-        <code style={{
-          display: 'block',
-          padding: '1rem',
-          backgroundColor: '#F5F5F5',
-          border: '2px solid #333333',
-          fontFamily: 'Space Mono, monospace',
-          fontSize: '0.9rem'
-        }}>
-          pnpm add @caryyon/duro
-        </code>
-      </CardContent>
-    </Card>
-  </div>
-</div>
+---
 
-<style>{`
-  .sbdocs-content {
-    max-width: 100% !important;
-  }
-`}</style>
+## Get Started
+
+```bash
+pnpm add @caryyon/duro
+```
+
+Then import the CSS and start using components:
+
+```tsx
+import '@caryyon/duro/dist/duro.css'
+import { Button, Card, Stack } from '@caryyon/duro'
+```

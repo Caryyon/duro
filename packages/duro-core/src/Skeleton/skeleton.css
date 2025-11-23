@@ -1,6 +1,6 @@
 /**
  * Skeleton Component Styles
- * Cyberpunk Tech Interface - Data loading placeholders
+ * Duro HUD - Data loading placeholders
  */
 
 .duro-skeleton {
@@ -37,7 +37,7 @@
   }
 }
 
-/* All radius variants map to 0 for cyberpunk */
+/* All radius variants map to 0 for HUD aesthetic */
 .duro-skeleton-radius-none,
 .duro-skeleton-radius-sm,
 .duro-skeleton-radius-md,

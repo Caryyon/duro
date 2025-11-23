@@ -1,0 +1,35 @@
+/**
+ * BarChart Component Styles
+ * Duro HUD - Vertical bar chart
+ */
+
+.duro-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 0 0.5rem;
+}
+
+.duro-bar-chart-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.duro-bar-chart-bar {
+  width: 100%;
+  background: var(--duro-color-secondary);
+  transition: height 0.3s ease;
+}
+
+.duro-bar-chart-bar-active {
+  background: var(--duro-color-text);
+}
+
+.duro-bar-chart-label {
+  font-family: var(--duro-font-monospace);
+  font-size: 0.5rem;
+  color: var(--duro-color-secondary);
+}

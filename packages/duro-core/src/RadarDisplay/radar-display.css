@@ -1,0 +1,49 @@
+/**
+ * RadarDisplay Component Styles
+ * Duro HUD - Animated radar scanner
+ */
+
+.duro-radar-display {
+  position: relative;
+  border: 1px solid var(--duro-color-text);
+  background: var(--duro-color-background);
+}
+
+.duro-radar-display-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Corner brackets */
+.duro-radar-display-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--duro-color-text);
+  border-style: solid;
+}
+
+.duro-radar-display-corner-tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.duro-radar-display-corner-tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+}
+
+.duro-radar-display-corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+}
+
+.duro-radar-display-corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}

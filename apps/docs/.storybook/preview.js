@@ -2,7 +2,7 @@ import React from 'react'
 import '@caryyon/duro/styles'
 import duroTheme from './duro-theme'
 
-// Inject global styles for Storybook cyberpunk aesthetic
+// Inject global styles for Storybook HUD aesthetic
 if (typeof document !== 'undefined') {
   // Load JetBrains Mono from Google Fonts
   const fontLink = document.createElement('link')
@@ -12,7 +12,7 @@ if (typeof document !== 'undefined') {
 
   const style = document.createElement('style')
   style.textContent = `
-    /* Global cyberpunk styling */
+    /* Global HUD styling */
     body {
       font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace !important;
       -webkit-font-smoothing: antialiased;
@@ -183,7 +183,7 @@ export const parameters = {
     storySort: {
       order: [
         'Foundation',
-        ['Logo', 'Theme', 'Typography', 'Colors'],
+        ['Theme', 'Typography', 'Colors'],
         'Components',
         'Layouts',
         'Showcase',

@@ -1,6 +1,6 @@
 /**
  * Text Component Styles
- * Cyberpunk Tech Interface - Terminal-style typography
+ * Duro HUD - Terminal-style typography
  */
 
 .duro-text {
@@ -65,7 +65,7 @@
   font-size: var(--duro-font-size-xl);
 }
 
-/* Weights - lighter for cyberpunk */
+/* Weights - lighter for HUD aesthetic */
 .duro-text-normal {
   font-weight: 300;
 }

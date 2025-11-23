@@ -1,6 +1,6 @@
 /**
  * Avatar Component Styles
- * Cyberpunk Tech Interface - User identification displays
+ * Duro HUD - User identification displays
  */
 
 .duro-avatar {
@@ -73,12 +73,12 @@
   z-index: 0;
 }
 
-/* Variant: Rounded - not used in cyberpunk, but keep for compatibility */
+/* Variant: Rounded - not used in HUD theme, but keep for compatibility */
 .duro-avatar-rounded {
   border-radius: 0;
 }
 
-/* Variant: Circle - not used in cyberpunk, but keep for compatibility */
+/* Variant: Circle - not used in HUD theme, but keep for compatibility */
 .duro-avatar-circle {
   border-radius: 0;
 }

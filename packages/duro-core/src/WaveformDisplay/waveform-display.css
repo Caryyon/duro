@@ -1,0 +1,15 @@
+/**
+ * WaveformDisplay Component Styles
+ * Duro HUD - Audio/signal waveform
+ */
+
+.duro-waveform-display {
+  border: 1px solid var(--duro-color-secondary);
+  background: var(--duro-color-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.duro-waveform-display-svg {
+  display: block;
+}
