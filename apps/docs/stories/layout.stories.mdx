@@ -469,19 +469,17 @@ The Dashboard component creates grid-based dashboard layouts with named areas.
 <Canvas>
   <Story name="Hero Split">
     <Hero variant="split">
-      <Box>
-        <Stack variant="tight">
-          <Heading level={2}>Build HUD Interfaces</Heading>
-          <Paragraph>
-            Duro provides composable components with a monochromatic aesthetic.
-            Perfect for tech dashboards, data visualization, and futuristic UIs.
-          </Paragraph>
-          <Button variant="primary">Explore Components</Button>
-        </Stack>
-      </Box>
-      <Card>
-        <CardContent>
-          <Paragraph variant="small">Visual content or demo goes here</Paragraph>
+      <div>
+        <Heading level={2}>Build HUD Interfaces</Heading>
+        <Paragraph>
+          Duro provides composable components with a monochromatic aesthetic.
+          Perfect for tech dashboards, data visualization, and futuristic UIs.
+        </Paragraph>
+        <Button variant="primary" size="lg">Explore Components</Button>
+      </div>
+      <Card style={{ width: '100%', maxWidth: '300px', aspectRatio: '4/3' }}>
+        <CardContent style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <Paragraph variant="small" style={{ textAlign: 'center' }}>Visual content or demo</Paragraph>
         </CardContent>
       </Card>
     </Hero>
