@@ -1,5 +1,12 @@
 # @caryyon/duro
 
+## 0.2.1
+
+### Patch Changes
+
+- Fix Hero component variant styles (centered, split)
+- Add responsive grid layout for Hero split variant
+
 ## 0.2.0
 
 ### Minor Changes
