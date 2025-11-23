@@ -1,5 +1,11 @@
 # @caryyon/duro
 
+## 0.2.3
+
+### Patch Changes
+
+- Fix GaugeMeter SVG arc flag - always use small arc for top-sweeping gauge
+
 ## 0.2.2
 
 ### Patch Changes

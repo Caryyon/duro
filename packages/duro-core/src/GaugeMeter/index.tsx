@@ -40,9 +40,6 @@ export const GaugeMeter: FC<GaugeMeterProps> = ({
   const endX = centerX + radius * Math.cos(angleRad)
   const endY = centerY - radius * Math.sin(angleRad)
 
-  // Determine if the arc is greater than 180 degrees (for SVG arc flag)
-  const largeArcFlag = value > 50 ? 1 : 0
-
   return (
     <div
       className={classes}
@@ -60,9 +57,9 @@ export const GaugeMeter: FC<GaugeMeterProps> = ({
           opacity="0.5"
         />
 
-        {/* Value arc */}
+        {/* Value arc - always use small arc (0) since we sweep through top */}
         <path
-          d={`M10,${centerY} A${radius},${radius} 0 ${largeArcFlag},1 ${endX},${endY}`}
+          d={`M10,${centerY} A${radius},${radius} 0 0,1 ${endX},${endY}`}
           fill="none"
           stroke="var(--duro-color-text)"
           strokeWidth="4"
