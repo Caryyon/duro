@@ -27,7 +27,7 @@ importers:
   apps/docs:
     dependencies:
       '@caryyon/duro':
-        specifier: workspace:0.1.0
+        specifier: workspace:*
         version: link:../../packages/duro-core
       '@emotion/react':
         specifier: ^11.10.5

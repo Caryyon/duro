@@ -9,7 +9,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
-    "@caryyon/duro": "workspace:0.1.0",
+    "@caryyon/duro": "workspace:*",
     "@emotion/react": "^11.10.5",
     "@react-theming/storybook-addon": "^1.1.10",
     "react": "^18.2.0",
